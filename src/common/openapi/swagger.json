@@ -1,0 +1,7540 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "contact": {
+      "email": "support@swagger.io",
+      "name": "API Support",
+      "url": "http://www.swagger.io/support"
+    },
+    "description": "TechRv Backend",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "termsOfService": "http://swagger.io/terms/",
+    "title": "TechRv Backend",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "paths": {
+    "/admin/categories": {
+      "post": {
+        "description": "Create a category",
+        "operationId": "adminCreateCategory",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincategorydto.CreateCategoryReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincategorydto.CreateCategoryResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a category",
+        "tags": [
+          "admin_categories"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/comments": {
+      "get": {
+        "description": "List comments with filters",
+        "operationId": "adminListComment",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "topic_id": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincommentdto.ListCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List comments with filters",
+        "tags": [
+          "admin_comments"
+        ]
+      }
+    },
+    "/admin/comments/{id}": {
+      "put": {
+        "description": "Update comment",
+        "operationId": "adminUpdateComment",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincommentdto.UpdateCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update comment",
+        "tags": [
+          "admin_comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/gift-issues": {
+      "get": {
+        "description": "List gift issues",
+        "operationId": "adminListGiftIssue",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.ListGiftIssueReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.ListGiftIssueResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List gift issues",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/gift-issues/{giftID}": {
+      "put": {
+        "description": "Update a gift issue",
+        "operationId": "adminUpdateGiftIssue",
+        "parameters": [
+          {
+            "description": "gift id",
+            "in": "path",
+            "name": "giftID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.UpdateGiftIssueReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.UpdateGiftIssueResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a gift issue",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/gifts": {
+      "get": {
+        "description": "List gifts",
+        "operationId": "adminListGift",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "topic_id": {
+                  "type": "integer"
+                },
+                "value_from": {
+                  "type": "integer"
+                },
+                "value_to": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.ListGiftReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.ListGiftResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List gifts",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "post": {
+        "description": "Create a gift",
+        "operationId": "adminCreateGift",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.CreateGiftReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.CreateGiftResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a gift",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/gifts/{id}": {
+      "delete": {
+        "description": "Delete a gift",
+        "operationId": "adminDeleteGift",
+        "parameters": [
+          {
+            "description": "gift id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.DeleteGiftReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.DeleteGiftResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Delete a gift",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "put": {
+        "description": "Update a gift",
+        "operationId": "adminUpdateGift",
+        "parameters": [
+          {
+            "description": "gift id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.UpdateGiftReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.UpdateGiftResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a gift",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/lucky-draws/{topicID}/set-winner": {
+      "post": {
+        "description": "Set winner of lucky draw",
+        "operationId": "adminLuckyDrawSetWinner",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admingiftdto.LuckyDrawSetWinnerReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admingiftdto.LuckyDrawSetWinnerResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Set winner of lucky draw",
+        "tags": [
+          "admin_gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/reported-comments": {
+      "get": {
+        "description": "List reported comment",
+        "operationId": "adminListReportedComment",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincommentdto.ListReportedCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincommentdto.ListReportedCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List reported comment",
+        "tags": [
+          "admin_comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/reported-comments/{id}/process": {
+      "post": {
+        "description": "Process reported comment",
+        "operationId": "adminProcessReportedComment",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincommentdto.ProcessReportedCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincommentdto.ProcessReportedCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Process reported comment",
+        "tags": [
+          "admin_comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/server-control": {
+      "post": {
+        "description": "Send control message",
+        "operationId": "adminPublishServerControlMsg",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.PublishControlMsgReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.PublishControlMsgResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Send control message",
+        "tags": [
+          "admin_controls"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/tags": {
+      "get": {
+        "description": "List topic tags",
+        "operationId": "adminListTag",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "topic_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admintopicdto.ListTagResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topic tags",
+        "tags": [
+          "admin_topics"
+        ]
+      }
+    },
+    "/admin/tasks/cache-topic-ids/exec": {
+      "post": {
+        "description": "Execute cache topic ids task",
+        "operationId": "adminExecTaskCacheTopicIDs",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.ExecTaskCacheTopicIDsReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.ExecTaskCacheTopicIDsResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Execute cache topic ids task",
+        "tags": [
+          "admin_controls"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/tasks/calc-top-topics/exec": {
+      "post": {
+        "description": "Execute calculation of top topics task",
+        "operationId": "adminExecTaskCalcTopTopics",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.ExecTaskCalcTopTopicsReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.ExecTaskCalcTopTopicsResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Execute calculation of top topics task",
+        "tags": [
+          "admin_controls"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/tasks/content-periodic/exec": {
+      "post": {
+        "description": "Execute content periodic task",
+        "operationId": "adminExecTaskContentPeriodic",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.ExecTaskContentPeriodicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.ExecTaskContentPeriodicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Execute content periodic task",
+        "tags": [
+          "admin_controls"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/topics": {
+      "get": {
+        "description": "List topics with filters",
+        "operationId": "adminListTopic",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "category_id": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admintopicdto.ListTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topics with filters",
+        "tags": [
+          "admin_topics"
+        ]
+      }
+    },
+    "/admin/topics/{id}": {
+      "get": {
+        "description": "Get a topic",
+        "operationId": "adminGetTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "get_content": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admintopicdto.GetTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get a topic",
+        "tags": [
+          "admin_topics"
+        ]
+      },
+      "put": {
+        "description": "Update topic",
+        "operationId": "adminUpdateTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admintopicdto.UpdateTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update topic",
+        "tags": [
+          "admin_topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/topics/{id}/content": {
+      "put": {
+        "description": "Update topic content",
+        "operationId": "adminUpdateTopicContent",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admintopicdto.UpdateTopicContentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update topic content",
+        "tags": [
+          "admin_topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "description": "List users",
+        "operationId": "adminListUser",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "type": "string"
+                },
+                "ids": {
+                  "type": "string"
+                },
+                "emails": {
+                  "type": "string"
+                },
+                "nick_names": {
+                  "type": "string"
+                },
+                "phones": {
+                  "type": "string"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.ListUserResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List users",
+        "tags": [
+          "admin_users"
+        ]
+      }
+    },
+    "/admin/users/{id}/ban": {
+      "put": {
+        "description": "Ban an account",
+        "operationId": "adminBanUser",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/adminuserdto.BanUserReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.BanUserResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Ban an account",
+        "tags": [
+          "admin_users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/users/{id}/points": {
+      "put": {
+        "description": "Add/remove user points",
+        "operationId": "adminUpdateUserPoints",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/adminuserdto.UpdateUserPointsReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.UpdateUserPointsResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Add/remove user points",
+        "tags": [
+          "admin_users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/users/{id}/profile": {
+      "put": {
+        "description": "Update user",
+        "operationId": "adminUpdateUserProfile",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/adminuserdto.UpdateUserProfileReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.UpdateUserProfileResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update user",
+        "tags": [
+          "admin_users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/users/{id}/role": {
+      "put": {
+        "description": "Update user role",
+        "operationId": "adminUpdateUserRole",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/adminuserdto.UpdateRoleReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.UpdateRoleResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update user role",
+        "tags": [
+          "admin_users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/users/{id}/unban": {
+      "put": {
+        "description": "Unban an account",
+        "operationId": "adminUnbanUser",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/adminuserdto.UnbanUserReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.UnbanUserResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Unban an account",
+        "tags": [
+          "admin_users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/categories": {
+      "get": {
+        "description": "List categories",
+        "operationId": "listCategory",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/categorydto.ListCategoryReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/categorydto.ListCategoryResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List categories",
+        "tags": [
+          "categories"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/comments": {
+      "post": {
+        "description": "Create a comment",
+        "operationId": "createComment",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/commentdto.CreateCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/commentdto.CreateCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a comment",
+        "tags": [
+          "comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/comments/{id}": {
+      "delete": {
+        "description": "Delete a comment",
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Delete a comment",
+        "tags": [
+          "comments"
+        ]
+      },
+      "put": {
+        "description": "Update a comment",
+        "operationId": "updateComment",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/commentdto.UpdateCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/commentdto.UpdateCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a comment",
+        "tags": [
+          "comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/comments/{id}/reactions": {
+      "get": {
+        "description": "List comment reaction",
+        "operationId": "listCommentReaction",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/commentdto.ListReactionReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/commentdto.ListReactionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List comment reaction",
+        "tags": [
+          "comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/comments/{id}/reactions/{verb}": {
+      "delete": {
+        "description": "Withdraw a reaction on a topic",
+        "operationId": "deleteCommentReaction",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "react verb",
+            "in": "path",
+            "name": "verb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Withdraw a reaction on a topic",
+        "tags": [
+          "comments"
+        ]
+      },
+      "post": {
+        "description": "Put reaction to a comment",
+        "operationId": "createCommentReaction",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "react verb",
+            "in": "path",
+            "name": "verb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Put reaction to a comment",
+        "tags": [
+          "comments"
+        ]
+      }
+    },
+    "/comments/{id}/reports": {
+      "post": {
+        "description": "Report a comment",
+        "operationId": "createCommentReport",
+        "parameters": [
+          {
+            "description": "comment id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/commentdto.ReportCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Report a comment",
+        "tags": [
+          "comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/contact-messages": {
+      "post": {
+        "description": "Create a contact message",
+        "operationId": "createContactMsg",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/messagedto.CreateContactMsgReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messagedto.CreateContactMsgResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a contact message",
+        "tags": [
+          "messages"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/gifts-on-topic/{topicID}": {
+      "get": {
+        "description": "List gifts for topic",
+        "operationId": "listGiftOnTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/giftdto.ListGiftOnTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/giftdto.ListGiftOnTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List gifts for topic",
+        "tags": [
+          "gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/gifts-on-topic/{topicID}/select": {
+      "post": {
+        "description": "Select a gift for a topic",
+        "operationId": "selectGiftOnTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/giftdto.SelectGiftOnTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/giftdto.SelectGiftOnTopicResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Select a gift for a topic",
+        "tags": [
+          "gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/home": {
+      "get": {
+        "description": "Get homepage content",
+        "operationId": "getHomeContent",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contentdto.GetHomeContentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get homepage content",
+        "tags": [
+          "contents"
+        ]
+      }
+    },
+    "/internal/session/facebook": {
+      "post": {
+        "description": "Create session for Facebook auth",
+        "operationId": "createFacebookSession",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/sessiondto.CreateFBSessionReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sessiondto.CreateSessionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create session for Facebook auth",
+        "tags": [
+          "sessions"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/internal/session/google": {
+      "post": {
+        "description": "Create session for Google auth",
+        "operationId": "createGoogleSession",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/sessiondto.CreateGGSessionReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sessiondto.CreateSessionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create session for Google auth",
+        "tags": [
+          "sessions"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/lucky-draws/{topicID}/registrations": {
+      "delete": {
+        "description": "Delete lucky draw registration of current user",
+        "operationId": "deleteLuckyDrawRegistration",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/giftdto.DeleteLuckyDrawRegReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Delete lucky draw registration of current user",
+        "tags": [
+          "gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "get": {
+        "description": "List lucky draw registration",
+        "operationId": "listLuckyDrawRegistration",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/giftdto.ListLuckyDrawRegReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/giftdto.ListLuckyDrawRegResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List lucky draw registration",
+        "tags": [
+          "gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "post": {
+        "description": "Create a lucky draw registration",
+        "operationId": "createLuckyDrawRegistration",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "topicID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/giftdto.CreateLuckyDrawRegReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {},
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a lucky draw registration",
+        "tags": [
+          "gifts"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/notification-setting": {
+      "get": {
+        "description": "Get notification setting of the current user",
+        "operationId": "getNotificationSettings",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/notificationdto.GetNotificationSettingResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get notification setting of the current user",
+        "tags": [
+          "notifications"
+        ]
+      },
+      "put": {
+        "description": "Update notification setting of the current user",
+        "operationId": "updateNotificationSettings",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/notificationdto.UpdateNotificationSettingReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/notificationdto.UpdateNotificationSettingResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update notification setting of the current user",
+        "tags": [
+          "notifications"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/notifications": {
+      "get": {
+        "description": "List notification",
+        "operationId": "listNotification",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/notificationdto.ListNotificationReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/notificationdto.ListNotificationResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List notification",
+        "tags": [
+          "notifications"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/notifications/latest": {
+      "get": {
+        "description": "List latest notifications",
+        "operationId": "listLatestNotification",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/notificationdto.ListLatestNotificationReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/notificationdto.ListLatestNotificationResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List latest notifications",
+        "tags": [
+          "notifications"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/notifications/mark-read": {
+      "put": {
+        "description": "Mark multiple notifications as read",
+        "operationId": "updateMultiNotificationMarkAsRead",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/notificationdto.MarkMultiNotificationsAsReadReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Mark multiple notifications as read",
+        "tags": [
+          "notifications"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/notifications/{id}/mark-read": {
+      "put": {
+        "description": "Mark notification as read",
+        "operationId": "updateNotificationMarkAsRead",
+        "parameters": [
+          {
+            "description": "notification id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/notificationdto.MarkNotificationAsReadReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Mark notification as read",
+        "tags": [
+          "notifications"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/session/me": {
+      "get": {
+        "description": "Get current session data",
+        "operationId": "getMe",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sessiondto.GetMeResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get current session data",
+        "tags": [
+          "sessions"
+        ]
+      }
+    },
+    "/sse": {
+      "get": {
+        "description": "Server-send-event for notifications",
+        "operationId": "sseConnect",
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Server-send-event for notifications",
+        "tags": [
+          "sse"
+        ]
+      }
+    },
+    "/topics": {
+      "get": {
+        "description": "List topics",
+        "operationId": "listTopic",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.ListTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topics",
+        "tags": [
+          "topics"
+        ]
+      },
+      "post": {
+        "description": "Create a topic",
+        "operationId": "createTopic",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.CreateTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.CreateTopicResp"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}": {
+      "delete": {
+        "description": "Delete a topic",
+        "operationId": "deleteTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.DeleteTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Delete a topic",
+        "tags": [
+          "topics"
+        ]
+      },
+      "get": {
+        "description": "Get topic",
+        "operationId": "getTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.GetTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get topic",
+        "tags": [
+          "topics"
+        ]
+      },
+      "put": {
+        "description": "Update a topic",
+        "operationId": "updateTopic",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.UpdateTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}/comments": {
+      "get": {
+        "description": "List topic comment by page",
+        "operationId": "listTopicComment",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/commentdto.ListCommentReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topic comment by page",
+        "tags": [
+          "comments"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}/extra": {
+      "get": {
+        "description": "Get topic extra",
+        "operationId": "getTopicExtra",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.GetTopicExtraResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get topic extra",
+        "tags": [
+          "topics"
+        ]
+      }
+    },
+    "/topics/{id}/reactions": {
+      "get": {
+        "description": "List topic reaction",
+        "operationId": "listTopicReaction",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.ListReactionReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/topicdto.ListReactionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topic reaction",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}/reactions/{verb}": {
+      "delete": {
+        "description": "Withdraw a reaction on a topic",
+        "operationId": "deleteTopicReaction",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "react verb",
+            "in": "path",
+            "name": "verb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Withdraw a reaction on a topic",
+        "tags": [
+          "topics"
+        ]
+      },
+      "post": {
+        "description": "Put reaction to a topic",
+        "operationId": "createTopicReaction",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "react verb",
+            "in": "path",
+            "name": "verb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Put reaction to a topic",
+        "tags": [
+          "topics"
+        ]
+      }
+    },
+    "/topics/{id}/save": {
+      "delete": {
+        "description": "Unsave a topic",
+        "operationId": "deleteTopicSave",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.UnsaveTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Unsave a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "post": {
+        "description": "Save a topic",
+        "operationId": "createTopicSave",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.SaveTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Save a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}/shares": {
+      "post": {
+        "description": "Share to a topic",
+        "operationId": "createTopicShare",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.ShareTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Share to a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/topics/{id}/views": {
+      "post": {
+        "description": "View a topic",
+        "operationId": "createTopicView",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/topicdto.ViewTopicReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "View a topic",
+        "tags": [
+          "topics"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/upload/presign-put": {
+      "post": {
+        "description": "Presign S3 put object",
+        "operationId": "presignUploadPut",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaddto.PresignPutObjectReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/uploaddto.PresignPutObjectResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Presign S3 put object",
+        "tags": [
+          "uploads"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/upload/presign-put-multi": {
+      "post": {
+        "description": "Presign S3 put multiple objects",
+        "operationId": "presignMultiUploadPut",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaddto.PresignPutMultiObjectReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/uploaddto.PresignPutMultiObjectResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Presign S3 put multiple objects",
+        "tags": [
+          "uploads"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/user/comments": {
+      "get": {
+        "description": "List comments of current user",
+        "operationId": "listUserComment",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "topic_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListCommentResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List comments of current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/user/following-users": {
+      "get": {
+        "description": "List following users of the current user",
+        "operationId": "listFollowingUser",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListFollowingUserResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List following users of the current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/user/given-reactions": {
+      "get": {
+        "description": "List given reactions of current user",
+        "operationId": "listUserGivenReaction",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListGivenReactionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List given reactions of current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "description": "Get current user profile",
+        "operationId": "getUserProfile",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.GetProfileResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get current user profile",
+        "tags": [
+          "users"
+        ]
+      },
+      "put": {
+        "description": "Update current user profile",
+        "operationId": "updateUserProfile",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/userdto.UpdateProfileReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.UpdateProfileResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Update current user profile",
+        "tags": [
+          "users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/user/taken-reactions": {
+      "get": {
+        "description": "List taken reactions of current user",
+        "operationId": "listUserTakenReaction",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListTakenReactionResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List taken reactions of current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/user/topic-saves": {
+      "get": {
+        "description": "List saved topics of the current user",
+        "operationId": "listSavedTopic",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListSavedTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List saved topics of the current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/user/topics": {
+      "get": {
+        "description": "List topics of current user",
+        "operationId": "listUserTopic",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "category_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.ListTopicResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List topics of current user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/users/register": {
+      "post": {
+        "description": "Create new account",
+        "operationId": "createAccount",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/userdto.CreateAccountReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.CreateAccountResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Create new account",
+        "tags": [
+          "users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/users/{id}/follow": {
+      "delete": {
+        "description": "Unfollow a user",
+        "operationId": "deleteUserFollowing",
+        "parameters": [
+          {
+            "description": "topic id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/userdto.UnfollowUserReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Unfollow a user",
+        "tags": [
+          "users"
+        ],
+        "x-codegen-request-body-name": "body"
+      },
+      "post": {
+        "description": "Follow a user",
+        "operationId": "createUserFollowing",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/userdto.FollowUserReq"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {},
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Follow a user",
+        "tags": [
+          "users"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/users/{id}/profile": {
+      "get": {
+        "description": "Get other user profile",
+        "operationId": "getOtherUserProfile",
+        "parameters": [
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userdto.GetOtherProfileResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get other user profile",
+        "tags": [
+          "users"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "admincategorydto.CategoryResp": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_vi": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincategorydto.CreateCategoryReq": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_vi": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincategorydto.CreateCategoryResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/admincategorydto.CategoryResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.CommentDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "comments": {
+            "items": {
+              "$ref": "#/components/schemas/admincommentdto.CommentResp"
+            },
+            "type": "array"
+          },
+          "topics": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "object"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.CommentResp": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "content_warn": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/entity.CommentExtra"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "reply_to_id": {
+            "type": "integer"
+          },
+          "reply_to_user_id": {
+            "type": "integer"
+          },
+          "root_id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_info": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.ListCommentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/admincommentdto.CommentDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.ListReportedCommentReq": {
+        "properties": {
+          "paging": {
+            "$ref": "#/components/schemas/dto.Paging"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.ListReportedCommentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/admincommentdto.CommentDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.ProcessReportedCommentReq": {
+        "properties": {
+          "comment_id": {
+            "type": "integer"
+          },
+          "details": {
+            "type": "string"
+          },
+          "report_status": {
+            "description": "values are \"\", CONFIRMED, INVALID",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.ProcessReportedCommentResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincommentdto.UpdateCommentReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "info": {
+            "type": "string"
+          },
+          "status": {
+            "description": "values are OK, REJECTED, \"\"",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskCacheTopicIDsReq": {
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskCacheTopicIDsResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskCalcTopTopicsReq": {
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskCalcTopTopicsResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskContentPeriodicReq": {
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskContentPeriodicResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.PublishControlMsgReq": {
+        "properties": {
+          "no_cache_mode": {
+            "type": "boolean"
+          },
+          "server_availability": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.PublishControlMsgResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.CreateGiftReq": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.CreateGiftResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/giftdto.GiftResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.DeleteGiftReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.DeleteGiftResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.GiftIssueResp": {
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "gift_id": {
+            "type": "integer"
+          },
+          "note": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.ListGiftIssueReq": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          },
+          "status": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.ListGiftIssueResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/admingiftdto.GiftIssueResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.ListGiftReq": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "value_from": {
+            "type": "integer"
+          },
+          "value_to": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.ListGiftResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/giftdto.GiftResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.LuckyDrawSetWinnerReq": {
+        "properties": {
+          "skip_verification": {
+            "type": "boolean"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.LuckyDrawSetWinnerResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.UpdateGiftIssueReq": {
+        "properties": {
+          "gift_id": {
+            "type": "integer"
+          },
+          "note": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.UpdateGiftIssueResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.UpdateGiftReq": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "admingiftdto.UpdateGiftResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/giftdto.GiftResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.GetTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/admintopicdto.TopicResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.ListTagResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.ListTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/admintopicdto.TopicDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.TopicDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/admintopicdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.TopicResp": {
+        "properties": {
+          "allow_discussion": {
+            "type": "boolean"
+          },
+          "category_id": {
+            "type": "integer"
+          },
+          "content": {
+            "type": "string"
+          },
+          "content_warn": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/entity.TopicExtra"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "lucky_draw": {
+            "$ref": "#/components/schemas/entity.LuckyDraw"
+          },
+          "pinned": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_info": {
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.UpdateTopicContentReq": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admintopicdto.UpdateTopicReq": {
+        "properties": {
+          "allow_discussion": {
+            "type": "boolean"
+          },
+          "bonus_kudos": {
+            "type": "integer"
+          },
+          "bonus_points": {
+            "type": "integer"
+          },
+          "category_id": {
+            "description": "Required when set status to OK",
+            "type": "integer"
+          },
+          "clear_current_tags": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "info": {
+            "type": "string"
+          },
+          "lucky_draw": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/entity.LuckyDraw"
+              }
+            ],
+            "description": "Attach a lucky draw program to this topic",
+            "type": "object"
+          },
+          "magazine_styled": {
+            "type": "boolean"
+          },
+          "pinned_to": {
+            "description": "values are HOME, PINNED, \"\"",
+            "type": "string"
+          },
+          "status": {
+            "description": "values are OK, REJECTED, \"\"",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.BanUserReq": {
+        "properties": {
+          "duration_mins": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "taken_kudos": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.BanUserResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.ListUserResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/adminuserdto.UserResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UnbanUserReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UnbanUserResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateRoleReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateRoleResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateUserPointsReq": {
+        "properties": {
+          "kudos_change": {
+            "type": "integer"
+          },
+          "points_change": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateUserPointsResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateUserProfileReq": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "extra": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/adminuserdto.UserProfileExtraReq"
+              }
+            ],
+            "description": "Extra fields",
+            "type": "object"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "nick_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UpdateUserProfileResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UserDetailsResp": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "linkdedin_url": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "website_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UserProfileExtraReq": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "linkdein_url": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "website_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.UserResp": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/entity.UserExtra"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "kudos": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "provider_id": {
+            "type": "string"
+          },
+          "s_role": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_info": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "integer"
+          },
+          "user_details": {
+            "$ref": "#/components/schemas/adminuserdto.UserDetailsResp"
+          }
+        },
+        "type": "object"
+      },
+      "categorydto.CategoryResp": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_vi": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "categorydto.ListCategoryReq": {
+        "type": "object"
+      },
+      "categorydto.ListCategoryResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/categorydto.CategoryResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.CommentResp": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_info": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.CreateCommentReq": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "reply_to_id": {
+            "type": "integer"
+          },
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.CreateCommentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/commentdto.CommentResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.ListCommentReq": {
+        "properties": {
+          "paging": {
+            "$ref": "#/components/schemas/dto.Paging"
+          },
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.ListReactionReq": {
+        "properties": {
+          "comment_id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.ListReactionResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/contentdto.ReactionDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.ReportCommentReq": {
+        "properties": {
+          "details": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.UpdateCommentReq": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "commentdto.UpdateCommentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/commentdto.CommentResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "config.CategoryContentCnf": {
+        "properties": {
+          "desc_max_len": {
+            "type": "integer"
+          },
+          "desc_min_len": {
+            "type": "integer"
+          },
+          "name_max_len": {
+            "type": "integer"
+          },
+          "name_min_len": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "config.CommentContentCnf": {
+        "properties": {
+          "content_max_len": {
+            "type": "integer"
+          },
+          "content_min_len": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "config.ContentCnf": {
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/config.CategoryContentCnf"
+          },
+          "comment": {
+            "$ref": "#/components/schemas/config.CommentContentCnf"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/config.TopicContentCnf"
+          }
+        },
+        "type": "object"
+      },
+      "config.NotificationCnf": {
+        "properties": {
+          "polling_interval": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "config.TopicContentCnf": {
+        "properties": {
+          "content_max_len": {
+            "type": "integer"
+          },
+          "content_min_len": {
+            "type": "integer"
+          },
+          "long_title_max_len": {
+            "type": "integer"
+          },
+          "long_title_min_len": {
+            "type": "integer"
+          },
+          "title_max_len": {
+            "type": "integer"
+          },
+          "title_min_len": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.CategoryResp": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_vi": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.GetHomeContentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/contentdto.HomeContentResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.HomeConfigResp": {
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/config.ContentCnf"
+          },
+          "notification": {
+            "$ref": "#/components/schemas/config.NotificationCnf"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.HomeContentResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "config": {
+            "$ref": "#/components/schemas/contentdto.HomeConfigResp"
+          },
+          "deal_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "last_review_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "lucky_gift_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "main_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "quick_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "top_hash_tags": {
+            "items": {
+              "$ref": "#/components/schemas/entity.HashTag"
+            },
+            "type": "array"
+          },
+          "top_review_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "top_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "top_video_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.ReactionDataResp": {
+        "properties": {
+          "reactions": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.ReactionResp"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.ReactionResp": {
+        "properties": {
+          "comment_id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "verb": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.TopicResp": {
+        "properties": {
+          "allow_discussion": {
+            "type": "boolean"
+          },
+          "category_id": {
+            "type": "integer"
+          },
+          "check_code": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "lucky_draw": {
+            "$ref": "#/components/schemas/entity.LuckyDraw"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/entity.TopicStats"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "contentdto.UserResp": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "level": {
+            "description": "SRole    string `json:\"role\"`\nSRoleVi  string `json:\"role_vi\"`",
+            "type": "string"
+          },
+          "level_vi": {
+            "type": "string"
+          },
+          "nick_name": {
+            "description": "FullName string `json:\"full_name,omitempty\"`",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "dto.Direction": {
+        "enum": [
+          "ASC",
+          "DESC"
+        ],
+        "type": "string",
+        "x-enum-varnames": [
+          "DirectionAsc",
+          "DirectionDesc"
+        ]
+      },
+      "dto.Error": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "extra": {
+            "additionalProperties": {
+              "type": "object"
+            },
+            "type": "object"
+          },
+          "source": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "dto.ErrorResp": {
+        "properties": {
+          "errors": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Error"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "dto.Meta": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "page": {
+            "$ref": "#/components/schemas/dto.PagingMeta"
+          }
+        },
+        "type": "object"
+      },
+      "dto.Order": {
+        "properties": {
+          "columnName": {
+            "type": "string"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/dto.Direction"
+          }
+        },
+        "type": "object"
+      },
+      "dto.Paging": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "dto.PagingMeta": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "entity.CommentExtra": {
+        "properties": {
+          "bonus_kudos": {
+            "type": "integer"
+          },
+          "bonus_points": {
+            "type": "integer"
+          },
+          "kudos_added": {
+            "type": "boolean"
+          },
+          "points_added": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "entity.HashTag": {
+        "properties": {
+          "image": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "entity.LuckyDraw": {
+        "properties": {
+          "gift_id": {
+            "type": "integer"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "reg_ended_at": {
+            "type": "string"
+          },
+          "reg_started_at": {
+            "type": "string"
+          },
+          "reg_taken_points": {
+            "type": "integer"
+          },
+          "required_daily_views": {
+            "type": "integer"
+          },
+          "required_views": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "win_taken_points": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "entity.ReactionCount": {
+        "properties": {
+          "angers": {
+            "type": "integer"
+          },
+          "claps": {
+            "type": "integer"
+          },
+          "dislikes": {
+            "type": "integer"
+          },
+          "laughs": {
+            "type": "integer"
+          },
+          "likes": {
+            "type": "integer"
+          },
+          "sadness": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "entity.TopicExtra": {
+        "properties": {
+          "bonus_kudos": {
+            "type": "integer"
+          },
+          "bonus_points": {
+            "type": "integer"
+          },
+          "gift_value_from": {
+            "type": "integer"
+          },
+          "gift_value_to": {
+            "type": "integer"
+          },
+          "kudos_added": {
+            "type": "boolean"
+          },
+          "magazine_styled": {
+            "type": "boolean"
+          },
+          "points_added": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "entity.TopicStats": {
+        "properties": {
+          "comments": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "lucky_draw_reg_count": {
+            "type": "integer"
+          },
+          "lucky_draw_regs": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "lv0_comment_idx": {
+            "type": "integer"
+          },
+          "lv0_comments": {
+            "type": "integer"
+          },
+          "reaction_count": {
+            "$ref": "#/components/schemas/entity.ReactionCount"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "views": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "entity.UserExtra": {
+        "properties": {
+          "banned_at": {
+            "type": "string"
+          },
+          "banned_duration": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "entity.UserStats": {
+        "properties": {
+          "comments": {
+            "type": "integer"
+          },
+          "followed_users": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "given_reactions": {
+            "$ref": "#/components/schemas/entity.ReactionCount"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "registered_lucky_draw_on_topics": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "saved_topics": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "taken_reactions": {
+            "$ref": "#/components/schemas/entity.ReactionCount"
+          },
+          "topics": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.CreateLuckyDrawRegReq": {
+        "properties": {
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.DeleteLuckyDrawRegReq": {
+        "properties": {
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.GiftResp": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.ListGiftOnTopicReq": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          },
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.ListGiftOnTopicResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/giftdto.GiftResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.ListLuckyDrawRegReq": {
+        "properties": {
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.ListLuckyDrawRegResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/giftdto.LuckyDrawRegDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.LuckyDrawRegDataResp": {
+        "properties": {
+          "my_registration": {
+            "type": "boolean"
+          },
+          "registrations": {
+            "items": {
+              "$ref": "#/components/schemas/giftdto.LuckyDrawRegResp"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.LuckyDrawRegResp": {
+        "properties": {
+          "nick_name": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.SelectGiftOnTopicReq": {
+        "properties": {
+          "gift_id": {
+            "type": "integer"
+          },
+          "note": {
+            "type": "string"
+          },
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "giftdto.SelectGiftOnTopicResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "jwt.Token": {
+        "properties": {
+          "expires_at": {
+            "type": "integer"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "messagedto.CreateContactMsgReq": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "messagedto.CreateContactMsgResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.GetNotificationSettingResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/notificationdto.NotificationSettingResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.ListLatestNotificationReq": {
+        "type": "object"
+      },
+      "notificationdto.ListLatestNotificationResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/notificationdto.NotificationDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.ListNotificationReq": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.ListNotificationResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/notificationdto.NotificationDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.MarkMultiNotificationsAsReadReq": {
+        "properties": {
+          "ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.MarkNotificationAsReadReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.NotificationDataResp": {
+        "properties": {
+          "notifications": {
+            "items": {
+              "$ref": "#/components/schemas/notificationdto.NotificationResp"
+            },
+            "type": "array"
+          },
+          "topics": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "object"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.NotificationResp": {
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "parent_object_id": {
+            "type": "integer"
+          },
+          "read_at": {
+            "type": "string"
+          },
+          "source_object_id": {
+            "type": "integer"
+          },
+          "source_user_id": {
+            "type": "integer"
+          },
+          "sub_kind": {
+            "type": "string"
+          },
+          "target_object_id": {
+            "type": "integer"
+          },
+          "target_user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.NotificationSettingResp": {
+        "properties": {
+          "on_advertisement": {
+            "type": "boolean"
+          },
+          "on_comment_react": {
+            "type": "boolean"
+          },
+          "on_comment_reply": {
+            "type": "boolean"
+          },
+          "on_content_approval": {
+            "type": "boolean"
+          },
+          "on_following_user": {
+            "type": "boolean"
+          },
+          "on_saved_topic": {
+            "type": "boolean"
+          },
+          "on_user_update": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.UpdateNotificationSettingReq": {
+        "properties": {
+          "on_advertisement": {
+            "type": "boolean"
+          },
+          "on_comment_react": {
+            "type": "boolean"
+          },
+          "on_comment_reply": {
+            "type": "boolean"
+          },
+          "on_content_approval": {
+            "type": "boolean"
+          },
+          "on_following_user": {
+            "type": "boolean"
+          },
+          "on_saved_topic": {
+            "type": "boolean"
+          },
+          "on_user_update": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "notificationdto.UpdateNotificationSettingResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.ConfigResp": {
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/config.ContentCnf"
+          },
+          "notification": {
+            "$ref": "#/components/schemas/config.NotificationCnf"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateFBSessionAccountReq": {
+        "properties": {
+          "access_token": {
+            "description": "Type              string `json:\"type\"`",
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "providerAccountId": {
+            "description": "FE next-auth uses this field",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateFBSessionProfilePictureDataReq": {
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateFBSessionProfilePictureReq": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/sessiondto.CreateFBSessionProfilePictureDataReq"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateFBSessionProfileReq": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "picture": {
+            "$ref": "#/components/schemas/sessiondto.CreateFBSessionProfilePictureReq"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateFBSessionReq": {
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/sessiondto.CreateFBSessionAccountReq"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/sessiondto.CreateFBSessionProfileReq"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateGGSessionAccountReq": {
+        "properties": {
+          "id_token": {
+            "description": "Type              string `json:\"type\"`\nAccessToken       string `json:\"access_token\"`\nExpiresAt         int    `json:\"expires_at\"`\nScope             string `json:\"scope\"`\nTokenType         string `json:\"token_type\"`",
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "providerAccountId": {
+            "description": "FE next-auth uses this field",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateGGSessionProfileReq": {
+        "properties": {
+          "azp": {
+            "description": "Iss           string `json:\"iss\"`",
+            "type": "string"
+          },
+          "email": {
+            "description": "Aud           string `json:\"aud\"`\nSub           string `json:\"sub\"`",
+            "type": "string"
+          },
+          "family_name": {
+            "type": "string"
+          },
+          "given_name": {
+            "type": "string"
+          },
+          "name": {
+            "description": "EmailVerified bool   `json:\"email_verified\"`\nAtHash        string `json:\"at_hash\"`",
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateGGSessionReq": {
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/sessiondto.CreateGGSessionAccountReq"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/sessiondto.CreateGGSessionProfileReq"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.CreateSessionResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/sessiondto.SessionResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.GetMeResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/sessiondto.MeResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.MeResp": {
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/sessiondto.ConfigResp"
+          },
+          "permissions": {
+            "$ref": "#/components/schemas/values.UserPermissionMap"
+          },
+          "user": {
+            "$ref": "#/components/schemas/userdto.UserResp"
+          }
+        },
+        "type": "object"
+      },
+      "sessiondto.SessionResp": {
+        "properties": {
+          "access_token": {
+            "$ref": "#/components/schemas/jwt.Token"
+          },
+          "permissions": {
+            "$ref": "#/components/schemas/values.UserPermissionMap"
+          },
+          "user": {
+            "$ref": "#/components/schemas/userdto.UserResp"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.CreateTopicReq": {
+        "properties": {
+          "category_id": {
+            "type": "integer"
+          },
+          "content": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "is_draft": {
+            "type": "boolean"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.CreateTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/topicdto.TopicResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.DeleteTopicResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.GetTopicDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/contentdto.TopicResp"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.GetTopicExtraResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/topicdto.TopicExtraResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.GetTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/topicdto.GetTopicDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ListReactionReq": {
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "$ref": "#/components/schemas/dto.Order"
+            },
+            "type": "array"
+          },
+          "topic_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ListReactionResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/contentdto.ReactionDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ListTopicDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ListTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/topicdto.ListTopicDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.SaveTopicReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ShareTopicReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "link": {
+            "type": "string"
+          },
+          "target": {
+            "description": "FB, X, ...",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.TopicCurrentUserResp": {
+        "properties": {
+          "followed_author": {
+            "type": "boolean"
+          },
+          "registered_lucky_draw": {
+            "type": "boolean"
+          },
+          "saved_topic": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.TopicExtraResp": {
+        "properties": {
+          "current_user": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/topicdto.TopicCurrentUserResp"
+              }
+            ],
+            "description": "Personal fields",
+            "type": "object"
+          },
+          "lucky_draw": {
+            "$ref": "#/components/schemas/entity.LuckyDraw"
+          },
+          "lucky_draw_gift": {
+            "$ref": "#/components/schemas/giftdto.GiftResp"
+          },
+          "related_topics": {
+            "items": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "topic_code": {
+            "type": "string"
+          },
+          "topic_stats": {
+            "$ref": "#/components/schemas/entity.TopicStats"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.TopicResp": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_info": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.UnsaveTopicReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.UpdateTopicReq": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "topicdto.ViewTopicReq": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "topic_code": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "uploaddto.PresignPutMultiObjectReq": {
+        "properties": {
+          "object_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "uploaddto.PresignPutMultiObjectResp": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/uploaddto.PresignPutObjectDataResp"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "uploaddto.PresignPutObjectDataResp": {
+        "properties": {
+          "access_url": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "uploaddto.PresignPutObjectReq": {
+        "properties": {
+          "object_key": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "uploaddto.PresignPutObjectResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/uploaddto.PresignPutObjectDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.CommentDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "comments": {
+            "items": {
+              "$ref": "#/components/schemas/admincommentdto.CommentResp"
+            },
+            "type": "array"
+          },
+          "topics": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "object"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "user": {
+            "$ref": "#/components/schemas/contentdto.UserResp"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.CreateAccountReq": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.CreateAccountResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.ProfileResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.FollowUserReq": {
+        "properties": {
+          "target_user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.FollowingUserResp": {
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/userdto.OtherUserResp"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.GetOtherProfileResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.OtherProfileResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.GetProfileResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.ProfileResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListCommentResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.CommentDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListFollowingUserResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.FollowingUserResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListGivenReactionResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.ReactionDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListSavedTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.SavedTopicDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListTakenReactionResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.ReactionDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ListTopicResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/userdto.TopicDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.OtherProfileResp": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/userdto.OtherUserResp"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.OtherUserResp": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "kudos": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "string"
+          },
+          "level_vi": {
+            "type": "string"
+          },
+          "member_at": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/entity.UserStats"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ProfileExtraReq": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "linkdein_url": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "website_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ProfileResp": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/userdto.UserResp"
+          },
+          "user_details": {
+            "$ref": "#/components/schemas/userdto.UserDetailsResp"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ReactionDataResp": {
+        "properties": {
+          "reactions": {
+            "items": {
+              "$ref": "#/components/schemas/userdto.ReactionResp"
+            },
+            "type": "array"
+          },
+          "topics": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.TopicResp"
+            },
+            "type": "object"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.ReactionResp": {
+        "properties": {
+          "comment_id": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "to_user_id": {
+            "type": "integer"
+          },
+          "topic_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "verb": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.SavedTopicDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/userdto.SavedTopicResp"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.UserResp"
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.SavedTopicResp": {
+        "properties": {
+          "category_id": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "image": {
+            "type": "string"
+          },
+          "long_title": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "saved_at": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "video": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.TopicDataResp": {
+        "properties": {
+          "categories": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/contentdto.CategoryResp"
+            },
+            "type": "object"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/admintopicdto.TopicResp"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "user": {
+            "$ref": "#/components/schemas/contentdto.UserResp"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.UnfollowUserReq": {
+        "properties": {
+          "target_user_id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.UpdateProfileReq": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "extra": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/userdto.ProfileExtraReq"
+              }
+            ],
+            "description": "Extra fields",
+            "type": "object"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.UpdateProfileResp": {
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.UserDetailsResp": {
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "linkdedin_url": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "website_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userdto.UserResp": {
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "kudos": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "string"
+          },
+          "level_vi": {
+            "type": "string"
+          },
+          "member_at": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer"
+          },
+          "s_role": {
+            "type": "string"
+          },
+          "s_role_vi": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/entity.UserStats"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "values.UserPermissionMap": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "type": "object"
+      },
+      "values.Permission": {
+        "type": "string"
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "x-original-swagger-version": "2.0"
+}

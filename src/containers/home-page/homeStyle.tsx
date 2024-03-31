@@ -388,6 +388,7 @@ export const HomeStyle = createGlobalStyle`
         width: 100%;
         max-width: 1600px;
         margin: 0 auto;
+        padding: 0 15px;
     }
 
     .container:before,
@@ -621,6 +622,7 @@ export const HomeStyle = createGlobalStyle`
     header {
         padding: 0 40px;
         border-bottom: 1px solid #dedede;
+
         .header-left {
             margin-right: 24px;
         }
@@ -639,7 +641,6 @@ export const HomeStyle = createGlobalStyle`
             color: #4b40d4;
         }
     }
-
 
 
     .btn-write {
@@ -996,13 +997,14 @@ export const HomeStyle = createGlobalStyle`
         margin-bottom: 24px;
     }
 
+    .outstanding-list .news-card .news-card-img {
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
     .news-card .icon-sale {
         transform: translateY(3px);
         margin-right: 8px;
-    }
-
-    .news-card-img img {
-        border-radius: 8px;
     }
 
     .news-card-meta {
@@ -1036,6 +1038,8 @@ export const HomeStyle = createGlobalStyle`
     .news-card-title a {
         font-size: 20px;
         margin: 16px 0 24px;
+        line-height: 150%;
+        font-family: 'Roboto', sans-serif;
     }
 
     .news-card-big .news-card-title a {
@@ -1046,7 +1050,7 @@ export const HomeStyle = createGlobalStyle`
     .news-card-desc {
         font-size: 18px;
         margin-bottom: 16px;
-        line-height: 24px;
+        line-height: 150%;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; /* From which line on to truncate */
@@ -1087,6 +1091,11 @@ export const HomeStyle = createGlobalStyle`
     }
 
     .news-card-outstanding {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .news-card-outstanding .news-card-body {
         background-color: #4b40d4;
     }
 
@@ -1103,11 +1112,8 @@ export const HomeStyle = createGlobalStyle`
     }
 
     .news-card-outstanding .news-card-img {
-        margin-right: -12px;
-    }
-
-    .news-card-outstanding .news-card-img img {
         border-radius: 8px 0 0 8px;
+        overflow: hidden;
     }
 
     .news-card-outstanding .news-card-body {
@@ -1125,9 +1131,22 @@ export const HomeStyle = createGlobalStyle`
     .outstanding {
         background-color: rgba(75, 64, 212, 0.3);
         padding: 40px 0 16px;
-        margin: 16px 0 40px;
+        margin: 16px 0 0;
     }
-
+    
+    .funs .heading h2,
+    .lucky .heading h2,
+    .review-latest .heading h2,
+    .home-videos .heading h2,
+    .sales .heading h2,
+    .review-latest .heading .view-more, 
+    .home-videos .heading .view-more, 
+    .funs .heading .view-more, 
+    .sales .heading .view-more, 
+    .lucky .heading .view-more{
+        background: #F5F5F5;
+    }
+    
     .outstanding h2,
     .outstanding .view-more {
         background-color: transparent;
@@ -1304,13 +1323,16 @@ export const HomeStyle = createGlobalStyle`
 
     .lucky-content span {
         color: white;
+        font-weight: 500;
     }
 
     .lucky-content h4 {
         color: white;
-        font-size: 32px;
+        font-size: 36px;
         margin: 8px 0 16px;
         font-weight: bold;
+        gap: 8px;
+        font-family: 'Roboto', sans-serif;
     }
 
     .lucky-content p {
@@ -1322,15 +1344,30 @@ export const HomeStyle = createGlobalStyle`
         margin-right: 16px;
     }
 
+    .lucky-big-thumbnail {
+        position: relative;
+    }
+
+    .lucky-big-thumbnail:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: linear-gradient(rgba(75, 64, 212, 0), #4B40D4);
+        width: 100%;
+        height: 100%;
+    }
+
     .lucky-content .content-right .join {
         background-color: #fff;
-        font-size: 18px;
+        font-size: 20px;
         color: #4b40d4;
         display: inline-block;
         text-transform: uppercase;
         font-weight: bold;
-        padding: 16px 20px;
+        padding: 0 20px;
         border-radius: 4px;
+        line-height: 64px;
     }
 
     .lucky-content .content-right .condition {
@@ -1342,29 +1379,40 @@ export const HomeStyle = createGlobalStyle`
         margin-top: 16px;
     }
 
-    .lucky-right {
-        background-color: rgba(75, 64, 212, 0.3);
+    .lucky-left {
         border-radius: 8px;
-        padding: 16px;
-        margin-right: 12px;
-        margin-left: 12px;
+        overflow: hidden;
+    }
+
+    .lucky-right {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        overflow: hidden;
+        height: 100%;
     }
 
     .lucky-item {
-        margin-top: 16px;
+        margin-top: 24px;
     }
 
     .lucky-item .img-thumb {
-        min-width: 177px;
+        overflow: hidden;
         border-radius: 4px;
-        margin-right: 16px;
+        flex: 1 0 177px
+    }
+
+    .lucky-right h4 {
+        font-size: 20px;
     }
 
     .lucky-item .text {
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 600;
+        line-height: 150%;
+        margin-left: 16px;
     }
-
+    
     .top-news,
     .top-banner,
     .lucky,
@@ -1378,10 +1426,41 @@ export const HomeStyle = createGlobalStyle`
         margin-top: 40px;
     }
 
+    .funs, .lucky, .popular, .review-latest, .home-videos, .review-outstanding, .sales {
+        padding: 40px 0 0;
+        background: #F5F5F5;
+        margin-top: 0;
+    }
+    
+    .ad-banner *, .popular-banner * {
+        width: 100%;
+    }
+    
+    .popular-topic .hastag{
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        text-align: center;
+        border-radius: 4px;
+        background-size: 100%;
+        background-position: center;
+    }
+    
+    .popular-topic .hastag span{
+        font-weight: 600;
+        font-size: 20px;
+        color: white;
+    }
+    
     .popular-left .news-card-img,
     .review-outstanding-content .news-card-img {
         min-width: 480px;
         margin-right: 16px;
+        border-radius: 4px;
+        overflow: hidden;
     }
 
     .review-outstanding-left .viewmore button {
@@ -1417,6 +1496,7 @@ export const HomeStyle = createGlobalStyle`
         font-size: 32px;
         font-family: "Anton", sans-serif;
         text-transform: uppercase;
+        margin-bottom: 24px;
     }
 
     .popular-topic {
@@ -1435,32 +1515,43 @@ export const HomeStyle = createGlobalStyle`
     }
 
     .popular-topic li {
-        margin-top: 24px;
+        margin-bottom: 24px;
     }
 
     .review-latest .carousel-item {
         min-width: 33.33%;
     }
-
+    
+    .video-left-title {
+        position: absolute;
+        bottom: 0;
+        padding: 24px;
+        display: flex;
+        gap: 24px;
+    }
+    
     .home-videos-right {
-        background-color: rgba(75, 64, 212, 0.5);
-        margin-left: -12px;
-        margin-right: 12px;
-        padding: 16px 0;
-        max-height: 595px;
-        overflow-y: scroll;
+        width: 100%;
+        background-color: rgba(75, 64, 212, 0.3);
+        max-height: 552px;
+        overflow-y: auto;
         /* overflow: hidden; */
     }
-
+    
+    .home-videos-right .lucky-item .text {
+        font-family: 'Roboto', sans-serif;
+    }
+    
     .home-videos-right .lucky-item {
         transition: all 0.2s ease;
         border-right: 4px solid transparent;
-        padding: 16px;
         margin-top: 0;
+        padding: 16px;
     }
 
     .home-videos-right .lucky-item img {
-        max-height: 100px;
+        width: 100%;
+        height: 100px;
         object-fit: cover;
     }
 
@@ -1476,16 +1567,7 @@ export const HomeStyle = createGlobalStyle`
     .video-img {
         position: relative;
     }
-
-    .video-left h3,
-    .video-img span {
-        position: absolute;
-        left: 32px;
-        bottom: 32px;
-        z-index: 2;
-        cursor: pointer;
-    }
-
+    
     .video-left h3 {
         left: 148px;
     }
@@ -1493,6 +1575,7 @@ export const HomeStyle = createGlobalStyle`
     .video-img h3 > a {
         font-size: 32px;
         color: #fff;
+        font-family: 'Roboto', sans-serif;
     }
 
     .review-outstanding-left {
@@ -1587,13 +1670,7 @@ export const HomeStyle = createGlobalStyle`
         .news-card-outstanding .news-card-title a {
             font-size: 24px;
         }
-
-        .lucky-item .img-thumb {
-            min-width: 145px;
-            margin-right: 12px;
-            max-width: 145px;
-        }
-
+        
         .review-latest .carousel-item {
             min-width: 32%;
         }
@@ -1639,6 +1716,19 @@ export const HomeStyle = createGlobalStyle`
 
     /* viewport <= 820px */
     @media screen and (max-width: 821px) {
+        
+        .lucky-item .img-thumb {
+            flex: 1 0 120px;
+        }
+        
+        .home-videos-right .lucky-item img {
+            height: 65px;
+        }
+        
+        .video-left-title {
+            display: none;
+        }
+        
         * {
             font-size: 14px;
         }
@@ -1680,7 +1770,7 @@ export const HomeStyle = createGlobalStyle`
         .ad-banner {
             display: none;
         }
-
+        
         .video-img h3 > a {
             display: none;
         }
@@ -1705,6 +1795,7 @@ export const HomeStyle = createGlobalStyle`
 
     /* viewport <= 575px */
     @media screen and (max-width: 576px) {
+        
         .container {
             padding-left: 8px;
             padding-right: 8px;
@@ -1788,6 +1879,7 @@ export const HomeStyle = createGlobalStyle`
         .popular-content .news-card-img img {
             max-width: 120px;
             object-fit: cover;
+            border-radius: 4px;
         }
 
         .popular-left .news-card-img,
@@ -1852,7 +1944,7 @@ export const HomeStyle = createGlobalStyle`
             min-height: 200px;
             min-width: 112px;
         }
-
+        
         .funs-content .carousel-item img {
             width: 100%;
         }
@@ -1914,10 +2006,14 @@ export const HomeStyle = createGlobalStyle`
             display: none;
         }
 
-        .lucky-item .text {
+        .lucky .lucky-item .text {
             color: #4b40d4;
         }
-
+        
+        .lucky-item .text {
+            font-size: 16px;
+        }
+        
         .popular-topic li {
             flex: 0 0 47%;
             margin-right: 16px;
@@ -1942,7 +2038,9 @@ export const HomeStyle = createGlobalStyle`
         }
 
         .home-videos-right {
-            max-height: 520px;
+            margin-left: 0;
+            overflow: hidden;
+            max-height: initial;
         }
 
         .review-list .news-card {

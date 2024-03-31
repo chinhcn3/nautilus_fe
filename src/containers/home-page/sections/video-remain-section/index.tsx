@@ -1,15 +1,17 @@
 import {VideoRemainTopicList} from '@/containers/home-page/sections/video-remain-section/components/video-remain-topic-list';
 import {TopReviewOutstanding} from '@/containers/home-page/sections/video-remain-section/components/top-review-outstanding';
+import {Container} from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 export function VideoRemainSection() {
   return (
     <div className="review-outstanding">
-      <div className="container">
-        <div className="row gutter-24px">
-          <VideoRemainTopicList />
-          <TopReviewOutstanding />
-        </div>
-      </div>
+        <Container maxWidth="xl">
+            <Grid container spacing={3}>
+                <VideoRemainTopicList/>
+                <TopReviewOutstanding/>
+            </Grid>
+        </Container>
     </div>
   );
 }

@@ -8,25 +8,27 @@ import {ArticleCategory} from '@/containers/home-page/components/article/article
 import {ArticleTitle} from '@/containers/home-page/components/article/article-title';
 import {Stack} from '@mui/material';
 import {ArticleAuth} from '@/containers/home-page/components/article/article-auth';
+import {fontSize} from "@mui/system";
+import styled from "@emotion/styled";
 
-export function MainTopicList({topics}: {topics: Array<contentdto_TopicResp>}) {
-  const {getTopicCate} = useTopicData();
-  return (
-    <Grid container rowSpacing={24}>
-      <div>
-        {topics.slice(1, 5).map((topic: contentdto_TopicResp) => {
-          return (
-            <Grid item xs={12} key={topic.id}>
-              <Stack>
-                <CommonImage src={topic?.thumbnail} alt="list image" />
-                <ArticleCategory topic={topic} />
-                <ArticleTitle title={topic.title} />
-                <ArticleAuth topic={topic} isDarkMode={false} />
-              </Stack>
-            </Grid>
-          );
-        })}
-      </div>
-    </Grid>
-  );
+export function MainTopicList({topics}: { topics: Array<contentdto_TopicResp> }) {
+    const {getTopicCate} = useTopicData();
+    return (
+        <Grid container rowSpacing={3} columnSpacing={{md: 3}}>
+            {topics.slice(1, 5).map((topic: contentdto_TopicResp) => {
+                return (
+                    <Grid item xs={12} md={6} key={topic.id}>
+                        <Stack direction={{xs: 'row', md: 'column'}} spacing={{xs: 1, md: 2}}>
+                            <CommonImage src={topic?.thumbnail} alt="list image"/>
+                            <Stack spacing={1}>
+                                <ArticleCategory topic={topic}/>
+                                <ArticleTitle title={topic.title}/>
+                                <ArticleAuth topic={topic} isDarkMode={false}/>
+                            </Stack>
+                        </Stack>
+                    </Grid>
+                );
+            })}
+        </Grid>
+    );
 }

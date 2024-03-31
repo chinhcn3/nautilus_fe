@@ -16,7 +16,7 @@ export function TopicAuthor({
   return (
     <Wrapper className="news-card-info d-flex align-items-center">
       <AuthorWrapper>
-        <img src={user.avatar || ''} alt="avatar news" className="img-circle" />
+        <img src={user.avatar || topic.thumbnail} alt="avatar news" className="img-circle" />
         <span>{user.nick_name}</span>
       </AuthorWrapper>
       <div className="news-card-comment d-flex align-items-center">
@@ -37,5 +37,6 @@ const Wrapper = styled.div`
 `;
 
 const AuthorWrapper = styled.div`
-  display: flex;
+    display: flex;
+    align-items: center;
 `;

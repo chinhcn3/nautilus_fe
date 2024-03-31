@@ -17,6 +17,11 @@ export function Menu() {
 
 const HeaderMenu = styled.div`
   display: flex;
+  
+  @media screen and (max-width: 821px) {
+    display: none;
+  }
+  
 `;
 
 const MenuItem = styled(Link)`

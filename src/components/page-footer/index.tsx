@@ -7,11 +7,12 @@ import FaceFooter from '@/components/assets/ic-face-footer.svg';
 import XFooter from '@/components/assets/ic-x-footer.svg';
 import LinkedinFooter from '@/components/assets/ic-linkedin-footer.svg';
 import InstagramFooter from '@/components/assets/ic-instagram-footer.svg';
+import {Container} from "@mui/material";
 
 export function PageFooter() {
   return (
     <Footer>
-      <div className={'container'}>
+      <Container maxWidth="xl">
         <Grid container>
           <Grid item xs={12} sm={5}>
             <FooterLeft>
@@ -71,13 +72,13 @@ export function PageFooter() {
             </FooterRight>
           </Grid>
         </Grid>
-      </div>
+      </Container>
     </Footer>
   );
 }
 
 const Footer = styled.footer`
-  background-color: ${themeColor('black')};
+  background-color: ${themeColor('primary')};
   color: ${themeColor('white')};
   padding: 40px 0;
   margin-top: 50px;

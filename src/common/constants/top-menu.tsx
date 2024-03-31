@@ -1,10 +1,6 @@
 export const TOP_MENU = [
-  {title: 'Gaming', path: '/category/gaming'},
-  {title: 'Gear', path: '/category/gear'},
-  {title: 'Entertainment', path: '/category/entertainment'},
-  {title: 'Tomorrow', path: '/category/tomorrow'},
-  {title: 'Deals', path: '/category/deals'},
-  {title: 'News', path: '/category/news'},
-  {title: 'Video', path: '/category/video'},
-  {title: 'Postcasts', path: '/category/postcasts'}
+  {title: 'Trang chủ', path: '/category/gaming'},
+  {title: 'Review công nghệ', path: '/category/gear'},
+  {title: 'Chủ đề phổ biến', path: '/category/entertainment'},
+  {title: 'Đi tìm may mắn', path: '/category/tomorrow'}
 ];

@@ -8,10 +8,10 @@ import {ArticleAuth} from '@/containers/home-page/components/article/article-aut
 
 export function BigMainTopic({topic}: {topic: contentdto_TopicResp}) {
   return (
-    <Stack spacing={2}>
+    <Stack spacing={{xs: 1, sm: 2}}>
       <CommonImage src={topic?.thumbnail} alt="news image" />
       <ArticleCategory topic={topic} />
-      <ArticleTitle title={topic.title} />
+      <ArticleTitle classItem="bigTitle" style={{'fontSize': 32}}  title={topic.title} />
       <ArticleDescription description={topic.long_title} />
       <ArticleAuth topic={topic} isDarkMode={false} />
     </Stack>

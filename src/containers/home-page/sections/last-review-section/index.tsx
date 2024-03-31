@@ -4,15 +4,15 @@ import {useTopicData} from '@/containers/home-page/hooks/use-topic-data';
 import {TopicAuthor} from '@/components/topic-author';
 import PrevIcon from './../../assets/ic-pre-small.svg';
 import NextIcon from './../../assets/ic-next-small.svg';
+import {Container} from "@mui/material";
 
 export function LastReviewSection() {
   const {home} = useHomePageContext();
   const {getTopicCate} = useTopicData();
   const lastReviewTopics = home.last_review_topics || [];
-
   return (
     <div className="review-latest">
-      <div className="container">
+      <Container maxWidth="xl">
         <SectionHeading title="Review mới nhất" />
         <div className="carousel-wrap">
           <button className="btn-prev">
@@ -47,7 +47,7 @@ export function LastReviewSection() {
             <NextIcon />
           </button>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

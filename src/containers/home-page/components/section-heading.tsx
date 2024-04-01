@@ -1,9 +1,10 @@
 import ViewMoreIcon from './../assets/ic-viewmore.svg';
 import styled from "@emotion/styled";
+import {themeColor} from "@/common/configs/theme";
 
 export function SectionHeading({title, classItem}: {title?: string; classItem?: string}) {
   return (
-    <Heading className={"d-flex justify-content-between heading " + classItem}>
+    <Heading className={"heading " + classItem}>
       <h2>{title}</h2>
       <hr />
       <a href="#" className="view-more d-flex align-items-center">
@@ -13,7 +14,22 @@ export function SectionHeading({title, classItem}: {title?: string; classItem?: 
     </Heading>
   );
 }
+
 const Heading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    
+    hr {
+        width: 100%;
+        height: 4px;
+        background-color: ${themeColor('primary')};
+        border: 0;
+    }
+    
     h2 {
         font-family: "Anton", sans-serif;
         text-transform: uppercase;
@@ -26,7 +42,9 @@ const Heading = styled.div`
     }
 
     .view-more {
-        color: #4b40d4;
+        display: flex;
+        align-items: center;
+        color: ${themeColor('primary')};
         background-color: white;
         position: relative;
         z-index: 2;
@@ -34,7 +52,7 @@ const Heading = styled.div`
         flex-shrink: 0;
         
          span {
-             color: #4b40d4;
+             color: ${themeColor('primary')};
              margin-right: 8px;
              font-weight: 500;
          }
@@ -42,7 +60,13 @@ const Heading = styled.div`
     
     &.grey {
         h2, .view-more {
-            background-color: #F5F5F5;
+            background-color: ${themeColor('white')}
+        }
+    }
+    
+    &.primary_500 {
+        h2, .view-more {
+            background-color: ${themeColor('primary_500')};
         }
     }
     

@@ -5,22 +5,32 @@ import {TopTopicList} from '@/containers/home-page/sections/top-topics-section/c
 import {SectionContainer} from "@/containers/home-page/components/section-container";
 import Grid from "@mui/material/Grid";
 import {Container} from "@mui/material";
+import styled from "@emotion/styled";
+import {themeColor} from "@/common/configs/theme";
 
 export function TopTopicsSection() {
     const {home} = useHomePageContext();
     const topTopics = home.top_topics || [];
 
     return (
-        <div className="outstanding">
+        <Outstanding className="outstanding">
             <Container maxWidth="xl">
-                <Grid container>
+                <SectionHeading classItem="primary_500" title="Tin nổi bật"/>
+                <Grid container rowSpacing={3}>
                     <Grid item xs={12}>
-                        <SectionHeading title="Tin nổi bật"/>
                         <BigTopTopic topic={topTopics?.[0]}/>
+                    </Grid>
+                    <Grid item xs={12}>
                         <TopTopicList topics={topTopics}/>
                     </Grid>
                 </Grid>
             </Container>
-        </div>
+        </Outstanding>
     );
 }
+
+const Outstanding = styled.div`
+    background-color: ${themeColor('primary_500')};
+    padding: 40px 0 40px;
+    margin: 16px 0 0;
+`

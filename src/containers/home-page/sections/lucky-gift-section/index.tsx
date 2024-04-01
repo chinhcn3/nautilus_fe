@@ -21,14 +21,14 @@ export function LuckyGiftSection() {
                             {luckyGiftTopics?.slice(1, 6)?.map((topic) => {
                                 return (
                                     <div key={topic.id} className="lucky-item">
-                                        <div className="d-flex">
+                                        <LuckyItem>
                                             <a href="#" className="d-block img-thumb">
                                                 <img src={topic?.thumbnail} alt="lucky img" className="img-fluid"/>
                                             </a>
                                             <a href="#" className="d-block text">
                                                 {topic?.title}
                                             </a>
-                                        </div>
+                                        </LuckyItem>
                                     </div>
                                 );
                             })}
@@ -39,6 +39,10 @@ export function LuckyGiftSection() {
         </Lucky>
     );
 }
+
+const LuckyItem = styled.div`
+    display: flex;
+`
 
 const Lucky = styled.div`
 
@@ -53,6 +57,21 @@ const Lucky = styled.div`
 
     .lucky-big-thumbnail {
         position: relative;
+        
+        .img-fluid {
+            max-width: 100%;
+            display: block;
+        }
+        
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-image: linear-gradient(rgba(75, 64, 212, 0), #4B40D4);
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .lucky-content {
@@ -60,7 +79,9 @@ const Lucky = styled.div`
         color: #fff;
         padding: 32px;
         border-radius: 0 0 8px 8px;
-
+        justify-content: space-between;
+        display: flex;
+        
         span {
             color: white;
             font-weight: 500;
@@ -111,6 +132,42 @@ const Lucky = styled.div`
         font-weight: 600;
         line-height: 150%;
         margin-left: 16px;
+        
+        @media screen and (max-width: 821px) {
+            color: #4b40d4;
+        }
+    }
+    
+    .lucky-right {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        overflow: hidden;
+        height: 100%;
+        
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .lucky-item {
+            margin-top: 24px;
+            
+            .img-thumb {
+                overflow: hidden;
+                border-radius: 4px;
+                flex: 1 0 177px;
+                
+                img {
+                    max-width: 100%;
+                    display: block;
+                }
+
+                @media screen and (max-width: 821px) {
+                    display: none;
+                }
+            }
+        }
     }
     
     @media screen and (max-width: 821px) {
@@ -118,7 +175,9 @@ const Lucky = styled.div`
 
         .lucky-content {
             padding: 16px;
-
+            flex-direction: column;
+            align-items: center;
+            
             span {
                 font-size: 14px;
             }

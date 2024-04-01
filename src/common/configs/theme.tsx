@@ -9,6 +9,7 @@ const getTs = <BaseType, Path extends string | string[]>(
 
 const colors = {
   primary: '#4B40D4',
+  primary_500: '#c9c5f2',
   primary_400: alpha('#FFCF33', 0.4),
   secondary: '#5B65AA',
   link: '#6196FF',
@@ -21,6 +22,8 @@ const colors = {
   divider: '#808692',
   border: '#DEDEDE',
   text_200: '#E7E8EB',
+  grey1: '#dedede',
+  back1: '#111',
 
   warning: '#CD6200',
   warning_bg: '#FEF2E5',

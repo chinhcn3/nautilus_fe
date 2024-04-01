@@ -28,9 +28,9 @@ export function HomeContainer(_props: {home: contentdto_GetHomeContentResp}) {
         <LastReviewSection />
         <TopVideoSection />
         <VideoRemainSection />
-        <SaleSection />
+        {/*<SaleSection />*/}
       </PageContent>
-      <HomeStyle />
+      {/*<HomeStyle />*/}
     </HomePageProvider>
   );
 }

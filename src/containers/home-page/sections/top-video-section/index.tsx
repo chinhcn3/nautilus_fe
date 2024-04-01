@@ -4,20 +4,27 @@ import {BigVideoTopic} from '@/containers/home-page/sections/top-video-section/b
 import {TopVideoTopicList} from '@/containers/home-page/sections/top-video-section/top-video-topic-list';
 import {Container} from "@mui/material";
 import Grid from "@mui/material/Grid";
+import styled from "@emotion/styled";
 
 export function TopVideoSection() {
     const {home} = useHomePageContext();
     const topVideos = home.top_video_topics || [];
 
     return (
-        <div className="home-videos">
+        <HomeVideos>
             <Container maxWidth="xl">
-                <SectionHeading title="VIDEO NỔI BẬT"/>
+                <SectionHeading classItem="grey" title="VIDEO NỔI BẬT"/>
                 <Grid container>
                     <BigVideoTopic topic={topVideos?.[0]}/>
                     <TopVideoTopicList topics={topVideos}/>
                 </Grid>
             </Container>
-        </div>
+        </HomeVideos>
     );
 }
+
+const HomeVideos = styled.div`
+    padding: 40px 0 0;
+    background: #F5F5F5;
+    margin-top: 0;
+`;

@@ -2,23 +2,22 @@ import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
 import {CSSProperties} from 'react';
 
-export function ArticleDescription({
-  description,
-  style
-}: {
-  description?: string;
-  style?: CSSProperties;
-}) {
-  return <Description style={style}>{description}</Description>;
+export function ArticleDescription({description, style, classItem}: { description?: string; style?: CSSProperties; classItem?: string}) {
+
+    return <Description className={classItem} style={style}>{description}</Description>;
 }
 
-const Description = styled.span<{$size?: boolean}>`
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 150%;
-  color: ${themeColor('black')};
-  
-  @media screen and (max-width: 821px) {
+const Description = styled.span`
+    font-weight: normal;
     font-size: 16px;
-  }
+    line-height: 150%;
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 821px) {
+        font-size: 16px;
+        
+        &.d-none {
+            display: none;
+        }
+    }
 `;

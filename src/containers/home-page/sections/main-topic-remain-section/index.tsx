@@ -5,10 +5,11 @@ import {
 import {PopularTopic} from '@/containers/home-page/sections/main-topic-remain-section/components/popular-topic';
 import {Container} from "@mui/material";
 import Grid from '@mui/material/Grid';
+import styled from "@emotion/styled";
 
 export function MainTopicRemainSection() {
     return (
-        <div className="popular">
+        <Popular className="popular">
             <Container maxWidth="xl">
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={9}>
@@ -24,6 +25,20 @@ export function MainTopicRemainSection() {
                     </Grid>
                 </Grid>
             </Container>
-        </div>
+        </Popular>
     );
 }
+const Popular = styled.div`
+    padding: 40px 0 0;
+    background: #F5F5F5;
+    margin-top: 0;
+    
+    .ad-banner * {
+        width: 100%;
+        margin-bottom: 32px;
+        
+        @media screen and (max-width: 821px) {
+            display: none;
+        }
+    }
+`

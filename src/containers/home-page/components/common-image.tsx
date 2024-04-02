@@ -28,6 +28,9 @@ const LinkImage = styled.a`
     line-height: 0;
     
     &.border-left {
+        max-width: 100%;
+        flex: 1 0 100%;
+        
         img {
             border-radius: 8px 0 0 8px;
             @media screen and (max-width: 821px) {
@@ -40,6 +43,7 @@ const LinkImage = styled.a`
     &.list-img-xl {
         flex: 1 0 40%;
         padding-bottom: 22.6%;
+        max-width: 40%;
         
         img {
             border-radius: 4px;
@@ -48,6 +52,7 @@ const LinkImage = styled.a`
         @media screen and (max-width: 821px) {
             flex: 1 0 32%;
             padding-bottom: 0;
+            max-width: 32%;
         }
     }
     
@@ -56,7 +61,8 @@ const LinkImage = styled.a`
         flex: 1 0 100%;
         width: 100%;
         padding-bottom: 75%;
-      
+        max-width: 100%;
+        
         @media screen and (max-width: 821px) {
             padding-bottom: 60%;
             border-radius: 4px;
@@ -70,7 +76,11 @@ const LinkImage = styled.a`
     }
 
     @media screen and (max-width: 821px) {
-        flex: 1 0 32%;
         padding-bottom: 0;
+        
+        &.xs-horizontal {
+            flex: 1 0 32%;
+            max-width: 32%;
+        }
     }
 `;

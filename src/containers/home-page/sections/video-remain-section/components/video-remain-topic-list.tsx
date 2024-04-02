@@ -21,7 +21,7 @@ export function VideoRemainTopicList() {
         <Grid item xs={9} className="review-outstanding-left">
             <div className="review-outstanding-content">
                 <Grid container rowSpacing={4}>
-                    {topVideos?.slice(6, topVideos?.length)?.map((topic) => {
+                    {topVideos?.slice(6, 11)?.map((topic) => {
                         return (
                             <Grid item xs={12} key={topic.id}>
                                 <Stack direction='row' spacing={2}>

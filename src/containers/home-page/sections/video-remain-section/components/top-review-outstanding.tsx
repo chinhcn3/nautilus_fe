@@ -20,7 +20,7 @@ export function TopReviewOutstanding() {
                 <div className="popular-topic review-list">
                     <h4>Review nổi bật</h4>
                     <Grid container rowSpacing={3}>
-                        {topReviewTopics?.map((topic) => {
+                        {topReviewTopics?.slice(0, 3)?.map((topic) => {
                             return (
                                 <Grid className="border-bottom-1" item>
                                     <Stack direction='column' spacing={2}>

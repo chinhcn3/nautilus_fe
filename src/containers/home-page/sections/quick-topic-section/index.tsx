@@ -281,7 +281,8 @@ const Funs = styled.div`
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-
+                justify-content: center;
+                
                 span {
                     display: block;
                     color: #4b40d4;

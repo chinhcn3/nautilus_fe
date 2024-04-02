@@ -20,7 +20,7 @@ export function LastReviewSection() {
     const lastReviewTopics = home.last_review_topics || [];
     return (
         <ReviewLatest className="review-latest">
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{pl: {xs: 1, md: 2}, pr: {xs: 0, md: 2}}}>
                 <SectionHeading classItem="grey" title="Review mới nhất"/>
                 <Swiper
                     spaceBetween={24}
@@ -28,6 +28,7 @@ export function LastReviewSection() {
                     breakpoints={{
                         0: {
                             slidesPerView: 1.5,
+                            spaceBetween: 16
                         },
                         831: {
                             slidesPerView: 3
@@ -39,9 +40,11 @@ export function LastReviewSection() {
                             <SwiperSlide>
                                 <Stack direction='column' spacing={2}>
                                     <CommonImage src={topic?.thumbnail} alt="list image"/>
-                                    <Stack spacing={1}>
-                                        <ArticleCategory topic={topic}/>
-                                        <ArticleTitle title={topic.title}/>
+                                    <Stack spacing={{xs: 1, md:4}}>
+                                        <Stack spacing={1}>
+                                            <ArticleCategory topic={topic}/>
+                                            <ArticleTitle title={topic.title}/>
+                                        </Stack>
                                         <ArticleAuth topic={topic} isDarkMode={false}/>
                                     </Stack>
                                 </Stack>

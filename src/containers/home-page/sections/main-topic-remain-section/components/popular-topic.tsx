@@ -55,13 +55,16 @@ const PopularRight = styled.div`
                 margin-bottom: 24px;
             }
         }
-       
         
         h4 {
             font-size: 32px;
             font-family: "Anton", sans-serif;
             text-transform: uppercase;
             margin-bottom: 24px;
+
+            @media screen and (max-width: 821px){
+                font-size: 24px;
+            }
         }
 
         .hastag {
@@ -96,6 +99,7 @@ const PopularRight = styled.div`
         } 
 
         @media screen and (max-width: 821px){
+            padding: 16px;
             
             ul {
                 display: flex;

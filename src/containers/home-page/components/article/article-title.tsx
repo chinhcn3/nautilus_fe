@@ -13,7 +13,6 @@ const Title = styled.span<{ $color?: string }>`
     font-family: 'Roboto', sans-serif;
     line-height: 150%;
     color: ${props =>props.$color};
-    margin: 8px 0;
     display: block;
     
     @media screen and (max-width: 821px) {

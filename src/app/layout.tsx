@@ -6,6 +6,8 @@ import {Providers} from '@/app/providers';
 import {PageContainer} from '@/containers/page-container';
 import {Suspense} from 'react';
 import {SupportModal} from '@/containers/support-modal';
+import {themeColor} from "@/common/configs/theme";
+import styled from "@emotion/styled";
 
 export const metadata: Metadata = {
   title: 'Tech Loop',
@@ -46,7 +48,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body style={{backgroundColor: '#f5f5f5'}}>
         <Suspense>
           <Providers>
             <PageContainer>{children}</PageContainer>

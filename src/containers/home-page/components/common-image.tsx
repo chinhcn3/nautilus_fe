@@ -1,49 +1,76 @@
 import styled from '@emotion/styled';
 
-export function CommonImage({src, alt, classItem}: {src?: string; alt?: string; classItem?:string}) {
-  return <LinkImage className={classItem} href="#"><ImageWrapper src={src} alt={alt} /></LinkImage>;
+export function CommonImage({src, alt, classItem}: { src?: string; alt?: string; classItem?: string }) {
+    return <LinkImage className={classItem} href="#"><ImageWrapper src={src} alt={alt}/></LinkImage>;
 }
 
 const ImageWrapper = styled.img`
-  display: block;
-  width: 100%;
-  
-  @media screen and (max-width: 821px) {
-    border-radius: 4px;
+    width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    
+    @media screen and (max-width: 821px) {
+        height: auto;
+        position: relative;
+    }
 `;
 
 const LinkImage = styled.a`
-  border-radius: 4px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  
-  &.list-img-xl {
-    flex: 1 0 40%;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56%;
+    overflow: hidden;
+    display: block;
+    line-height: 0;
     
-    img {
-      border-radius: 4px;
+    &.border-left {
+        img {
+            border-radius: 8px 0 0 8px;
+            @media screen and (max-width: 821px) {
+                border-radius: 6px 6px 0 0;
+            }
+        }
+        
     }
-  }
-
-  &.bigMainTopic {
-    border-radius: 8px;
-    flex: 1 0 100%;
     
-    img {
-      min-height: 500px;
-      border-radius: 4px;
+    &.list-img-xl {
+        flex: 1 0 40%;
+        padding-bottom: 22.6%;
+        
+        img {
+            border-radius: 4px;
+        }
 
-      @media screen and (max-width: 821px) {
-        min-height: unset;
-      }
+        @media screen and (max-width: 821px) {
+            flex: 1 0 32%;
+            padding-bottom: 0;
+        }
     }
-  }
-  
-  @media screen and (max-width: 821px) {
-    border-radius: 4px;
-    flex: 1 0 120px;
-  }
+    
+    &.bigMainTopic {
+        border-radius: 8px;
+        flex: 1 0 100%;
+        width: 100%;
+        padding-bottom: 75%;
+      
+        @media screen and (max-width: 821px) {
+            padding-bottom: 60%;
+            border-radius: 4px;
+            
+            img {
+                position: absolute;
+                height: 100%;
+            }
+        }
+        
+    }
+
+    @media screen and (max-width: 821px) {
+        flex: 1 0 32%;
+        padding-bottom: 0;
+    }
 `;

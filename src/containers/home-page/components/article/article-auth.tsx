@@ -20,7 +20,7 @@ export function ArticleAuth({
     return (
         <Wrapper>
             <AuthorWrapper>
-                <img src={user.avatar || topic?.thumbnail} alt="avatar news" className="img-circle"/>
+                <img src={user.avatar || "https://photo2.tinhte.vn/data/attachment-files/2023/11/8175013_yamaha-mt-09-sp-2024-29-cover.jpg"} alt="avatar news" className="img-circle"/>
                 <span>{user.nick_name}</span>
             </AuthorWrapper>
             <NewsCardComment className="news-card-comment">

@@ -10,7 +10,7 @@ import styled from "@emotion/styled";
 export function MainTopicRemainSection() {
     return (
         <Popular className="popular">
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={9}>
                         <div className="popular-left">
@@ -35,7 +35,6 @@ const Popular = styled.div`
     
     .ad-banner * {
         width: 100%;
-        margin-bottom: 32px;
         
         @media screen and (max-width: 821px) {
             display: none;

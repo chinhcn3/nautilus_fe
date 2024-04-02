@@ -18,9 +18,9 @@ export function MainTopicList({topics}: { topics: Array<contentdto_TopicResp> })
             {topics.slice(1, 5).map((topic: contentdto_TopicResp) => {
                 return (
                     <Grid item xs={12} md={6} key={topic.id}>
-                        <Stack spacing={{xs: 1}} direction={{xs: 'row', md: 'column'}}>
+                        <Stack spacing={{xs: 1, md: 2}} direction={{xs: 'row', md: 'column'}}>
                             <CommonImage src="https://photo2.tinhte.vn/data/attachment-files/2023/11/8174383_cover-intel-itanium-ia-64-linux-kernel-tinhte.jpg" alt="list image"/>
-                            <Stack>
+                            <Stack spacing={1}>
                                 <ArticleCategory topic={topic}/>
                                 <ArticleTitle title={topic.title}/>
                                 <ArticleAuth topic={topic} isDarkMode={false}/>

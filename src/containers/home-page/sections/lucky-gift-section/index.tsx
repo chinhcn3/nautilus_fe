@@ -4,6 +4,7 @@ import {useHomePageContext} from '@/containers/home-page/home-provider';
 import Grid from '@mui/material/Grid';
 import {Container} from "@mui/material";
 import styled from "@emotion/styled";
+import {themeColor} from "@/common/configs/theme";
 
 export function LuckyGiftSection() {
     const {home} = useHomePageContext();
@@ -11,7 +12,7 @@ export function LuckyGiftSection() {
 
     return (
         <Lucky className="lucky">
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <SectionHeading classItem="grey" title="Đi tìm may mắn"/>
                 <Grid container spacing={3}>
                     <BigLuckyGift topic={luckyGiftTopics?.[0]}/>
@@ -45,10 +46,13 @@ const LuckyItem = styled.div`
 `
 
 const Lucky = styled.div`
-
     padding: 40px 0 0;
-    background: #F5F5F5;
+    background-color: ${themeColor('white')};
     margin-top: 0;
+    
+    @media screen and (max-width: 821px) {
+        padding: 16px 0;
+    }
 
     .lucky-left {
         border-radius: 8px;
@@ -94,6 +98,8 @@ const Lucky = styled.div`
             font-weight: bold;
             gap: 8px;
             font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
         }
 
         p {

@@ -58,6 +58,10 @@ const ReviewOutstandingRight = styled.div`
             font-family: "Anton", sans-serif;
             text-transform: uppercase;
             margin-bottom: 24px;
+            
+            @media screen and (max-width: 821px) {
+                font-size: 24px;
+            }
         }
         
         .news-card {

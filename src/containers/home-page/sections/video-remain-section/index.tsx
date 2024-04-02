@@ -7,11 +7,12 @@ import {
 import {Container} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import styled from "@emotion/styled";
+import {themeColor} from "@/common/configs/theme";
 
 export function VideoRemainSection() {
     return (
         <ReviewOutstanding className="review-outstanding">
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <Grid direction={{xs: "column-reverse", md: "row"}} container spacing={3}>
                     <VideoRemainTopicList/>
                     <TopReviewOutstanding/>
@@ -22,5 +23,6 @@ export function VideoRemainSection() {
 }
 
 const ReviewOutstanding = styled.div`
-    margin-top: 40px;
+    background-color: ${themeColor('white')};
+    padding: 40px 0 40px;
 `

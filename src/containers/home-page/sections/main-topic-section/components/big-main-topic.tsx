@@ -6,14 +6,16 @@ import {ArticleTitle} from '@/containers/home-page/components/article/article-ti
 import {ArticleDescription} from '@/containers/home-page/components/article/article-description';
 import {ArticleAuth} from '@/containers/home-page/components/article/article-auth';
 
-export function BigMainTopic({topic}: {topic: contentdto_TopicResp}) {
-  return (
-    <Stack>
-      <CommonImage classItem="bigMainTopic" src={topic?.thumbnail} alt="news image" />
-      <ArticleCategory color='' topic={topic} />
-      <ArticleTitle classItem="bigTitle" style={{'fontSize': 32}} title={topic.title} />
-      <ArticleDescription description={topic.long_title} />
-      <ArticleAuth topic={topic} isDarkMode={false} />
-    </Stack>
-  );
+export function BigMainTopic({topic}: { topic: contentdto_TopicResp }) {
+    return (
+        <Stack spacing={{xs: 1, md: 2}}>
+            <CommonImage classItem="bigMainTopic" src={topic?.thumbnail} alt="news image"/>
+            <Stack spacing={1}>
+                <ArticleCategory color='' topic={topic}/>
+                <ArticleTitle classItem="bigTitle" style={{'fontSize': 32}} title={topic.title}/>
+                <ArticleDescription description={topic.long_title}/>
+            </Stack>
+            <ArticleAuth topic={topic} isDarkMode={false}/>
+        </Stack>
+    );
 }

@@ -10,8 +10,8 @@ export function TopVideoTopicList({topics}: { topics: Array<contentdto_TopicResp
                 {topics?.slice(1, 5).map((topic) => {
                     return (
                         <div key={topic.id} className="lucky-item">
-                            <HomeVideoListIem className="d-flex flex-wrap">
-                                <a href="#" className="d-block img-thumb">
+                            <HomeVideoListIem>
+                                <a href="#" className="img-thumb">
                                     <img
                                         src={topic?.thumbnail || DEFAULT_IMAGE}
                                         alt="lucky img"
@@ -47,12 +47,16 @@ const HomeVideosRight = styled.div`
 
         .img-thumb {
             overflow: hidden;
-            flex: 1 0 177px;
+            flex: 1 0 40%;
+            
+            @media screen and (max-width: 821px) {
+                flex: 1 0 32%;
+            }
             
             img {
                 width: 100%;
-                height: 100px;
-                object-fit: cover;
+                //height: 100px;
+                //object-fit: cover;
                 border-radius: 4px;
             }
         }
@@ -63,18 +67,23 @@ const HomeVideosRight = styled.div`
             font-weight: 600;
             line-height: 150%;
             margin-left: 16px;
+            
+            @media screen and (max-width: 821px) {
+                font-size: 16px;
+            }
         }
         
     }
-    
-    @media screen and (max-width: 576px) {
+
+    @media screen and (max-width: 821px) {
         margin-left: 0;
         overflow: hidden;
         max-height: initial;
+        border-radius: 0 0 4px 4px;
         
     }
 `;
 
-const HomeVideoListIem = styled.a`
+const HomeVideoListIem = styled.div`
     display: flex;
 `

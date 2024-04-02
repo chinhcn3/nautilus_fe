@@ -12,7 +12,7 @@ export function TopVideoSection() {
 
     return (
         <HomeVideos>
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <SectionHeading classItem="grey" title="VIDEO NỔI BẬT"/>
                 <Grid container>
                     <BigVideoTopic topic={topVideos?.[0]}/>

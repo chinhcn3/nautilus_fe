@@ -72,7 +72,7 @@ const Heading = styled.div`
     
     @media screen and (max-width: 821px) {
         h2 {
-            font-size: 28px;
+            font-size: 24px;
         }
         
         .view-more {

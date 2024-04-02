@@ -14,7 +14,7 @@ export function TopTopicsSection() {
 
     return (
         <Outstanding className="outstanding">
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <SectionHeading classItem="primary_500" title="Tin nổi bật"/>
                 <Grid container rowSpacing={3}>
                     <Grid item xs={12}>
@@ -31,6 +31,10 @@ export function TopTopicsSection() {
 
 const Outstanding = styled.div`
     background-color: ${themeColor('primary_500')};
-    padding: 40px 0 40px;
+    padding: 40px 40px;
     margin: 16px 0 0;
+    
+    @media screen and (max-width: 821px) {
+        padding: 16px 0;
+    }
 `

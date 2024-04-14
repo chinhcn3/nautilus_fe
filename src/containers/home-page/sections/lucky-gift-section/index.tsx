@@ -12,7 +12,7 @@ export function LuckyGiftSection() {
 
     return (
         <Lucky className="lucky">
-            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
+            <Container maxWidth="xl" sx={{px: 2}}>
                 <SectionHeading classItem="grey" title="Đi tìm may mắn"/>
                 <Grid container spacing={3}>
                     <BigLuckyGift topic={luckyGiftTopics?.[0]}/>

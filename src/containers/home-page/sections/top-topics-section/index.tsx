@@ -14,7 +14,7 @@ export function TopTopicsSection() {
 
     return (
         <Outstanding className="outstanding">
-            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
+            <Container maxWidth="xl" sx={{px: 2}}>
                 <SectionHeading classItem="primary_500" title="Tin nổi bật"/>
                 <Grid container rowSpacing={3}>
                     <Grid item xs={12}>

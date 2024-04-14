@@ -48,7 +48,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           rel="stylesheet"
         />
       </head>
-      <body style={{backgroundColor: '#f5f5f5'}}>
+      <body style={{backgroundColor: '#f5f5f5',position: "relative"}}>
         <Suspense>
           <Providers>
             <PageContainer>{children}</PageContainer>

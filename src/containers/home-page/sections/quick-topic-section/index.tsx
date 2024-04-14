@@ -18,8 +18,10 @@ export function QuickTopicSection() {
 
     return (
         <Funs className="funs">
-            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
+            <Container maxWidth="xl" sx={{px: 2}}>
                 <SectionHeading classItem="grey" title="Góp vui"/>
+            </Container>
+            <Container maxWidth="xl" sx={{pl: 2, pr: {xs: 0, md: 2}}}>
                 <Grid container spacing={{md:3, xs: 1}}>
                     <Grid item md={1.5} xs={3.62}>
                         <a href="#" className="carousel-item first">

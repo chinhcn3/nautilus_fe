@@ -20,8 +20,10 @@ export function LastReviewSection() {
     const lastReviewTopics = home.last_review_topics || [];
     return (
         <ReviewLatest className="review-latest">
-            <Container maxWidth="xl" sx={{pl: {xs: 1, md: 2}, pr: {xs: 0, md: 2}}}>
+            <Container maxWidth="xl" sx={{px: 2}}>
                 <SectionHeading classItem="grey" title="Review mới nhất"/>
+            </Container>
+            <Container maxWidth="xl" sx={{pl: 2, pr: {xs: 0, md: 2}}}>
                 <Swiper
                     spaceBetween={24}
                     slidesPerView={3}

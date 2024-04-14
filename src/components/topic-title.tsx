@@ -21,7 +21,8 @@ export function TopicTitle(props: TopicTitleProps) {
       $top={props.top}
       $bottom={props.bottom}
       onClick={() => openTopic(props.topic)}>
-      {props.topic?.title}
+      {/*{props.topic?.title}*/}
+      Những chợ ứng dụng iOS bên thứ 3 sẽ không hoạt động khi người dùng ra khỏi châu Âu
     </ArticleTitleContainer>
   );
 }
@@ -35,11 +36,11 @@ const ArticleTitleContainer = styled.div<{
 }>`
   font-size: ${(props) => props.$fontSize}px;
   line-height: ${(props) => props.$lineHeight}px;
-  color: ${(props) => (props.$isDark ? '#0D1828' : '#FFFFFF')};
-  font-family: Roboto Condensed, sans-serif;
+  color: ${(props) => (props.$isDark ? '#111' : '#FFFFFF')};
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 700;
-  padding-top: ${(props) => props.$top}px;
-  padding-bottom: ${(props) => props.$bottom}px;
+  padding-top: ${(props) => props.$top || 0}px;
+  padding-bottom: ${(props) => props.$bottom || 0}px;
   cursor: pointer;
 `;

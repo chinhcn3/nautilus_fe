@@ -6,7 +6,7 @@ import {Container} from "@mui/material";
 
 export function TopBanner() {
     return (
-        <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
+        <Container maxWidth="xl" sx={{px: {xs: 2, md: 2}}}>
             <Grid item xs={12} >
                 <BannerWrapper href="#">
                     <Banner/>

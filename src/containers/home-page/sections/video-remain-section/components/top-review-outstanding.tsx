@@ -19,10 +19,10 @@ export function TopReviewOutstanding() {
             <ReviewOutstandingRight className="review-outstanding-right">
                 <div className="popular-topic review-list">
                     <h4>Review nổi bật</h4>
-                    <Grid container rowSpacing={3}>
+                    <Stack spacing={3}>
                         {topReviewTopics?.slice(0, 3)?.map((topic) => {
                             return (
-                                <Grid className="border-bottom-1" item>
+                                <Stack className="border-bottom-1">
                                     <Stack direction='column' spacing={2}>
                                         <CommonImage src={topic?.thumbnail} alt="list image"/>
                                         <Stack spacing={1}>
@@ -31,10 +31,10 @@ export function TopReviewOutstanding() {
                                             <ArticleAuth topic={topic} isDarkMode={false}/>
                                         </Stack>
                                     </Stack>
-                                </Grid>
+                                </Stack>
                             );
                         })}
-                    </Grid>
+                    </Stack>
                     <div className="viewmore d-flex justify-content-center">
                         <a href="#" className="d-flex align-items-center">
                             Xem thêm <ViewMore/>

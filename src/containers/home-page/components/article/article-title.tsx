@@ -4,7 +4,9 @@ import {CSSProperties} from 'react';
 
 export function ArticleTitle({title, style, classItem, color}: { title?: string; style?: CSSProperties; classItem?: string; color?: string}) {
     const colorTitle:string = color || 'black';
-    return <a href="#"><Title className={classItem} $color={themeColor(colorTitle)} style={style}>{title}</Title></a>;
+    return (
+        <a href="#"><Title className={classItem} $color={themeColor(colorTitle)} style={style}>{title}</Title></a>
+    );
 }
 
 const Title = styled.span<{ $color?: string }>`

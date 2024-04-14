@@ -12,7 +12,7 @@ export function ArticleCategory({topic, color}: { topic: contentdto_TopicResp, c
     return (
         <Stack className="description-item--category" direction={'row'}>
             <Category $color={themeColor(colorCategory)}>{getTopicCate(topic)}</Category>
-            <PublishTime $color={themeColor(colorPublishTime)}>{topic.published_at}</PublishTime>
+            <PublishTime $color={themeColor(colorPublishTime)}>{topic?.published_at}</PublishTime>
         </Stack>
     );
 }

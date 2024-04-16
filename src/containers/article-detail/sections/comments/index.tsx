@@ -107,9 +107,10 @@ const SectionDetail = styled.div`
     font-family: 'Inter', sans-serif;
     padding-bottom: 40px;
     position: relative;
-    
-    .more-btn {
-        
+
+    @media screen and (max-width: 600px) {
+        margin-bottom: 32px;
+        padding-bottom: 32px;
     }
     
     .comment-form {
@@ -164,12 +165,17 @@ const SectionDetail = styled.div`
         //     border-color: transparent;
         // }
     }
-    
+
     h3 {
         font-weight: 600;
         font-size: 20px;
         line-height: 150%;
         margin-bottom: 24px;
+
+        @media screen and (max-width: 600px) {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
     }
 
     a.title {

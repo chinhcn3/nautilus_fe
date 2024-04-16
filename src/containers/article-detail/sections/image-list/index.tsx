@@ -2,13 +2,27 @@ import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import {useMediaQuery} from "@mui/material";
+import {createTheme} from "@mui/material/styles";
 
 
 export function Images() {
+    const theme = createTheme({
+        breakpoints: {
+            values: {
+                xs: 0,
+                sm: 600,
+                md: 960,
+                lg: 1280,
+                xl: 1920,
+            },
+        },
+    })
+    const matchDownMd = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <ImagesSection className="images">
             <div>Ảnh trong bài</div>
-            <ImageList cols={5} gap={16}>
+            <ImageList cols={matchDownMd ? 3 : 5 } gap={16}>
                 {Array(20).fill(1).map((el, i) =>
                     <ImageListItem key={el}>
                         <img

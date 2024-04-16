@@ -27,7 +27,7 @@ export function TopicTitle(props: TopicTitleProps) {
   );
 }
 
-const ArticleTitleContainer = styled.div<{
+const ArticleTitleContainer = styled.h1<{
   $fontSize: number;
   $lineHeight: number;
   $isDark?: boolean;
@@ -43,4 +43,9 @@ const ArticleTitleContainer = styled.div<{
   padding-top: ${(props) => props.$top || 0}px;
   padding-bottom: ${(props) => props.$bottom || 0}px;
   cursor: pointer;
+  
+  @media screen and (max-width: 600px) {
+    font-size: 20px;
+    line-height: 150%;
+  }
 `;

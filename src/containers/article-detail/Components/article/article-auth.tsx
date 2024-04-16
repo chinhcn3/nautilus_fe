@@ -7,6 +7,7 @@ import {themeColor} from '@/common/configs/theme';
 import Avatar from "@mui/material/Avatar";
 import Link from 'next/link';
 import {PlusIcon} from "@/containers/dashboard/layout-container/sidebar/icons";
+import {Stack} from "@mui/material";
 export function ArticleAuthDatail({topicData, isDarkMode}: { topicData: topicdto_GetTopicDataResp; isDarkMode?: boolean; }) {
     const getTopicUser = (topicData: topicdto_GetTopicDataResp): object => {
         return topicData?.users?.[topicData?.topic?.user_id || ''] || {};
@@ -23,8 +24,10 @@ export function ArticleAuthDatail({topicData, isDarkMode}: { topicData: topicdto
                         <AvatarImg src={user.avatar || "https://photo2.tinhte.vn/data/attachment-files/2023/11/8175013_yamaha-mt-09-sp-2024-29-cover.jpg"}/>
                     </Link>
                 </Avatar>
-                <Name href="">{user.nick_name}</Name>
-                <Follow><PlusIcon/>Theo dõi</Follow>
+                <Stack spacing={1} alignItems={{xs: 'flex-start', lg: 'center'}} direction={{xs:'column', lg: 'row'}}>
+                    <Name href="">{user.nick_name}</Name>
+                    <Follow><PlusIcon/>Theo dõi</Follow>
+                </Stack>
             </AuthorWrapper>
         </Wrapper>
     );
@@ -49,10 +52,6 @@ const Wrapper = styled.div`
         height: 40px;
         border-radius: 50%;
         
-        @media screen and (max-width: 821px) {
-            width: 24px;
-            height: 24px;
-        }
     }
     span {
         @media screen and (max-width: 821px) {
@@ -110,4 +109,5 @@ const Follow = styled.span`
     border-radius: 4px;
     height: 28px;
     line-height: 28px;
+    cursor: pointer;
 `

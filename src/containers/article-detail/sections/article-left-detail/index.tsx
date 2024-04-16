@@ -53,6 +53,9 @@ export function ArticleLeftDetail({topicData}: { topicData: topicdto_GetTopicDat
 const BoxContent = styled.div`
     padding: 0 60px;
     
+    @media screen and (max-width: 600px) {
+        padding: 0;
+    }
     .content-demo {
         padding: 32px 0;
         
@@ -63,6 +66,10 @@ const BoxContent = styled.div`
             line-height: 150%;
             margin-bottom: 16px;
             color: #111111;
+
+            @media screen and (max-width: 600px) {
+                font-size: 16px;
+            }
         }
     }
 `

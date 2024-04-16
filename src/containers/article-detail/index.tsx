@@ -17,10 +17,12 @@ import {themeColor} from "@/common/configs/theme";
 export async function ArticleDetail({topicData}: { topicData?: topicdto_GetTopicDataResp }) {
     return (
         <PageContent>
-            <Container sx={{py: 5}} maxWidth="xl">
-                <BannerTop></BannerTop>
+            <Container maxWidth="xl" sx={{px: {xs: 0, lg: 2}}}>
+                <BannerTop/>
+            </Container>
+            <Container maxWidth="xl">
                 <Grid container spacing={3}>
-                    <Grid item xs={12} sm={9}>
+                    <Grid item xs={12} md={9}>
                         <TitleBox spacing={3}>
                             <Stack spacing={1}>
                                 <ArticleCategory topicData={topicData}/>
@@ -39,10 +41,10 @@ export async function ArticleDetail({topicData}: { topicData?: topicdto_GetTopic
                             </Stack>
                         </TitleBox>
                     </Grid>
-                    <Grid item xs={12} sm={9}>
+                    <Grid item xs={12} md={9}>
                         <ArticleLeftDetail topicData={topicData || {}}/>
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid item xs={12} md={3} sx={{display:{xs: 'none', md: 'block'}}}>
                         <Banner>
                             <AdsBanner/>
                         </Banner>
@@ -76,7 +78,11 @@ const BannerTop = styled.div`
     background-color: #0D1828;
 `
 const TitleBox = styled(Stack)`
-    padding: 32px;
+    padding: 32px 48px 0;
+    
+    @media screen and (max-width: 600px) {
+        padding: 16px 0 0;
+    }
 `
 const Bookmask = styled(Stack)`
     gap: 8px;

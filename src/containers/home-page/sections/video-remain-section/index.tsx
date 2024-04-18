@@ -12,7 +12,7 @@ import {themeColor} from "@/common/configs/theme";
 export function VideoRemainSection() {
     return (
         <ReviewOutstanding className="review-outstanding">
-            <Container maxWidth="xl" sx={{px: 2}}>
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <Grid direction={{xs: "column-reverse", md: "row"}} container spacing={3}>
                     <VideoRemainTopicList/>
                     <TopReviewOutstanding/>

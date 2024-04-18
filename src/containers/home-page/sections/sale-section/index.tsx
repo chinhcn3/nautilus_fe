@@ -13,7 +13,7 @@ export function SaleSection() {
 
     return (
         <Sales>
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <SectionHeading classItem="grey" title="Giá tốt mỗi ngày"/>
                 <Swiper
                     spaceBetween={24}

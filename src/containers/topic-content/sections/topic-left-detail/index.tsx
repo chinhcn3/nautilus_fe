@@ -38,18 +38,25 @@ export function TopicLeftDetail({topicData}: { topicData: topicdto_GetTopicDataR
 }
 
 const BoxContent = styled.div`
+  padding: 0;
+
+  @media screen and (min-width: 900px) {
     padding: 0 60px;
-    
-    .content-demo {
-        padding: 32px 0;
-        
-        p {
-            font-size: 18px;
-            font-weight: 400;
-            font-family: 'Inter', sans-serif;
-            line-height: 150%;
-            margin-bottom: 16px;
-            color: #111111;
-        }
+  }
+  .content-demo {
+    padding: 32px 0;
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      line-height: 150%;
+      margin-bottom: 16px;
+      color: #111111;
+
+      @media screen and (max-width: 900px) {
+        font-size: 16px;
+      }
     }
+  }
 `

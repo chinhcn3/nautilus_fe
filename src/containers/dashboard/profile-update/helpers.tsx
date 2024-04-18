@@ -11,7 +11,11 @@ export const userdto_ProfileExtraReqSchema = Yup.object<userdto_ProfileExtraReq>
   notes: Yup.string(),
   phone: Yup.string(),
   gender: Yup.string(),
-  birthdate: Yup.string().optional()
+  birthdate: Yup.string().optional(),
+  facebook_url: Yup.string(),
+  linkedin_url: Yup.string(),
+  twitter_url: Yup.string(),
+  website_url: Yup.string(),
 });
 
 export const userdto_UpdateProfileReqSchema = Yup.object<userdto_UpdateProfileReq>().shape({

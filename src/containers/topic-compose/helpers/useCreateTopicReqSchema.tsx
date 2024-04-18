@@ -1,9 +1,10 @@
 import z from 'zod';
-import {config_TopicContentCnf, topicdto_CreateTopicReq} from '../../../common/openapi';
+import {config_TopicContentCnf, topicdto_CreateTopicReq, topicdto_UpdateTopicReq} from '../../../common/openapi';
 import {useTopicContentCnf} from '@/common/helpers/config/topic';
 
 function getCreateTopicReqSchema(cnf: Required<config_TopicContentCnf>) {
   return z.object({
+    id: z.number().optional(),
     title: z
       .string()
       .min(cnf.title_min_len, `Tiêu đề cần tối thiểu ${cnf.title_min_len} ký tự.`)
@@ -16,11 +17,11 @@ function getCreateTopicReqSchema(cnf: Required<config_TopicContentCnf>) {
       .string()
       .min(cnf.content_min_len, `Nội dung cần tối thiểu ${cnf.content_min_len} ký tự`)
       .max(cnf.content_max_len, `Nội dung dài tối đa ${cnf.content_max_len} ký tự`),
-    image: z.instanceof(File).optional(),
+    image: z.union([z.string().optional(), z.instanceof(File).optional()]),
     category_id: z.any(),
     is_draft: z.boolean().optional(),
     video: z.string().optional()
-  } satisfies Record<keyof topicdto_CreateTopicReq, z.ZodTypeAny>);
+  } satisfies Record<keyof topicdto_UpdateTopicReq & topicdto_CreateTopicReq, z.ZodTypeAny>);
 }
 
 export const useCreateTopicReqSchema = () => {

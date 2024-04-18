@@ -7,36 +7,63 @@ import {getErrorMessage} from '@/common/helpers/axios/error';
 import {useRef} from 'react';
 import type {RichTextEditorRef} from 'mui-tiptap';
 import {useRouter} from 'next/navigation';
-import {callCreateTopicApi} from '@/containers/topic-compose/helpers/callCreateTopicApi';
+import {contentdto_TopicResp, type topicdto_CreateTopicResp, TopicsService} from '../../common/openapi';
+import {prepareImageUrlBeforeSave} from '@/containers/topic-compose/helpers/prepareImageUrlBeforeSave';
+import {httpClient} from '@/common/helpers/axios/http-client';
+import {TPath} from '@/common/path';
+import {getTopicDetailPath} from '@/common/helpers/router';
 
-function useValues() {
-  const form = useComposeForm();
+const topicsService = new TopicsService(httpClient);
+
+function useValues({topic}: {topic?: contentdto_TopicResp}) {
+  const form = useComposeForm(topic);
   const rteRef = useRef<RichTextEditorRef>(null);
   const router = useRouter();
 
   const [createTopicState, _createTopic] = useAsyncFn(
     async (data: CreateTopicReq) => {
-      const promise = callCreateTopicApi(data);
+      const imageUrl = await prepareImageUrlBeforeSave(data.image);
+      const promise = data.id
+        ? topicsService.updateTopic(data.id, {
+          ...data,
+          image: imageUrl
+        })
+        : topicsService.createTopic({...data, image: imageUrl});
 
-      await toast.promise(promise, {
-        loading: `Đang tạo bài viết ${data.is_draft ? 'nháp' : ''}...`,
+      const resp = await toast.promise<undefined | topicdto_CreateTopicResp>(promise, {
+        loading: data.id
+          ? `Đang cập nhật bài viết...`
+          : `Đang tạo bài viết ${data.is_draft ? 'nháp' : ''}...`,
         error: getErrorMessage,
-        success: `Tạo bài viết ${data.is_draft ? 'nháp' : ''} thành công!`
+        success: data.id
+          ? `Cập nhật bài viết thành công`
+          : `Tạo bài viết ${data.is_draft ? 'nháp' : ''} thành công!`
       });
 
-      // TODO where to go?
-      setTimeout(() => {
-        router.push('/');
-      }, 3000);
+      return resp?.data;
     },
     [router]
   );
 
-  const createTopic = form.handleSubmit(_createTopic);
-  const createDraftTopic = form.handleSubmit((data) => _createTopic({...data, is_draft: true}));
-  const preview = form.handleSubmit((data) => _createTopic({...data, is_draft: true}));
+  const createTopic = form.handleSubmit((data) => _createTopic({...data, is_draft: false}).then(() => {
+    router.push('/dashboard/topics' satisfies TPath);
+  }));
+  const createDraftTopic = form.handleSubmit((data) => _createTopic({...data, is_draft: true}).then(() => {
+    router.push('/dashboard/topics' satisfies TPath);
+  }));
+  const preview = form.handleSubmit((data) => _createTopic({...data, is_draft: true}).then((resp) => {
+    return router.push(getTopicDetailPath({id: resp?.id ?? topic?.id, slug: topic?.slug}));
+  }));
 
-  return {form, createTopic, createTopicState, createDraftTopic, preview, rteRef};
+  return {
+    form,
+    createTopic,
+    createTopicState,
+    createDraftTopic,
+    preview,
+    rteRef,
+    originalTopic: topic
+  };
 }
 
 export const TopicComposeContext = createHookContext(useValues);

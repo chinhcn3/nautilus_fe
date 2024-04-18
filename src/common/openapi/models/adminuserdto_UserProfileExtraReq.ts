@@ -8,7 +8,7 @@ export type adminuserdto_UserProfileExtraReq = {
   birthdate?: string;
   facebook_url?: string;
   gender?: string;
-  linkdein_url?: string;
+  linkedin_url?: string;
   notes?: string;
   phone?: string;
   twitter_url?: string;

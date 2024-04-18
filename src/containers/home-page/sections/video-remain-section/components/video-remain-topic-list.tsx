@@ -1,43 +1,55 @@
-import {useTopicData} from '@/containers/home-page/hooks/use-topic-data';
-import {TopicAuthor} from '@/components/topic-author';
 import {useHomePageContext} from '@/containers/home-page/home-provider';
+import Grid from "@mui/material/Grid";
+import {Stack} from "@mui/material";
+import {CommonImage} from "@/containers/home-page/components/common-image";
+import {TopicCategory} from "@/containers/home-page/components/topic/topic-category";
+import {TopicTitle} from "@/containers/home-page/components/topic/topic-title";
+import {TopicDescription} from "@/containers/home-page/components/topic/topic-description";
+import {TopicAuthor} from "@/containers/home-page/components/topic/topic-author";
+import styled from "@emotion/styled";
 
 export function VideoRemainTopicList() {
-  const {getTopicCate} = useTopicData();
-  const {home} = useHomePageContext();
-  const topVideos = home.top_video_topics || [];
-
-  return (
-    <div className="col-sm-9 review-outstanding-left">
-      <div className="col">
-        <div className="review-outstanding-content">
-          {topVideos?.slice(6, topVideos?.length)?.map((topic) => {
-            return (
-              <div key={topic.id} className="news-card d-flex">
-                <a href="#" className="d-block news-card-img">
-                  <img src={topic?.thumbnail} alt="news image" className="img-fluid" />
-                </a>
-                <div className="news-card-body">
-                  <div className="news-card-meta">
-                    <span>{getTopicCate(topic)}</span>
-                    <span>{topic?.published_at}</span>
-                  </div>
-                  <h3 className="news-card-title">
-                    <a href="#" className="d-block">
-                      {topic.title}
-                    </a>
-                  </h3>
-                  <div className="news-card-desc">{topic.long_title}</div>
-                  <TopicAuthor topic={topic} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="d-flex justify-content-center viewmore">
-          <button>Xem thêm</button>
-        </div>
-      </div>
-    </div>
-  );
+    const {home} = useHomePageContext();
+    const topVideos = home.main_topics || [];
+    return (
+        <Grid item xs={9} className="review-outstanding-left">
+            <div className="review-outstanding-content">
+                <Grid container rowSpacing={4}>
+                    {topVideos?.slice(6, 11)?.map((topic) => {
+                        return (
+                            <Grid item xs={12} key={topic.id}>
+                                <Stack direction='row' spacing={2}>
+                                    <CommonImage classItem="list-img-xl" src={topic.thumbnail} alt="list image"/>
+                                    <Stack spacing={1}>
+                                        <TopicCategory topic={topic}/>
+                                        <TopicTitle title={topic.title}/>
+                                        <TopicDescription classItem="d-none" style={{'color': 'black'}} description={topic.long_title} />
+                                        <TopicAuthor topic={topic} isDarkMode={false}/>
+                                    </Stack>
+                                </Stack>
+                            </Grid>
+                        );
+                    })}
+                </Grid>
+            </div>
+            <ViewMore className="viewmore">
+                <button>Xem thêm</button>
+            </ViewMore>
+        </Grid>
+    );
 }
+
+const ViewMore = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    
+    button {
+        width: 180px;
+        height: 56px;
+        background-color: #4b40d4;
+        color: #fff;
+        border-radius: 4px;
+        border: none;
+    }
+`

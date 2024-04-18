@@ -1,6 +1,6 @@
+import React, {ReactNode} from 'react';
 import {Overlay} from '@/components/view/overlay';
 import styled from '@emotion/styled';
-import {ReactNode} from 'react';
 import Stack from '@mui/system/Stack';
 import EmptyImage from './assets/empty.png';
 import Typography from '@mui/material/Typography';
@@ -13,9 +13,11 @@ export interface AsyncViewProps {
   value?: any;
   retry?: () => any;
   children?: ReactNode;
+  isEmpty?: boolean;
 }
+
 export function AsyncView(props: AsyncViewProps) {
-  const isEmpty = !props.loading && !props.error && !props.value;
+  const isEmpty = props.isEmpty || (!props.loading && !props.error && !props.value);
 
   const errorElement = props.error ? (
     <Stack alignItems={'center'} spacing={2}>

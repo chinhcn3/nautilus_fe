@@ -5,6 +5,7 @@
 import type { adminuserdto_BanUserReq } from '../models/adminuserdto_BanUserReq';
 import type { adminuserdto_BanUserResp } from '../models/adminuserdto_BanUserResp';
 import type { adminuserdto_ListUserResp } from '../models/adminuserdto_ListUserResp';
+import type { adminuserdto_ListViolationResp } from '../models/adminuserdto_ListViolationResp';
 import type { adminuserdto_UnbanUserReq } from '../models/adminuserdto_UnbanUserReq';
 import type { adminuserdto_UnbanUserResp } from '../models/adminuserdto_UnbanUserResp';
 import type { adminuserdto_UpdateRoleReq } from '../models/adminuserdto_UpdateRoleReq';
@@ -187,6 +188,40 @@ export class AdminUsersService {
       },
       body: requestBody,
       mediaType: '*/*',
+      errors: {
+        400: `Bad Request`,
+        500: `Internal Server Error`,
+      },
+    });
+  }
+
+  /**
+   * List user violations
+   * List user violations
+   * @param sort sort parameter
+   * @param filter {{description}}
+   * @param page {{description}}
+   * @returns adminuserdto_ListViolationResp OK
+   * @throws ApiError
+   */
+  public adminListViolation(
+    sort?: string,
+    filter?: {
+      search?: string;
+    },
+    page?: {
+      offset?: number;
+      limit?: number;
+    },
+  ): CancelablePromise<adminuserdto_ListViolationResp> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/admin/violations',
+      query: {
+        'sort': sort,
+        'filter': filter,
+        'page': page,
+      },
       errors: {
         400: `Bad Request`,
         500: `Internal Server Error`,

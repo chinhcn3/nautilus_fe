@@ -3,9 +3,9 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import {Providers} from '@/app/providers';
-import {PageContainer} from '@/containers/page-container';
 import {Suspense} from 'react';
 import {SupportModal} from '@/containers/support-modal';
+import {PageContainer} from '@/containers/page-container';
 
 export const metadata: Metadata = {
   title: 'Tech Loop',

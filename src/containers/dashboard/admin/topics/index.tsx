@@ -10,8 +10,6 @@ import {Pagination} from '@/components/mui/pagination';
 import {Filter} from '@/containers/dashboard/admin/topics/components/filter';
 import {AsyncView} from '@/components/view/async-view';
 
-// TODO action: update
-
 export function AdminTopicsContainer() {
   return (
     <AdminTopicsProvider>

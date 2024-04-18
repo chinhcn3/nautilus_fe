@@ -10,6 +10,7 @@ import { AdminCategoriesService } from './services/AdminCategoriesService';
 import { AdminCommentsService } from './services/AdminCommentsService';
 import { AdminControlsService } from './services/AdminControlsService';
 import { AdminGiftsService } from './services/AdminGiftsService';
+import { AdminTasksService } from './services/AdminTasksService';
 import { AdminTopicsService } from './services/AdminTopicsService';
 import { AdminUsersService } from './services/AdminUsersService';
 import { CategoriesService } from './services/CategoriesService';
@@ -32,6 +33,7 @@ export class AxiosClient {
   public readonly adminComments: AdminCommentsService;
   public readonly adminControls: AdminControlsService;
   public readonly adminGifts: AdminGiftsService;
+  public readonly adminTasks: AdminTasksService;
   public readonly adminTopics: AdminTopicsService;
   public readonly adminUsers: AdminUsersService;
   public readonly categories: CategoriesService;
@@ -65,6 +67,7 @@ export class AxiosClient {
     this.adminComments = new AdminCommentsService(this.request);
     this.adminControls = new AdminControlsService(this.request);
     this.adminGifts = new AdminGiftsService(this.request);
+    this.adminTasks = new AdminTasksService(this.request);
     this.adminTopics = new AdminTopicsService(this.request);
     this.adminUsers = new AdminUsersService(this.request);
     this.categories = new CategoriesService(this.request);

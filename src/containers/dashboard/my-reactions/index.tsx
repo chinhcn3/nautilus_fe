@@ -34,12 +34,12 @@ function ListReactions() {
         ))}
       </ListWrapper>
 
-      <MyReactionsPaginations />
+      <MyReactionsPagination />
     </AsyncView>
   );
 }
 
-function MyReactionsPaginations() {
+function MyReactionsPagination() {
   const isLastPage = MyReactionsContext.useSelector((state) => state.isLastPage);
   return <Pagination isLastPage={isLastPage} />;
 }

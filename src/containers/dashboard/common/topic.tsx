@@ -10,6 +10,7 @@ import {
 } from '../../../common/openapi';
 import {formatRelative} from 'date-fns';
 import Avatar from '@mui/material/Avatar';
+import {getTopicDetailPath} from '@/common/helpers/router';
 
 export interface GeneralTopicProps {
   actions?: ReactNode;
@@ -40,7 +41,7 @@ export function Topic(props: TopicProps) {
       <LinkWrapper
         role={'listitem'}
         target={openInNewTab ? '_blank' : undefined}
-        href={`/detail/${topic.slug}`}>
+        href={getTopicDetailPath(topic)}>
         <PostImage user={user} />
         <Content>
           <h6>{topic.title}</h6>
@@ -92,10 +93,12 @@ function PostImage({user}: {user: adminuserdto_UserResp}) {
 
 const PostImageWrapper = styled.div`
   display: grid;
+
   > * {
     grid-area: center;
     place-self: center;
   }
+
   > img {
     width: 64px;
     height: 64px;

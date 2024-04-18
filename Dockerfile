@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json/yarn.lock files
 COPY package*.json yarn.lock ./
+COPY ./patches ./patches
 
 RUN apk update && apk add --no-cache libc6-compat \
     && yarn install --frozen-lockfile \

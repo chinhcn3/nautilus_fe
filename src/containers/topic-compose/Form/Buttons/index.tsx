@@ -7,11 +7,9 @@ import {TopicComposeContext} from '@/containers/topic-compose/context';
 // TODO validation - these buttons must be disabled if not validated correctly
 
 export function Buttons() {
-  const [preview, createDraftTopic, createTopic] = TopicComposeContext.useSelector((state) => [
-    state.preview,
-    state.createDraftTopic,
-    state.createTopic
-  ]);
+  const [preview, createDraftTopic, createTopic, topic] = TopicComposeContext.useSelector(
+    (state) => [state.preview, state.createDraftTopic, state.createTopic, state.originalTopic]
+  );
   return (
     <Stack direction={'row'} spacing={2} justifyContent={'flex-end'}>
       <OutlinedButton sx={{minWidth: 148}} onClick={preview}>
@@ -21,7 +19,7 @@ export function Buttons() {
         Lưu nháp
       </OutlinedButton>
       <FilledButton sx={{minWidth: 148}} onClick={createTopic}>
-        Đăng bài
+        {topic ? 'Cập nhật' : 'Đăng bài'}
       </FilledButton>
     </Stack>
   );

@@ -6,9 +6,14 @@ import {signOut} from 'next-auth/react';
 import {usePathname} from 'next/navigation';
 import {AdminMenuItems} from '@/containers/dashboard/layout-container/sidebar/admin';
 import {SupportButton} from '@/containers/dashboard/layout-container/sidebar/SupportButton';
+import {useIsSmUp} from '@/components/packages/mui/responsive';
 
 export function Sidebar() {
   const pathname = usePathname();
+
+  const isSmUp = useIsSmUp();
+
+  if (!isSmUp) return null;
 
   return (
     <Wrapper>
@@ -33,7 +38,7 @@ export function Sidebar() {
         {...MenuItem.buildMenuItemProps('/dashboard/reactions', pathname)}
       />
       <MenuItem
-        icon={<Icons.LikedArticlesICon />}
+        icon={<Icons.LikedTopicIcon />}
         label={'Bài theo dõi'}
         {...MenuItem.buildMenuItemProps('/dashboard/saved-topics', pathname)}
       />
@@ -64,10 +69,10 @@ export function Sidebar() {
 }
 
 const Wrapper = styled.div`
-  width: 292px;
+  min-height: 100%;
   padding: 32px;
   background-color: ${themeColor('white')};
-  border-radius: 4px;
+  border-radius: 10px;
 
   display: flex;
   flex-direction: column;

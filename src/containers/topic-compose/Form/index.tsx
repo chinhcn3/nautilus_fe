@@ -52,6 +52,7 @@ const PageContent = styled(Grid)`
 `;
 
 function Editor() {
+  const initialContent = TopicComposeContext.useSelector((state) => state.originalTopic?.content);
   const form = TopicComposeContext.useSelector((state) => state.form);
   const ref = TopicComposeContext.useSelector((state) => state.rteRef);
   const errorMessage = useErrorMessageFromForm(form, 'content');
@@ -74,7 +75,7 @@ function Editor() {
   return (
     <Stack direction={'column'} spacing={1}>
       <BootstrapInput.Label>Nội dung chính</BootstrapInput.Label>
-      <LazyEditor rteRef={ref} />
+      <LazyEditor rteRef={ref} initialContent={initialContent} />
       {errorMessage && (
         <Typography color={'error'} fontSize={14} mt={'4px'}>
           {errorMessage}

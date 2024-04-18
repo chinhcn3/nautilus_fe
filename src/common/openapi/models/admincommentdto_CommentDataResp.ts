@@ -12,7 +12,6 @@ export type admincommentdto_CommentDataResp = {
   categories?: Record<string, contentdto_CategoryResp>;
   comments?: Array<admincommentdto_CommentResp>;
   topics?: Record<string, contentdto_TopicResp>;
-  total?: number;
   users?: Record<string, contentdto_UserResp>;
 };
 

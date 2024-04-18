@@ -8,7 +8,7 @@ export type userdto_UserDetailsResp = {
   birthdate?: string;
   facebook_url?: string;
   gender?: string;
-  linkdedin_url?: string;
+  linkedin_url?: string;
   notes?: string;
   phone?: string;
   twitter_url?: string;

@@ -1,9 +1,10 @@
 import Stack from '@mui/system/Stack';
-import Button from '@mui/material/Button';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBackIosRounded';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import {usePageNumber} from '@/common/helpers/paginations';
 import {useMemo} from 'react';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 
 export function Pagination({isLastPage}: {isLastPage?: boolean}) {
   const [pageNumber, setPageNumber] = usePageNumber();
@@ -17,15 +18,9 @@ export function Pagination({isLastPage}: {isLastPage?: boolean}) {
 
   return (
     <Stack direction="row" alignItems="center" spacing={2} justifyContent={'center'} marginTop={2}>
-      <Button
-        key={'prev'}
-        variant={'text'}
-        startIcon={<ArrowBackIcon />}
-        disabled={isFirst}
-        sx={{textTransform: 'none'}}
-        onClick={() => setPageNumber(pageNumber - 1)}>
-        Trang trước
-      </Button>
+      <IconButton key={'prev'} disabled={isFirst} onClick={() => setPageNumber(pageNumber - 1)}>
+        <ArrowBackIcon />
+      </IconButton>
       {pages.map((page) => {
         return (
           <Button
@@ -37,15 +32,12 @@ export function Pagination({isLastPage}: {isLastPage?: boolean}) {
           </Button>
         );
       })}
-      <Button
+      <IconButton
         key={'next'}
-        variant={'text'}
-        endIcon={<ArrowForwardIcon />}
         disabled={Boolean(isLastPage)}
-        sx={{textTransform: 'none'}}
         onClick={() => setPageNumber(pageNumber + 1)}>
-        Trang sau
-      </Button>
+        <ArrowForwardIcon />
+      </IconButton>
     </Stack>
   );
 }

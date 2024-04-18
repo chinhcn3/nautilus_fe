@@ -9,27 +9,33 @@ const getTs = <BaseType, Path extends string | string[]>(
 
 const colors = {
   primary: '#4B40D4',
+  primary_blue: '#001EB8',
+  primary_500: '#c9c5f2',
   primary_400: alpha('#FFCF33', 0.4),
   secondary: '#5B65AA',
   link: '#6196FF',
   darkBackground: '#0F1C36',
   lightBackground: '#F0F0F0',
-  white: '#F5F5F5',
+  white: '#FFFFFF',
   blue: '#0022D5',
   grey: '#949494',
   black: '#111111',
   divider: '#808692',
   border: '#DEDEDE',
   text_200: '#E7E8EB',
+  grey1: '#dedede',
+  black1: '#111',
 
   warning: '#CD6200',
   warning_bg: '#FEF2E5',
   success: '#1F9254',
+  success_200: '#EBF9F1',
   success_bg: '#EBF9F1',
   danger: '#E70000',
   danger_bg: '#F7A4A4',
 
-  subtitle: '#AEAEAE'
+  subtitle: '#AEAEAE',
+  f9: '#F9F9F9'
 } as const;
 
 export type TColors = typeof colors;

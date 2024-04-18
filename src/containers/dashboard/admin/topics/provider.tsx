@@ -5,7 +5,7 @@ import {createHookContext} from '@/common/helpers/context';
 import {getIsLastPage, usePageFilterObject} from '@/common/helpers/paginations';
 import {StringParam, useQueryParam, withDefault} from 'use-query-params';
 import {mapStatusesToApiStatus, TTopicStatus} from '@/common/constants/topic-status';
-import omitBy from 'lodash/omitBy';
+import pickBy from 'lodash/pickBy';
 import {contentdto_UserResp} from '@/common/openapi';
 
 const adminTopicsService = new AdminTopicsService(httpClient);
@@ -21,7 +21,7 @@ function useValues() {
   const fetchTopicsState = useAsyncRetry(async () => {
     return adminTopicsService.adminListTopic(
       undefined,
-      omitBy({
+      pickBy({
         status: mapStatusesToApiStatus[status as TTopicStatus]
       }),
       page

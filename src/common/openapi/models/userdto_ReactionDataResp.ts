@@ -10,7 +10,6 @@ import type { userdto_ReactionResp } from './userdto_ReactionResp';
 export type userdto_ReactionDataResp = {
   reactions?: Array<userdto_ReactionResp>;
   topics?: Record<string, contentdto_TopicResp>;
-  total?: number;
   users?: Record<string, contentdto_UserResp>;
 };
 

@@ -40,15 +40,40 @@ const _UpdateModalContext = createHookContext(({topic, onCloseRequest, modalProp
   }, [modalProps.open]);
 
   const fetchGiftsState = useAsyncRetry(async () => {
-    if (!modalProps.open) return undefined
+    if (!modalProps.open) return undefined;
     return adminGiftsService.adminListGift({
-      topic_id: topic.id,
-    }).then(resp => resp.data)
-  }, [modalProps.open, topic])
+      topic_id: topic.id
+    }).then(resp => resp.data);
+  }, [modalProps.open, topic]);
 
   const [updateState, _update] = useAsyncFn(
     async (data: admintopicdto_UpdateTopicReq) => {
-      const promise = adminTopicsService.adminUpdateTopic(topic.id!, data);
+      const ld = data.lucky_draw;
+      const promise = adminTopicsService.adminUpdateTopic(topic.id!, {
+        allow_discussion: data.allow_discussion,
+        magazine_styled: data.magazine_styled,
+        bonus_kudos: Number(data.bonus_kudos),
+        bonus_points: Number(data.bonus_points),
+        type: data.type,
+        category_id: Number(data.category_id),
+        tags: data.tags,
+        pinned_to: data.pinned_to,
+        status: 'OK',
+        id: data.id,
+        info: data.info,
+        lucky_draw: {
+          gift_id: ld?.gift_id,
+          kind: ld?.kind,
+          reg_ended_at: ld?.reg_ended_at && new Date(ld?.reg_ended_at).toISOString(),
+          reg_started_at: ld?.reg_started_at && new Date(ld.reg_started_at).toISOString(),
+          reg_taken_points: Number(ld?.reg_taken_points),
+          required_daily_views: Number(ld?.required_daily_views),
+          required_views: Number(ld?.required_views),
+          status: ld?.status,
+          topic_id: Number(ld?.topic_id),
+          win_taken_points: Number(ld?.win_taken_points)
+        }
+      });
 
       await toast.promise(promise, {
         success: 'Cập nhật topic thành công',
@@ -57,7 +82,7 @@ const _UpdateModalContext = createHookContext(({topic, onCloseRequest, modalProp
       });
 
 
-      onCloseRequest()
+      onCloseRequest();
     },
     [topic, onCloseRequest]
   );
@@ -82,11 +107,11 @@ const _UpdateModalContext = createHookContext(({topic, onCloseRequest, modalProp
         win_taken_points: topic.lucky_draw.win_taken_points,
         required_views: topic.lucky_draw.required_views,
         required_daily_views: topic.lucky_draw.required_daily_views,
-        gift_id: topic.lucky_draw.gift_id,
+        gift_id: topic.lucky_draw.gift_id
       }
     } satisfies admintopicdto_UpdateTopicReq);
 
-    setLuckyDraw(!!topic.lucky_draw?.gift_id)
+    setLuckyDraw(!!topic.lucky_draw?.gift_id);
   }, [topic, onCloseRequest]);
 
   return {

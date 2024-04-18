@@ -14,7 +14,7 @@ export function TopicTitle(props: TopicTitleProps) {
   const {openTopic} = useOpenTopic();
 
   return (
-    <ArticleTitleContainer
+    <TopicTitleContainer
       $fontSize={props.fontSize}
       $lineHeight={props.lineHeight}
       $isDark={props.isDark}
@@ -22,11 +22,11 @@ export function TopicTitle(props: TopicTitleProps) {
       $bottom={props.bottom}
       onClick={() => openTopic(props.topic)}>
       {props.topic?.title}
-    </ArticleTitleContainer>
+    </TopicTitleContainer>
   );
 }
 
-const ArticleTitleContainer = styled.div<{
+const TopicTitleContainer = styled.div<{
   $fontSize: number;
   $lineHeight: number;
   $isDark?: boolean;

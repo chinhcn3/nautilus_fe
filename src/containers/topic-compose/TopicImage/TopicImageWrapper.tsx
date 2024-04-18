@@ -73,7 +73,7 @@ const Wrapper = styled.div<{$imgSrc?: string}>`
   align-items: center;
 
   background-color: #ffffff;
-  background-image: ${(p) => (p.$imgSrc ? `url(${p.$imgSrc})` : 'none')};
+  background-image: ${(p) => (p.$imgSrc ? `url(${encodeURI(p.$imgSrc)})` : 'none')};
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

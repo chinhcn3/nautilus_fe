@@ -15,8 +15,6 @@ import {TopicAuthContent} from '@/containers/topic-content/components/article/to
 import {OutStanding} from '@/containers/topic-content/sections/outstanding';
 import Button from "@mui/material/Button";
 import {ShareIcon} from "@/containers/dashboard/layout-container/sidebar/icons";
-import {ArticleLeftDetail} from "@/containers/article-detail/sections/article-left-detail";
-import {Index as Outstanding} from "@/containers/article-detail/sections/outstanding";
 
 export async function TopicContent({topicData}: { topicData?: topicdto_GetTopicDataResp }) {
     return (

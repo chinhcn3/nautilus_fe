@@ -21,7 +21,7 @@ const Heading = styled.div`
     justify-content: space-between;
     position: relative;
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     
     hr {
         width: 100%;

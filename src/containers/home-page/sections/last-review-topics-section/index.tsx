@@ -53,7 +53,7 @@ export function LastReviewTopicsSection() {
 }
 
 const ReviewLatest = styled.div`
-  padding: 40px 0 0;
+  padding: 40px 0 50px;
   background: ${themeColor('white2')};
   margin-top: 0;
 `;

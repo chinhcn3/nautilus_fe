@@ -16,22 +16,23 @@ export function SaleSection() {
             <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
                 <SectionHeading classItem="grey" title="Giá tốt mỗi ngày"/>
                 <Swiper
-                    spaceBetween={24}
-                    slidesPerView={3}
+                    spaceBetween={60}
+                    slidesPerView={4}
                     breakpoints={{
                         0: {
                             slidesPerView: 1.5,
                             spaceBetween: 16
                         },
                         831: {
-                            slidesPerView: 3
+                            slidesPerView: 4,
+                            spaceBetween: 60
                         }
                     }}>
                     {dealTopics?.map((topic) => {
                         return (
                             <SwiperSlide key={topic.id}>
                                 <Stack direction="column" spacing={2}>
-                                    <CommonImage src={topic?.thumbnail} alt="list image" />
+                                    <CommonImage src="https://photo2.tinhte.vn/data/attachment-files/2023/11/8175013_yamaha-mt-09-sp-2024-29-cover.jpg" alt="list image" />
                                     <Stack spacing={{xs: 1, md: 4}}>
                                         <Stack alignItems="center" direction="row" spacing={1}>
                                             <SaleIcon className="icon-sale"/>

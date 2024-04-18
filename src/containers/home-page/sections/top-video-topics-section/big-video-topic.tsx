@@ -23,7 +23,7 @@ export function BigVideoTopic({topic}: { topic?: contentdto_TopicResp }) {
 const VideoLeft = styled.div`
     .video-img {
         position: relative;
-        border-radius: 8px 0 0 8px;
+        border-radius: 16px 0 0 16px;
         overflow: hidden;
 
         img {

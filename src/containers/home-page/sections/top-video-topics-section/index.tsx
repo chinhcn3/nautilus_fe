@@ -14,7 +14,7 @@ export function TopVideoSection() {
     return (
         <HomeVideos>
             <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
-                <SectionHeading classItem="grey" title="VIDEO NỔI BẬT"/>
+                <SectionHeading classItem="grey2" title="VIDEO NỔI BẬT"/>
                 <Grid container>
                     <BigVideoTopic topic={topVideos?.[0]}/>
                     <TopVideoTopicsList topics={topVideos}/>
@@ -25,7 +25,7 @@ export function TopVideoSection() {
 }
 
 const HomeVideos = styled.div`
-    padding: 40px 0 0;
-    background: ${themeColor('white2')};
+    padding: 32px 0;
+    background: ${themeColor('grey2')};
     margin-top: 0;
 `;

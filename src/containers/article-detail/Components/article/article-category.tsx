@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
 import {array} from "yup";
 
-export function ArticleCategory({topicData,}: { topicData: topicdto_GetTopicDataResp}) {
+export function ArticleCategory({topicData}: { topicData: topicdto_GetTopicDataResp}) {
     const getTopicCate = (topicData: topicdto_GetTopicDataResp): any => {
         return topicData?.categories?.[topicData?.topic?.category_id || ''].name || '';
     };

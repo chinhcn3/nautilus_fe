@@ -8,13 +8,16 @@ import {
   createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider
 } from '@mui/material/styles';
-import {ThemeProvider} from '@emotion/react';
+import {CacheProvider, ThemeProvider} from '@emotion/react';
 import {SessionInstance} from '@/common/helpers/authentication/session-instance';
 import {Toaster} from 'react-hot-toast';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFnsV3';
 import {QueryParamProvider} from 'use-query-params';
 import NextAdapterApp from 'next-query-params/app';
+import createCache from '@emotion/cache';
+
+const emotionCache = createCache({key: 'techloop'});
 
 const muiTheme = createMuiTheme({
   palette: {
@@ -38,6 +41,23 @@ const muiTheme = createMuiTheme({
     warning: {
       main: theme.colors.warning
     }
+  },
+  breakpoints: {
+    unit: 'px',
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1248,
+      xl: 1600
+    }
+  },
+  components: {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'xl'
+      }
+    }
   }
 });
 
@@ -47,10 +67,12 @@ export function Providers({children}: {children: ReactNode}) {
       <AppRouterCacheProvider>
         <ThemeProvider theme={theme}>
           <MuiThemeProvider theme={muiTheme}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <QueryParamProvider adapter={NextAdapterApp}>{children}</QueryParamProvider>
-            </LocalizationProvider>
-            <Toaster position={'top-right'} />
+            <CacheProvider value={emotionCache}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <QueryParamProvider adapter={NextAdapterApp}>{children}</QueryParamProvider>
+              </LocalizationProvider>
+              <Toaster position={'top-right'} />
+            </CacheProvider>
           </MuiThemeProvider>
         </ThemeProvider>
       </AppRouterCacheProvider>

@@ -11,6 +11,8 @@ import Chip, {ChipProps} from '@mui/material/Chip';
 import {apiTopicStatusesWithLocale, TApiTopicStatus} from '@/common/constants/topic-status';
 import {admintopicdto_TopicResp} from '@/common/openapi';
 import {DeleteTopic} from '@/containers/dashboard/my-topics/table/row/delete-topic';
+import Link from 'next/link';
+import {getTopicDetailPath} from '@/common/helpers/router';
 
 export function MyTopicsTableRow({topic}: {topic: admintopicdto_TopicResp}) {
   const category = useMyTopicsSelector((state) => state.getCategory(topic.category_id));
@@ -23,10 +25,10 @@ export function MyTopicsTableRow({topic}: {topic: admintopicdto_TopicResp}) {
       <TableCell>
         <TopicWrapper>
           <img src={topic.image} alt={topic.title} />
-          <div>
+          <Link href={getTopicDetailPath(topic)}>
             <BoldText>{topic.title}</BoldText>
             <p className={'desc'}>{topic.long_title}</p>
-          </div>
+          </Link>
         </TopicWrapper>
       </TableCell>
       <TableCell>
@@ -72,6 +74,7 @@ const TopicWrapper = styled.div`
     background: ${themeColor('lightBackground')};
     border-radius: 4px;
   }
+
   .desc {
     margin-top: 8px;
   }

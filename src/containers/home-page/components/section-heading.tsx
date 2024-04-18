@@ -60,13 +60,13 @@ const Heading = styled.div`
     
     &.grey {
         h2, .view-more {
-            background-color: ${themeColor('white')}
+            background-color: ${themeColor('white2')}
         }
     }
     
-    &.primary_500 {
+    &.grey2 {
         h2, .view-more {
-            background-color: ${themeColor('primary_500')};
+            background-color: ${themeColor('grey2')};
         }
     }
     
@@ -76,7 +76,7 @@ const Heading = styled.div`
         }
         
         .view-more {
-            color: #4b40d4;
+            color: ${themeColor('primary')};
             background-color: white;
             position: relative;
             z-index: 2;

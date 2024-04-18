@@ -1,12 +1,12 @@
 import {useRouter} from 'next/navigation';
 import {contentdto_TopicResp} from '@/common/openapi';
+import {getTopicDetailPath} from '@/common/helpers/router';
 
 export function useOpenTopic() {
   const router = useRouter();
   const openTopic = (topic?: contentdto_TopicResp) => {
     if (!topic || !topic?.slug) return;
-    const slug = `${topic.slug}-${topic.id}`;
-    router.push(`/detail/${slug}`);
+    router.push(getTopicDetailPath(topic));
   };
 
   return {openTopic};

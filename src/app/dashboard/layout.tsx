@@ -12,7 +12,7 @@ export default async function DashboardLayout({children}: PropsWithChildren<any>
     const user = UserTransform.transformUser(session.user);
     return (
       <Suspense>
-        <DashboardLayoutContainer user={user}>{children}</DashboardLayoutContainer>;
+        <DashboardLayoutContainer user={user}>{children}</DashboardLayoutContainer>
       </Suspense>
     );
   } catch (e) {

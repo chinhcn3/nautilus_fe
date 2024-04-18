@@ -7,6 +7,7 @@ import MarkUnreadChatAltOutlinedIcon from '@mui/icons-material/MarkUnreadChatAlt
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import {useProfileContext} from '../../profile-context';
+import BlockIcon from '@mui/icons-material/Block';
 
 export function AdminMenuItems() {
   const pathName = usePathname();
@@ -39,6 +40,11 @@ export function AdminMenuItems() {
           label={'Users'}
           {...MenuItem.buildMenuItemProps('/dashboard/admin/users', pathName)}
         />
+        <MenuItem
+          icon={<BlockIcon />}
+          label={'Vi phạm'}
+          {...MenuItem.buildMenuItemProps('/dashboard/admin/violations', pathName)}
+        />
       </ItemsWrapper>
     </div>
   );
@@ -65,12 +71,14 @@ const SepWrapper = styled.div`
   text-align: center;
   position: relative;
   margin: 20px 0;
+
   > span {
     background: ${themeColor('white')};
     z-index: 1;
     position: relative;
     padding: 0 8px;
   }
+
   .line {
     position: absolute;
     top: 10px;

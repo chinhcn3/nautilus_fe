@@ -847,6 +847,50 @@
         ]
       }
     },
+    "/admin/tasks/backup-db-s3/exec": {
+      "post": {
+        "description": "Execute backup DB task",
+        "operationId": "adminExecTaskBackupDBS3",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.ExecTaskBackupDBS3Req"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.ExecTaskBackupDBS3Resp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Execute backup DB task",
+        "tags": [
+          "admin_tasks"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
     "/admin/tasks/cache-topic-ids/exec": {
       "post": {
         "description": "Execute cache topic ids task",
@@ -886,7 +930,7 @@
         },
         "summary": "Execute cache topic ids task",
         "tags": [
-          "admin_controls"
+          "admin_tasks"
         ],
         "x-codegen-request-body-name": "body"
       }
@@ -930,7 +974,7 @@
         },
         "summary": "Execute calculation of top topics task",
         "tags": [
-          "admin_controls"
+          "admin_tasks"
         ],
         "x-codegen-request-body-name": "body"
       }
@@ -974,7 +1018,51 @@
         },
         "summary": "Execute content periodic task",
         "tags": [
-          "admin_controls"
+          "admin_tasks"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/tasks/restore-db-s3/exec": {
+      "post": {
+        "description": "Execute restore DB task",
+        "operationId": "adminExecTaskRestoreDBS3",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/admincontroldto.ExecTaskRestoreDBS3Req"
+              }
+            }
+          },
+          "description": "request data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/admincontroldto.ExecTaskRestoreDBS3Resp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Execute restore DB task",
+        "tags": [
+          "admin_tasks"
         ],
         "x-codegen-request-body-name": "body"
       }
@@ -1632,6 +1720,89 @@
           "admin_users"
         ],
         "x-codegen-request-body-name": "body"
+      }
+    },
+    "/admin/violations": {
+      "get": {
+        "description": "List user violations",
+        "operationId": "adminListViolation",
+        "parameters": [
+          {
+            "description": "sort parameter",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "filter",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "type": "string"
+                }
+              }
+            },
+            "style": "deepObject"
+          },
+          {
+            "in": "query",
+            "description": "{{description}}",
+            "name": "page",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                }
+              }
+            },
+            "style": "deepObject"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/adminuserdto.ListViolationResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dto.ErrorResp"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "List user violations",
+        "tags": [
+          "admin_users"
+        ]
       }
     },
     "/categories": {
@@ -4412,9 +4583,6 @@
             },
             "type": "object"
           },
-          "total": {
-            "type": "integer"
-          },
           "users": {
             "additionalProperties": {
               "$ref": "#/components/schemas/contentdto.UserResp"
@@ -4542,6 +4710,34 @@
         },
         "type": "object"
       },
+      "admincontroldto.ExecTaskBackupDBS3Req": {
+        "properties": {
+          "encryption_key": {
+            "type": "string"
+          },
+          "extra_args": {
+            "type": "string"
+          },
+          "lock_duration": {
+            "type": "integer"
+          },
+          "s3_file_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskBackupDBS3Resp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/dbbackup.TaskResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
       "admincontroldto.ExecTaskCacheTopicIDsReq": {
         "type": "object"
       },
@@ -4577,6 +4773,34 @@
         "properties": {
           "data": {
             "type": "object"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskRestoreDBS3Req": {
+        "properties": {
+          "encryption_key": {
+            "type": "string"
+          },
+          "extra_args": {
+            "type": "string"
+          },
+          "lock_duration": {
+            "type": "integer"
+          },
+          "s3_file_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "admincontroldto.ExecTaskRestoreDBS3Resp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/dbrestore.TaskResp"
           },
           "meta": {
             "$ref": "#/components/schemas/dto.Meta"
@@ -4905,9 +5129,6 @@
             },
             "type": "array"
           },
-          "total": {
-            "type": "integer"
-          },
           "users": {
             "additionalProperties": {
               "$ref": "#/components/schemas/contentdto.UserResp"
@@ -5112,6 +5333,17 @@
         },
         "type": "object"
       },
+      "adminuserdto.ListViolationResp": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/adminuserdto.ViolationDataResp"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/dto.Meta"
+          }
+        },
+        "type": "object"
+      },
       "adminuserdto.UnbanUserReq": {
         "properties": {
           "id": {
@@ -5232,7 +5464,7 @@
           "gender": {
             "type": "string"
           },
-          "linkdedin_url": {
+          "linkedin_url": {
             "type": "string"
           },
           "notes": {
@@ -5264,7 +5496,7 @@
           "gender": {
             "type": "string"
           },
-          "linkdein_url": {
+          "linkedin_url": {
             "type": "string"
           },
           "notes": {
@@ -5337,6 +5569,49 @@
           },
           "user_details": {
             "$ref": "#/components/schemas/adminuserdto.UserDetailsResp"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.ViolationDataResp": {
+        "properties": {
+          "users": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/adminuserdto.UserResp"
+            },
+            "type": "object"
+          },
+          "violations": {
+            "items": {
+              "$ref": "#/components/schemas/adminuserdto.ViolationResp"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "adminuserdto.ViolationResp": {
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "source_object_id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
           }
         },
         "type": "object"
@@ -5695,9 +5970,6 @@
             },
             "type": "array"
           },
-          "total": {
-            "type": "integer"
-          },
           "users": {
             "additionalProperties": {
               "$ref": "#/components/schemas/contentdto.UserResp"
@@ -5797,6 +6069,46 @@
           },
           "nick_name": {
             "description": "FullName string `json:\"full_name,omitempty\"`",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "dbbackup.TaskResp": {
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "log": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "s3_file_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "dbrestore.TaskResp": {
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "log": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "s3_file_name": {
             "type": "string"
           }
         },
@@ -6213,9 +6525,6 @@
               "$ref": "#/components/schemas/giftdto.LuckyDrawRegResp"
             },
             "type": "array"
-          },
-          "total": {
-            "type": "integer"
           }
         },
         "type": "object"
@@ -6383,9 +6692,6 @@
               "$ref": "#/components/schemas/contentdto.TopicResp"
             },
             "type": "object"
-          },
-          "total": {
-            "type": "integer"
           },
           "users": {
             "additionalProperties": {
@@ -7029,9 +7335,6 @@
             },
             "type": "object"
           },
-          "total": {
-            "type": "integer"
-          },
           "user": {
             "$ref": "#/components/schemas/contentdto.UserResp"
           }
@@ -7076,9 +7379,6 @@
       },
       "userdto.FollowingUserResp": {
         "properties": {
-          "total": {
-            "type": "integer"
-          },
           "users": {
             "items": {
               "$ref": "#/components/schemas/userdto.OtherUserResp"
@@ -7230,7 +7530,7 @@
           "gender": {
             "type": "string"
           },
-          "linkdein_url": {
+          "linkedin_url": {
             "type": "string"
           },
           "notes": {
@@ -7272,9 +7572,6 @@
               "$ref": "#/components/schemas/contentdto.TopicResp"
             },
             "type": "object"
-          },
-          "total": {
-            "type": "integer"
           },
           "users": {
             "additionalProperties": {
@@ -7321,9 +7618,6 @@
               "$ref": "#/components/schemas/userdto.SavedTopicResp"
             },
             "type": "array"
-          },
-          "total": {
-            "type": "integer"
           },
           "users": {
             "additionalProperties": {
@@ -7389,9 +7683,6 @@
             },
             "type": "array"
           },
-          "total": {
-            "type": "integer"
-          },
           "user": {
             "$ref": "#/components/schemas/contentdto.UserResp"
           }
@@ -7454,7 +7745,7 @@
           "gender": {
             "type": "string"
           },
-          "linkdedin_url": {
+          "linkedin_url": {
             "type": "string"
           },
           "notes": {

@@ -6,7 +6,6 @@
 import type { userdto_OtherUserResp } from './userdto_OtherUserResp';
 
 export type userdto_FollowingUserResp = {
-  total?: number;
   users?: Array<userdto_OtherUserResp>;
 };
 

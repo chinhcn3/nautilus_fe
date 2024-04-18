@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import {contentdto_TopicResp} from '@/common/openapi';
 import {useOpenTopic} from '@/common/hooks/use-open-topic';
 
-interface ArticleDescriptionProps {
+interface TopicDescriptionProps {
   topic?: contentdto_TopicResp;
   fontSize: number;
   lineHeight: number;
@@ -10,7 +10,7 @@ interface ArticleDescriptionProps {
   top?: number;
   bottom?: number;
 }
-export function TopicDescription(props: ArticleDescriptionProps) {
+export function TopicDescription(props: TopicDescriptionProps) {
   const {openTopic} = useOpenTopic();
 
   return (

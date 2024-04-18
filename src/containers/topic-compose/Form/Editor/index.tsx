@@ -1,6 +1,5 @@
 'use client';
 
-import StarterKit from '@tiptap/starter-kit';
 import {
   MenuButtonBlockquote,
   MenuButtonBold,
@@ -14,32 +13,26 @@ import {
   MenuControlsContainer,
   MenuDivider,
   MenuSelectHeading,
-  ResizableImage,
   RichTextEditor,
   RichTextEditorRef
 } from 'mui-tiptap';
 import styled from '@emotion/styled';
-import Placeholder from '@tiptap/extension-placeholder';
 import {RefObject} from 'react';
 import {MenuButtonYoutube} from '@/components/packages/tiptap';
-import UnderlineExtension from '@tiptap/extension-underline';
-import YoutubeExtension from '@tiptap/extension-youtube';
 import {generateObjectKey, uploadFiles} from '@/common/helpers/uploads';
+import {LinkPreviewButton} from 'src/components/packages/tiptap/buttons/LinkPreviewButton';
+import {TIPTAP_TOPIC_EXTENSIONS} from '@/components/packages/tiptap/constants';
+import {MenuButtonAddImagesInTopic} from 'src/components/packages/tiptap/buttons/AddImagesInsideTopicButton';
 
-export const Editor = (props: {rteRef: RefObject<RichTextEditorRef>}) => {
+/**
+ * content is initial content only, it won't update if you update it
+ */
+export const Editor = (props: {rteRef: RefObject<RichTextEditorRef>; initialContent?: string}) => {
   return (
     <SRichTextEditor
       ref={props.rteRef}
-      extensions={[
-        StarterKit,
-        ResizableImage,
-        Placeholder.configure({
-          placeholder: 'Nhập nội dung bài viết...'
-        }),
-        UnderlineExtension,
-        YoutubeExtension
-      ]}
-      content="" // Initial content for the editor
+      extensions={TIPTAP_TOPIC_EXTENSIONS}
+      content={props.initialContent} // Initial content for the editor
       renderControls={() => (
         <MenuControlsContainer>
           <MenuSelectHeading />
@@ -65,6 +58,8 @@ export const Editor = (props: {rteRef: RefObject<RichTextEditorRef>}) => {
             }}
           />
           <MenuButtonYoutube />
+          <LinkPreviewButton />
+          <MenuButtonAddImagesInTopic />
         </MenuControlsContainer>
       )}
     />

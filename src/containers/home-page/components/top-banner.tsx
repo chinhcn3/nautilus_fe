@@ -6,12 +6,10 @@ import {Container} from "@mui/material";
 
 export function TopBanner() {
     return (
-        <Container maxWidth="xl" sx={{px: {xs: 2, md: 2}}}>
-            <Grid item xs={12} >
-                <BannerWrapper href="#">
-                    <Banner/>
-                </BannerWrapper>
-            </Grid>
+        <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
+            <BannerWrapper href="#">
+                <Banner/>
+            </BannerWrapper>
         </Container>
     );
 }
@@ -19,7 +17,8 @@ export function TopBanner() {
 const BannerWrapper = styled.a`
     display: block;
     width: 100%;
-
+    margin-top: 24px;
+    
     svg {
         width: 100%;
     }

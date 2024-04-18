@@ -1,34 +1,32 @@
 import {useHomePageContext} from '@/containers/home-page/home-provider';
 import {useTopicData} from '@/containers/home-page/hooks/use-topic-data';
-import {TopicAuthor} from '@/components/topic-author';
 import ViewMore from './../../../assets/ic-viewmore.svg';
 import Grid from "@mui/material/Grid";
 import styled from "@emotion/styled";
 import {Stack} from "@mui/material";
 import {CommonImage} from "@/containers/home-page/components/common-image";
-import {ArticleCategory} from "@/containers/home-page/components/article/article-category";
-import {ArticleTitle} from "@/containers/home-page/components/article/article-title";
-import {ArticleAuth} from "@/containers/home-page/components/article/article-auth";
+import {TopicCategory} from "@/containers/home-page/components/topic/topic-category";
+import {TopicTitle} from "@/containers/home-page/components/topic/topic-title";
+import {TopicAuthor} from "@/containers/home-page/components/topic/topic-author";
 
 export function TopReviewOutstanding() {
     const {home} = useHomePageContext();
-    const {getTopicCate} = useTopicData();
     const topReviewTopics = home.top_review_topics || [];
     return (
-        <Grid item xl={3}>
+        <Grid item xs={12} md={3}>
             <ReviewOutstandingRight className="review-outstanding-right">
                 <div className="popular-topic review-list">
                     <h4>Review nổi bật</h4>
-                    <Stack spacing={3}>
+                    <Stack spacing={4}>
                         {topReviewTopics?.slice(0, 3)?.map((topic) => {
                             return (
                                 <Stack className="border-bottom-1">
                                     <Stack direction='column' spacing={2}>
                                         <CommonImage src={topic?.thumbnail} alt="list image"/>
                                         <Stack spacing={1}>
-                                            <ArticleCategory topic={topic}/>
-                                            <ArticleTitle title={topic.title}/>
-                                            <ArticleAuth topic={topic} isDarkMode={false}/>
+                                            <TopicCategory topic={topic}/>
+                                            <TopicTitle title={topic.title}/>
+                                            <TopicAuthor topic={topic} isDarkMode={false}/>
                                         </Stack>
                                     </Stack>
                                 </Stack>

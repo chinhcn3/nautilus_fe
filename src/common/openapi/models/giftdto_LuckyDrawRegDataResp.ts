@@ -8,6 +8,5 @@ import type { giftdto_LuckyDrawRegResp } from './giftdto_LuckyDrawRegResp';
 export type giftdto_LuckyDrawRegDataResp = {
   my_registration?: boolean;
   registrations?: Array<giftdto_LuckyDrawRegResp>;
-  total?: number;
 };
 

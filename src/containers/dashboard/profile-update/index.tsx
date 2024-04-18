@@ -7,9 +7,10 @@ import {
 } from '@/containers/dashboard/profile-update/provider';
 import {GeneralInfo} from '@/containers/dashboard/profile-update/components/general-info';
 import {UserProfileNotes} from 'src/containers/dashboard/profile-update/components/profile-notes';
+import {UserUrlInfo} from '@/containers/dashboard/profile-update/components/url-info';
 import {Banner} from '@/containers/dashboard/profile-update/banner';
 import {themeColor} from '@/common/configs/theme';
-import {SubmitButton} from '@/components/mui/button';
+import {FilledButton} from '@/components/mui/button/FilledButton';
 
 export function ProfileUpdateContainer() {
   return (
@@ -18,13 +19,12 @@ export function ProfileUpdateContainer() {
 
       <Box>
         <SectionTitle>Thông tin chung</SectionTitle>
-
         <GeneralInfo />
 
-        <div className="gap" />
+        <SectionTitle>WEBSITE</SectionTitle>
+        <UserUrlInfo />
 
         <SectionTitle>Thông tin thêm</SectionTitle>
-
         <UserProfileNotes />
 
         <SaveButton />
@@ -45,11 +45,7 @@ function SaveButton() {
   const values = useSaveButton();
   return (
     values.mode === 'EDIT' && (
-      <SButton
-        variant={'contained'}
-        onClick={values.onClickSave}
-        size={'large'}
-        disabled={values.saving}>
+      <SButton onClick={values.onClickSave} size={'large'} disabled={values.saving}>
         Lưu
       </SButton>
     )
@@ -58,9 +54,9 @@ function SaveButton() {
 
 const Box = styled.div`
   background: ${themeColor('white')};
-  margin-top: 16px;
+  margin-top: 32px;
   border-radius: 12px;
-  padding: 32px;
+  padding: 16px 32px 32px 32px;
   display: flex;
   flex-direction: column;
 `;
@@ -68,11 +64,15 @@ const Box = styled.div`
 const SectionTitle = styled.h2`
   font-size: 16px;
   line-height: 20px;
-  color: ${themeColor('secondary')};
+  color: ${themeColor('primary')};
   text-transform: uppercase;
   font-weight: 700;
+  margin-top: 16px;
 `;
 
-const SButton = styled(SubmitButton)`
+const SButton = styled(FilledButton)`
   align-self: flex-end;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 32px;
 `;

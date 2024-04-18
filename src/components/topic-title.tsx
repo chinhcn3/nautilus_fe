@@ -14,20 +14,19 @@ export function TopicTitle(props: TopicTitleProps) {
   const {openTopic} = useOpenTopic();
 
   return (
-    <ArticleTitleContainer
+    <TopicTitleContainer
       $fontSize={props.fontSize}
       $lineHeight={props.lineHeight}
       $isDark={props.isDark}
       $top={props.top}
       $bottom={props.bottom}
       onClick={() => openTopic(props.topic)}>
-      {/*{props.topic?.title}*/}
-      Những chợ ứng dụng iOS bên thứ 3 sẽ không hoạt động khi người dùng ra khỏi châu Âu
-    </ArticleTitleContainer>
+      {props.topic?.title}
+    </TopicTitleContainer>
   );
 }
 
-const ArticleTitleContainer = styled.h1<{
+const TopicTitleContainer = styled.div<{
   $fontSize: number;
   $lineHeight: number;
   $isDark?: boolean;

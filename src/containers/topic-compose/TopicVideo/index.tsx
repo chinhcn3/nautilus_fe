@@ -1,5 +1,5 @@
 import {TopicImageWrapper} from '@/containers/topic-compose/TopicImage/TopicImageWrapper';
-import LinkOutlined from '@mui/icons-material/LinkOutlined';
+import CodeIcon from '@mui/icons-material/Code';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import {BootstrapInput} from '@/components/mui/input/BootstrapInput';
@@ -22,7 +22,7 @@ export function TopicVideo() {
 
   const onSubmit = useCallback(() => {
     const value = inputRef.current?.value;
-    
+
     if (!checkIsValueYoutubeVideoUrl(value)) {
       toast.error('Bạn cần nhập Youtube URL đúng');
       return;
@@ -43,7 +43,7 @@ export function TopicVideo() {
         label={'Video chủ đề'}
         buttonProps={{
           children: 'Nhúng link video',
-          startIcon: <LinkOutlined />,
+          startIcon: <CodeIcon />,
           onClick: toggleOpen
         }}
         coverImageSrc={videoImageUrl}
@@ -56,7 +56,12 @@ export function TopicVideo() {
               <BootstrapInput
                 label={'Link video'}
                 placeholder={'Nhập đường link'}
-                inputProps={{autoFocus: true, inputRef, defaultValue: controller.field.value}}
+                inputProps={{
+                  autoFocus: true,
+                  inputRef,
+                  defaultValue: controller.field.value,
+                  sx: {height: 56}
+                }}
               />
             </Grid>
             <Grid item xs={6}>
@@ -67,7 +72,7 @@ export function TopicVideo() {
             <Grid item xs={6}>
               <FilledButton
                 sx={{width: '100%', height: 48}}
-                startIcon={<LinkOutlined />}
+                startIcon={<CodeIcon />}
                 onClick={onSubmit}>
                 Nhúng
               </FilledButton>

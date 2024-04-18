@@ -10,7 +10,6 @@ import type { notificationdto_NotificationResp } from './notificationdto_Notific
 export type notificationdto_NotificationDataResp = {
   notifications?: Array<notificationdto_NotificationResp>;
   topics?: Record<string, contentdto_TopicResp>;
-  total?: number;
   users?: Record<string, contentdto_UserResp>;
 };
 

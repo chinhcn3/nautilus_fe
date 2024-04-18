@@ -2,10 +2,12 @@ export const paths = [
   "/[cat-slug]",
   "/auth",
   "/compose",
+  "/content/[slug]",
   "/dashboard/admin/comments",
   "/dashboard/admin/reported-comments",
   "/dashboard/admin/topics",
   "/dashboard/admin/users",
+  "/dashboard/admin/violations",
   "/dashboard/comments",
   "/dashboard/following-users",
   "/dashboard",
@@ -13,7 +15,6 @@ export const paths = [
   "/dashboard/saved-topics",
   "/dashboard/settings",
   "/dashboard/topics",
-  "/detail/[slug]",
   ""
 ] as const;
   
@@ -23,10 +24,12 @@ export enum EPath {
   "/[cat-slug]" = "/[cat-slug]",
   "/auth" = "/auth",
   "/compose" = "/compose",
+  "/content/[slug]" = "/content/[slug]",
   "/dashboard/admin/comments" = "/dashboard/admin/comments",
   "/dashboard/admin/reported-comments" = "/dashboard/admin/reported-comments",
   "/dashboard/admin/topics" = "/dashboard/admin/topics",
   "/dashboard/admin/users" = "/dashboard/admin/users",
+  "/dashboard/admin/violations" = "/dashboard/admin/violations",
   "/dashboard/comments" = "/dashboard/comments",
   "/dashboard/following-users" = "/dashboard/following-users",
   "/dashboard" = "/dashboard",
@@ -34,6 +37,5 @@ export enum EPath {
   "/dashboard/saved-topics" = "/dashboard/saved-topics",
   "/dashboard/settings" = "/dashboard/settings",
   "/dashboard/topics" = "/dashboard/topics",
-  "/detail/[slug]" = "/detail/[slug]",
   "" = ""
 }

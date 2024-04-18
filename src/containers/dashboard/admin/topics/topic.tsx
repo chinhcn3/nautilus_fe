@@ -10,13 +10,14 @@ import {useAdminTopicsSelector} from '@/containers/dashboard/admin/topics/provid
 import {TTopicStatus} from '@/common/constants/topic-status';
 import toast from 'react-hot-toast';
 import {getErrorMessage} from '@/common/helpers/axios/error';
+import {getTopicEditPath} from '@/common/helpers/router';
 
 export function Topic({
-  topic,
-}: {
+                        topic
+                      }: {
   topic: admintopicdto_TopicResp;
 }) {
-  const user = useAdminTopicsSelector(state => state.getUser(topic.user_id))
+  const user = useAdminTopicsSelector(state => state.getUser(topic.user_id));
 
   return (
     <CommonTopic
@@ -25,8 +26,8 @@ export function Topic({
       openInNewTab={true}
       actions={
         <ActionsWrapper>
-          <RejectButton topic={topic}/>
-          <SmallButton color={'warning'}>Update</SmallButton>
+          <RejectButton topic={topic} />
+          <SmallButton color={'warning'} href={getTopicEditPath({id: topic.id!})}>Update</SmallButton>
           <ApproveButton topic={topic} />
         </ActionsWrapper>
       }
@@ -35,7 +36,7 @@ export function Topic({
 }
 
 function RejectButton({topic}: {topic: admintopicdto_TopicResp}) {
-  const refresh = useAdminTopicsSelector(state => state.fetchTopicsState.retry)
+  const refresh = useAdminTopicsSelector(state => state.fetchTopicsState.retry);
 
   const [{loading}, reject] = useAsyncFn(async () => {
     const adminTopicsService = new AdminTopicsService(httpClient);
@@ -46,12 +47,12 @@ function RejectButton({topic}: {topic: admintopicdto_TopicResp}) {
     await toast.promise(promise, {
       loading: 'Đang cập nhật trạng thái...',
       success: 'Cập nhật thành công',
-      error: getErrorMessage,
-    }).finally(refresh)
+      error: getErrorMessage
+    }).finally(refresh);
 
   }, [topic.id, refresh]);
 
-  return <SmallButton loading={loading} disabled={loading} color={'error'} onClick={reject}>Reject</SmallButton>
+  return <SmallButton loading={loading} disabled={loading} color={'error'} onClick={reject}>Reject</SmallButton>;
 }
 
 function ApproveButton({topic}: {topic: admintopicdto_TopicResp}) {
@@ -62,12 +63,12 @@ function ApproveButton({topic}: {topic: admintopicdto_TopicResp}) {
       <SmallButton color={'success'} onClick={toggle}>
         Approve
       </SmallButton>
-      <UpdateTopicModal topic={topic} modalProps={{open: open, onClose: toggle}} onCloseRequest={toggle}/>
+      <UpdateTopicModal topic={topic} modalProps={{open: open, onClose: toggle}} onCloseRequest={toggle} />
     </>
   );
 }
 
 const ActionsWrapper = styled.div`
-  display: flex;
-  gap: 8px;
+    display: flex;
+    gap: 8px;
 `;

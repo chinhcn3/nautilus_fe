@@ -1,16 +1,14 @@
 import {contentdto_TopicResp} from '@/common/openapi';
 import {useTopicData} from '@/containers/home-page/hooks/use-topic-data';
-import {TopicAuthor} from '@/components/topic-author';
-import {SectionContainer} from "@/containers/home-page/components/section-container";
 import Grid from '@mui/material/Grid';
-import styled from "@emotion/styled";
 import {Stack} from "@mui/material";
 import {themeColor} from "@/common/configs/theme";
-import {ArticleCategory} from "@/containers/home-page/components/article/article-category";
-import {ArticleDescription} from "@/containers/home-page/components/article/article-description";
-import {ArticleTitle} from "@/containers/home-page/components/article/article-title";
+import styled from "@emotion/styled";
+import {TopicCategory} from "@/containers/home-page/components/topic/topic-category";
+import {TopicDescription} from "@/containers/home-page/components/topic/topic-description";
+import {TopicTitle} from "@/containers/home-page/components/topic/topic-title";
 import {CommonImage} from "@/containers/home-page/components/common-image";
-import {ArticleAuth} from "@/containers/home-page/components/article/article-auth";
+import {TopicAuthor} from "@/containers/home-page/components/topic/topic-author";
 
 export function BigTopTopic({topic}: { topic: contentdto_TopicResp }) {
     const {getTopicCate} = useTopicData();
@@ -23,11 +21,11 @@ export function BigTopTopic({topic}: { topic: contentdto_TopicResp }) {
                 <Grid className="news-card-body" item xs={12} md={6}>
                     <Stack spacing={{xs:1, md: 'auto'}}>
                         <Stack spacing={{xs: 1, md: 2}}>
-                            <ArticleCategory color="white" topic={topic}/>
-                            <ArticleTitle color="white" classItem="bigTitle" style={{'fontSize': 32}}  title={topic.title} />
-                            <ArticleDescription style={{'color': 'white'}} description={topic.long_title} />
+                            <TopicCategory color="white" topic={topic}/>
+                            <TopicTitle color="white" classItem="bigTitle" style={{'fontSize': 32}} title={topic.title} />
+                            <TopicDescription style={{'color': 'white'}} description={topic.long_title} />
                         </Stack>
-                        <ArticleAuth topic={topic} isDarkMode={true}/>
+                        <TopicAuthor topic={topic} isDarkMode={true}/>
                     </Stack>
                 </Grid>
             </Grid>

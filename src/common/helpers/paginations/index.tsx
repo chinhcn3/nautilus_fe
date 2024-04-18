@@ -2,7 +2,7 @@ import {NumberParam, useQueryParam, withDefault} from 'use-query-params';
 import {DEFAULT_PAGE_SIZE} from '@/common/constants';
 import {useMemo} from 'react';
 
-export const pageNumberParamName = 'pageNumber';
+export const pageNumberParamName = 'page';
 export const usePageNumber = () => useQueryParam(pageNumberParamName, withDefault(NumberParam, 1));
 
 export function usePageFilterObject(options?: {pageSize?: number}) {

@@ -30,7 +30,7 @@ export function Settings() {
               );
             })}
 
-            <Grid key={'save'} item xs={12}>
+            <Grid key={'save'} item container xs={12} justifyContent="flex-end">
               <SaveButton />
             </Grid>
           </Grid>

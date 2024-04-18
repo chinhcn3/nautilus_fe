@@ -12,4 +12,4 @@ export default async function Home() {
   }
 }
 
-export const revalidate = 60;
+export const revalidate = 180; // 3 minutes

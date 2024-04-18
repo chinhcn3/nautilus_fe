@@ -10,7 +10,6 @@ import type { userdto_SavedTopicResp } from './userdto_SavedTopicResp';
 export type userdto_SavedTopicDataResp = {
   categories?: Record<string, contentdto_CategoryResp>;
   topics?: Array<userdto_SavedTopicResp>;
-  total?: number;
   users?: Record<string, contentdto_UserResp>;
 };
 

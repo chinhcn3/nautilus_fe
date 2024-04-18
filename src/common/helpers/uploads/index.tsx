@@ -11,6 +11,14 @@ const slugify = (str: string) =>
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+function splitFilename(filename: string) {
+  const lastDot = filename.lastIndexOf('.');
+  if (lastDot === -1) {
+    return {name: filename, extension: ''};
+  }
+  return {name: filename.slice(0, lastDot), extension: filename.slice(lastDot + 1)};
+}
+
 export function generateObjectKey(
   fileName: string,
   options?: {
@@ -19,8 +27,11 @@ export function generateObjectKey(
 ) {
   const {slugify: shouldSlugify = true} = options || {};
   const dateFormat = dayjs().format('YYYYMMDD HH:mm:ss');
-  const computedFileName = shouldSlugify ? slugify(fileName) : fileName;
-  return `[${dateFormat}] ${computedFileName}`;
+
+  const {name, extension} = splitFilename(fileName);
+
+  const computedFileName = shouldSlugify ? slugify(name) : name;
+  return `[${dateFormat}] ${computedFileName}.${extension}`;
 }
 
 export async function uploadFile(

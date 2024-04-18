@@ -24,7 +24,7 @@ export function ArticleAuthDatail({topicData, isDarkMode}: { topicData: topicdto
                         <AvatarImg src={user.avatar || "https://photo2.tinhte.vn/data/attachment-files/2023/11/8175013_yamaha-mt-09-sp-2024-29-cover.jpg"}/>
                     </Link>
                 </Avatar>
-                <Stack spacing={1} alignItems={{xs: 'flex-start', lg: 'center'}} direction={{xs:'column', lg: 'row'}}>
+                <Stack spacing={1} alignItems={{xs: 'flex-start', sm: 'center'}} direction={{xs:'column', sm: 'row'}}>
                     <Name href="">{user.nick_name}</Name>
                     <Follow><PlusIcon/>Theo dõi</Follow>
                 </Stack>
@@ -37,7 +37,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     font-family: 'Inter', sans-serif;
-    margin-top: auto;
     
     .news-card-comment {
         display: flex;
@@ -54,7 +53,7 @@ const Wrapper = styled.div`
         
     }
     span {
-        @media screen and (max-width: 821px) {
+        @media screen and (max-width: 600px) {
             font-size: 12px;
             line-height: 15px;
         }
@@ -71,17 +70,6 @@ const AuthorWrapper = styled.div`
     
     @media screen and (max-width: 821px) {
         padding-right: 17px;
-    }
-`;
-
-const NewsCardComment = styled.div`
-    @media screen and (max-width: 821px) {
-        svg {
-           transform: scale(0.6);
-        }
-        span {
-            font-size: 12px;
-        }
     }
 `;
 
@@ -110,4 +98,9 @@ const Follow = styled.span`
     height: 28px;
     line-height: 28px;
     cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+        height: 26px;
+        line-height: 26px !important;
+    }
 `

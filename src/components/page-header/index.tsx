@@ -17,10 +17,8 @@ export function PageHeader() {
         <HeaderLayout>
             <Container maxWidth={false}>
                 <Stack justifyContent="space-between" alignItems="center" direction="row" spacing={2}>
-                    <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 2}}>
-                        <HeaderLogo href="/">
-                            <Logo/>
-                        </HeaderLogo>
+                    <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 0}}>
+                        <HeaderLogo href="/"><Logo/></HeaderLogo>
                         <HeaderMenu/>
                     </Stack>
                     <Stack alignItems="center" direction="row" spacing={{md: 2, xs: 1}}>
@@ -49,16 +47,21 @@ export function PageHeader() {
 }
 
 const HeaderLogo = styled(Link)`
-    max-width: 190px;
-    flex: 1 0 190px;
+    max-width: 100px;
+    flex: 1 0 100px;
     
     svg {
         width: 100%;
     }
     
-    @media screen and (max-width: 600px) {
+    @media screen and (min-width: 400px) {
         max-width: 116px;
         flex: 1 0 116px;
+    }
+    
+    @media screen and (min-width: 600px) {
+        max-width: 190px;
+        flex: 1 0 190px;
     }
 `
 const AvatarImg = styled.img`
@@ -69,13 +72,30 @@ const AvatarImg = styled.img`
 
 const WriteButton = styled(Link)`
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    padding: 0 24px;
+    font-size: 12px;
+    padding: 0 16px;
     color: ${themeColor("white")};
     background-color: ${themeColor('primary')};
     line-height: 40px;
     border-radius: 90px;
     font-weight: 500;
+    
+    @media screen and (min-width: 390px) {
+        padding: 0 24px;
+    }
+    
+    @media screen and (min-width: 400px) {
+        font-size: 14px;
+        padding: 0 16px;
+    }
+    
+    @media screen and (min-width: 430px) {
+        padding: 0 24px;
+    }
+    
+    @media screen and (min-width: 600px) {
+        font-size: 16px;
+    }
 `
 
 const HeaderLayout = styled.header`
@@ -111,12 +131,12 @@ const HeaderLayout = styled.header`
                 background-color: transparent;
             }
 
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 900px) {
                 padding: 0;
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 900px) {
             padding: 8px;
             background-color: ${themeColor('lightBackground')};
             border-color: transparent;

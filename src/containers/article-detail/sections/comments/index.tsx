@@ -11,7 +11,6 @@ import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import {Button, IconButton, InputBase, Paper} from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {ReadMore} from "@mui/icons-material";
 export function Comments() {
     return (
         <SectionDetail>
@@ -30,7 +29,7 @@ export function Comments() {
                     </Stack>
                     <Paper elevation={0} component="form" className="comment-form">
                         <InputBase className="input-comment" placeholder="Bạn nghĩa gì về chủ đề này ?"/>
-                        <Stack direction="row" alignItems="center" spacing={2}>
+                        <Stack justifyContent={{xs: 'end'}} direction="row" alignItems="center" spacing={2}>
                             <IconButton className="button-edit" type="button" aria-label="edit">
                                 <EditCommentIcon/>
                             </IconButton>
@@ -57,7 +56,7 @@ export function Comments() {
                                 </IconButton>
                             </ButtonMore>
                         </Stack>
-                        <GroupComment spacing={3}>
+                        <GroupComment spacing={{xs: 2, md:3}}>
                             <CommentContent spacing={2}>
                                 <span>Điều này là một tin tức khá đáng buồn với những người dùng iOS ở châu Âu. Tôi đã quen dùng những chợ ứng dụng bên thứ 3 để tải các ứng dụng không có sẵn trên App Store chính thức. Việc này giờ đây sẽ gây khó khăn cho tôi trong việc truy cập các ứng dụng mà tôi cần. Hy vọng có giải pháp thay thế hoặc sự thay đổi trong tương lai để người dùng có thể tiếp tục trải nghiệm đầy đủ các tính năng của iOS.</span>
                                 <Stack alignItems="center" direction="row" spacing={5}>
@@ -65,7 +64,7 @@ export function Comments() {
                                     <Button size="small" variant='text'>Trả lời</Button>
                                 </Stack>
                             </CommentContent>
-                            <CommentChild alignItems={"flex-start"} spacing={3}>
+                            <CommentChild alignItems={"flex-start"} spacing={{xs: 2, md:3}}>
                                 <ReadMoreOld variant="text" startIcon={<ArrowBendDownRightIcon/>}>Xem thêm trả lời cũ hơn</ReadMoreOld>
                                 <Stack spacing={2}>
                                     <Stack justifyContent="space-between" direction="row">
@@ -108,7 +107,7 @@ const SectionDetail = styled.div`
     padding-bottom: 40px;
     position: relative;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
         margin-bottom: 32px;
         padding-bottom: 32px;
     }
@@ -118,13 +117,26 @@ const SectionDetail = styled.div`
         display: flex;
         padding: 16px;
         border: 1px solid ${themeColor('border')};
-        border-radius: 8px;
+        border-radius: 4px;
         align-items: center;
         justify-content: space-between;
         
+        @media screen and (max-width: 600px) {
+            flex-direction: column;
+            align-items: initial;
+            height: 120px;
+            justify-content: initial;
+        }
+        
         .input-comment {
-            flex: 1 0 calc(100% - 200px);
+            flex: 0 1 calc(100% - 200px);
             max-width: calc(100% - 200px);
+            height: 100%;
+            
+            @media screen and (max-width: 600px) {
+                flex: 0 1 100%;
+                max-width: 100%;
+            }
         }
         
         .button-submit {
@@ -148,7 +160,6 @@ const SectionDetail = styled.div`
             ::placeholder {
                 color: ${themeColor('subtitle')};
             }
-            
             
         }
 
@@ -233,6 +244,7 @@ const Regulations = styled(Link)`
     line-height: 1;
     align-items: center;
     border-radius: 4px;
+    transform: translateX(-16px);
 `
 const Time = styled.span`
     font-weight: 400;
@@ -250,6 +262,11 @@ const CommentContent = styled(Stack)`
     border: 1px solid ${themeColor('border')};
     border-radius: 4px;
     background-color: ${themeColor('f9')};
+    
+    //@media screen and (max-width: 900px) {
+    //    font-size: 14px;
+    //}
+    
     
     button {
         font-family: 'Inter', sans-serif;
@@ -278,4 +295,8 @@ const ReadMoreOld = styled(Button)`
 `
 const CommentChild = styled(Stack)`
     padding-left: 48px;
+    
+    @media screen and (max-width: 900px) {
+        padding-left: 24px;
+    }
 `

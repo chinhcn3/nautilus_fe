@@ -14,7 +14,7 @@ export function LuckyTopicsSection() {
   return (
     <Lucky className="lucky">
       <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
-        <SectionHeading classItem="grey" title="Đi tìm may mắn" />
+        <SectionHeading title="Đi tìm may mắn" />
         <Grid container spacing={3}>
           <BigLuckyGift topic={luckyGiftTopics?.[0]} />
           <Grid item xs={12} md={4}>
@@ -50,7 +50,6 @@ const LuckyItem = styled.div`
 
 const Lucky = styled.div`
   padding: 40px 0 0;
-  background-color: ${themeColor('white2')};
   margin-top: 0;
 
   @media screen and (max-width: 821px) {
@@ -143,12 +142,12 @@ const Lucky = styled.div`
     margin-left: 16px;
 
     @media screen and (max-width: 821px) {
-      color: #4b40d4;
+      color: ${themeColor('primary')};
     }
   }
 
   .lucky-right {
-    background-color: #fff;
+    background-color: ${themeColor('grey2')};
     border-radius: 8px;
     padding: 24px;
     overflow: hidden;

@@ -18,7 +18,7 @@ export function LastReviewTopicsSection() {
   return (
     <ReviewLatest className="review-latest">
       <Container maxWidth="xl" sx={{pl: {xs: 1, md: 2}, pr: {xs: 0, md: 2}}}>
-        <SectionHeading classItem="grey" title="Review mới nhất" />
+        <SectionHeading title="Review mới nhất" />
         <Swiper
           spaceBetween={24}
           slidesPerView={3}
@@ -57,6 +57,5 @@ export function LastReviewTopicsSection() {
 
 const ReviewLatest = styled.div`
   padding: 40px 0 50px;
-  background: ${themeColor('white2')};
   margin-top: 0;
 `;

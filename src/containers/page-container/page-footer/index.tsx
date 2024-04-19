@@ -81,7 +81,6 @@ const Footer = styled.footer`
     background-color: ${themeColor('primary')};
     color: ${themeColor('white')};
     padding: 40px 0;
-    margin-top: 50px;
 
     .container {
         width: 100%;

@@ -6,21 +6,23 @@ import {ComponentPreviews, useInitial} from '@/dev';
 import {DevSupport} from '@react-buddy/ide-toolbox-next';
 import {PageHeader} from './page-header';
 import {PageFooter} from './page-footer';
-import Container from '@mui/material/Container';
+import {themeColor} from "@/common/configs/theme";
 
 export function PageContainer(props: PropsWithChildren<object>) {
   return (
     <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
-      <>
+      <ContainerFuild>
         <PageHeader />
-        <PageContent>
-          <Container>{props.children}</Container>
-        </PageContent>
+        <PageContent>{props.children}</PageContent>
         <PageFooter />
-      </>
+      </ContainerFuild>
     </DevSupport>
   );
 }
+
+export const ContainerFuild = styled.div`
+    background-color: ${themeColor('white2')};
+`
 
 export const PageContent = styled.div`
   width: 100%;

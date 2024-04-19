@@ -30,7 +30,7 @@ export function TopTopicsSection() {
 
 const Outstanding = styled.div`
     background-color: ${themeColor('grey2')};
-    padding: 40px 40px;
+    padding: 40px 0 40px;
     margin: 16px 0 0;
     
     @media screen and (max-width: 821px) {

@@ -46,10 +46,6 @@ const NavHeader = styled.div`
     align-items: center;
     border: none;
     gap: 32px;
-    
-    @media screen and (max-width: 821px) {
-        display: none;
-    }
 `;
 
 const ListItem = styled(Menu)`

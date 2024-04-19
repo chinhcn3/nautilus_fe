@@ -33,6 +33,4 @@ export function HomeContainer(_props: {home: contentdto_GetHomeContentResp}) {
   );
 }
 
-const HomeWrapper = styled.div`
-  margin: 0 -16px;
-`;
+const HomeWrapper = styled.div``;

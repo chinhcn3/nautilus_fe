@@ -6,73 +6,137 @@ import {themeColor} from '@/common/configs/theme';
 import {TPath} from '@/common/path';
 import {Container, IconButton, InputBase, Paper, Stack} from "@mui/material";
 import Link from "next/link";
-import {NotificationsIcon} from '@/containers/page-container/page-header/icons';
+import {NotificationsIcon, CaretDownIcon, HamburgerMenu} from "@/containers/page-container/page-header/icons";
 import {HeaderMenu} from '@/containers/page-container/page-header/header-menu';
 import {ProfileButton} from '@/containers/page-container/page-header/profile-button';
 import {LoginButton} from '@/containers/page-container/page-header/login-button';
+import {createTheme} from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 export function PageHeader() {
-  const session = useSession();
-  return (
-    <HeaderLayout>
-      <Container maxWidth={false}>
-        <Stack justifyContent="space-between" alignItems="center" direction="row" spacing={2}>
-          <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 2}}>
-            <HeaderLogo href="/">
-              <Logo/>
-            </HeaderLogo>
-            <HeaderMenu/>
-          </Stack>
-          <Stack alignItems="center" direction="row" spacing={{md: 2, xs: 1}}>
-            <WriteButton href={'/compose' satisfies TPath}>Viết và nhận quà</WriteButton>
-            <Paper elevation={0} className="search-box" component="form" sx={{display: {xs: 'none', md: 'inline-flex'}}}>
-              <InputBase sx={{display: {xs: 'none', md: 'inline-flex'}}}
-                         placeholder="Tìm sản phẩm công nghệ, bài viết, review..."
-              />
-              <IconButton type="button" aria-label="search">
-                <SearchIcon />
-              </IconButton>
-            </Paper>
-            <IconButton sx={{p: 1, backgroundColor: '#f0f0f0', display: {xs: 'none', md: 'inline-flex'}}}>
-              <NotificationsIcon />
+    const session = useSession();
+    const theme = createTheme({
+        breakpoints: {
+            values: {
+                xs: 0,
+                sm: 600,
+                md: 900,
+                lg: 1200,
+                xl: 1536,
+            },
+        },
+    })
+    const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
+    const matchUpSm = useMediaQuery(theme.breakpoints.up('sm'));
+    const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
+    const matchUpLg = useMediaQuery(theme.breakpoints.up('lg'));
+    var IconButtonComponent;
+    if(matchDownMd) {
+        IconButtonComponent =
+            <IconButton sx={{p: 1, backgroundColor: '#f0f0f0'}}>
+                <HamburgerMenu/>
             </IconButton>
-            <div>
-              {session.status === 'authenticated' ? (
-                <ProfileButton user={session.data.user!} />
-              ) : (
-                <LoginButton />
-              )}
-            </div>
+    }
 
-          </Stack>
-        </Stack>
-      </Container>
-    </HeaderLayout>
-  );
+    return (
+        <HeaderLayout>
+            <Container maxWidth={false} sx={{px: {xs: 1, md: 2}}}>
+                <Stack justifyContent="space-between" alignItems="center" direction="row" spacing={2}>
+                    <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 1}}>
+                        {IconButtonComponent}
+                        <HeaderLogo href="/"><Logo/></HeaderLogo>
+                        {matchUpLg && <HeaderMenu/>}
+                    </Stack>
+                    <Stack alignItems="center" direction="row" spacing={{md: 2, xs: 1}}>
+                        <WriteButton href={'/compose' satisfies TPath}>Viết và nhận quà</WriteButton>
+                        {matchUpMd &&
+                            <Paper elevation={0} className="search-box" component="form">
+                                <InputBase sx={{display: {xs: 'none', md: 'inline-flex'}}}
+                                           placeholder="Tìm sản phẩm công nghệ, bài viết, review..."
+                                />
+                                <IconButton type="button" aria-label="search">
+                                    <SearchIcon/>
+                                </IconButton>
+                            </Paper>
+                        }
+                        {matchUpSm &&
+                            <IconButton sx={{p: 1, backgroundColor: '#f0f0f0'}}>
+                                <NotificationsIcon/>
+                            </IconButton>
+                        }
+                        <div>
+                            {session.status === 'authenticated' ? (
+                                <ProfileButton user={session.data.user!}/>
+                            ) : (
+                                <LoginButton/>
+                            )}
+                        </div>
+                    </Stack>
+                </Stack>
+            </Container>
+        </HeaderLayout>
+    );
 }
 
 const HeaderLogo = styled(Link)`
-    max-width: 190px;
-    flex: 1 0 190px;
+    max-width: 100px;
+    flex: 1 0 100px;
 
     svg {
         width: 100%;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (min-width: 390px) {
         max-width: 116px;
         flex: 1 0 116px;
     }
+
+    @media screen and (min-width: 414px) {
+        max-width: 125px;
+        flex: 1 0 125px;
+    }
+
+    @media screen and (min-width: 430px) {
+        max-width: 142px;
+        flex: 1 0 142px;
+    }
+
+    @media screen and (min-width: 600px) {
+        max-width: 190px;
+        flex: 1 0 190px;
+    }
+`
+const AvatarImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 `
 
 const WriteButton = styled(Link)`
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    padding: 0 24px;
+    font-size: 12px;
+    padding: 0 16px;
     color: ${themeColor("white")};
     background-color: ${themeColor('primary')};
     line-height: 40px;
     border-radius: 90px;
     font-weight: 500;
+
+    @media screen and (min-width: 375px) {
+        padding: 0 24px;
+    }
+
+    @media screen and (min-width: 390px) {
+        font-size: 14px;
+        padding: 0 16px;
+    }
+
+    @media screen and (min-width: 414px) {
+        padding: 0 24px;
+    }
+
+    @media screen and (min-width: 600px) {
+        font-size: 16px;
+    }
 `
 
 const HeaderLayout = styled.header`
@@ -108,12 +172,12 @@ const HeaderLayout = styled.header`
                 background-color: transparent;
             }
 
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 900px) {
                 padding: 0;
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 900px) {
             padding: 8px;
             background-color: ${themeColor('lightBackground')};
             border-color: transparent;
@@ -123,7 +187,7 @@ const HeaderLayout = styled.header`
     .header-avatar {
         padding: 0;
 
-        &>svg {
+        & > svg {
             margin-left: 8px;
 
             @media screen and (max-width: 600px) {

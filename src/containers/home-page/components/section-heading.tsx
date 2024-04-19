@@ -36,7 +36,7 @@ const Heading = styled.div`
         font-size: 40px;
         position: relative;
         z-index: 2;
-        background-color: white;
+        background-color: ${themeColor('white2')};
         padding-right: 24px;
         flex-shrink: 0;
     }
@@ -45,7 +45,7 @@ const Heading = styled.div`
         display: flex;
         align-items: center;
         color: ${themeColor('primary')};
-        background-color: white;
+        background-color: ${themeColor('white2')};
         position: relative;
         z-index: 2;
         padding-left: 24px;
@@ -56,12 +56,6 @@ const Heading = styled.div`
              margin-right: 8px;
              font-weight: 500;
          }
-    }
-    
-    &.grey {
-        h2, .view-more {
-            background-color: ${themeColor('white2')}
-        }
     }
     
     &.grey2 {

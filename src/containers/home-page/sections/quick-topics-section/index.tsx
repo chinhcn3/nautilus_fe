@@ -15,7 +15,7 @@ export function QuickTopicsSection() {
   return (
     <Funs className="funs">
       <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
-        <SectionHeading classItem="grey" title="Chia sẻ nhanh" />
+        <SectionHeading title="Chia sẻ nhanh" />
         <Grid container spacing={{md: 3, xs: 1}}>
           <Grid item md={1.5} xs={3.62}>
             <a href="#" className="carousel-item first">
@@ -75,7 +75,6 @@ export function QuickTopicsSection() {
 
 const Funs = styled.div`
   padding: 40px 0 0;
-  background-color: ${themeColor('white2')};
   margin-top: 0;
 
   @media screen and (max-width: 821px) {

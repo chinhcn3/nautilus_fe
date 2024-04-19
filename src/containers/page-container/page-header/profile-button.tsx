@@ -16,7 +16,7 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
 
-export function ProfileButton(props: {user: userdto_UserResp}) {
+export function ProfileButton(props: {user?: userdto_UserResp}) {
   const button = useRef<HTMLDivElement>(null);
 
   const ThemeSetting = () => {

@@ -16,7 +16,7 @@ export function DealTopicsSection() {
   return (
     <Sales>
       <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
-        <SectionHeading classItem="grey" title="Giá tốt mỗi ngày" />
+        <SectionHeading title="Giá tốt mỗi ngày" />
         <Swiper
           spaceBetween={60}
           slidesPerView={4}
@@ -56,8 +56,7 @@ export function DealTopicsSection() {
 }
 
 const Sales = styled.div`
-  padding: 40px 0 0;
-  background: ${themeColor('white2')};
+  padding: 40px 0 60px;
   margin-top: 0;
   min-width: 45px;
 `;

@@ -15,10 +15,10 @@ const Title = styled.span<{ $color?: string }>`
     line-height: 150%;
     color: ${props =>props.$color};
     display: block;
-    
+
     @media screen and (max-width: 821px) {
         font-size: 16px;
-        
+
         &.bigTitle {
             font-size: 20px !important;
         }

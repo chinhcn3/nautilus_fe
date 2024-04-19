@@ -60,10 +60,11 @@ export const LuckyDrawRegistration = Object.assign(_LuckyDrawRegistration, {
           ? editor.commands.insertContentAt(pos, {
               type: LUCKY_DRAW_REGISTRATION_NAME
             })
-          : editor.commands.insertContent({
+          : // Insert to the end of the topic
+            editor.commands.insertContentAt(editor.$doc.to - 1, {
               type: LUCKY_DRAW_REGISTRATION_NAME
             });
-      });
+      }, 0);
     }, [editor, isContentReady]);
   }
 });

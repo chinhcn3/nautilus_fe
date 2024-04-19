@@ -5,7 +5,6 @@ export function useTopicData() {
   const {home} = useHomePageContext();
   const categories = home?.categories || {};
   const users = home?.users || {};
-
   const getTopicCate = (topic: contentdto_TopicResp): any => {
     return categories?.[topic.category_id || '']?.name || '';
   };

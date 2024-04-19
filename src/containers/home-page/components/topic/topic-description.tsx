@@ -14,7 +14,7 @@ const Description = styled.span`
 
     @media screen and (max-width: 821px) {
         font-size: 16px;
-        
+
         &.d-none {
             display: none;
         }

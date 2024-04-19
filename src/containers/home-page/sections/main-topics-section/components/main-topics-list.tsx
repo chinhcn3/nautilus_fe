@@ -5,6 +5,7 @@ import {TopicCategory} from '@/containers/home-page/components/topic/topic-categ
 import {TopicTitle} from '@/containers/home-page/components/topic/topic-title';
 import {Stack} from '@mui/material';
 import {TopicAuthor} from '@/containers/home-page/components/topic/topic-author';
+import { TopicWrapper } from '@/containers/home-page/components/topic/topic-wrapper';
 
 export function MainTopicsList({topics}: { topics: Array<contentdto_TopicResp> }) {
     return (
@@ -12,6 +13,7 @@ export function MainTopicsList({topics}: { topics: Array<contentdto_TopicResp> }
             {topics.slice(1, 5).map((topic: contentdto_TopicResp) => {
                 return (
                     <Grid item xs={12} md={6} key={topic.id}>
+                        <TopicWrapper topic={topic}>
                         <Stack spacing={{xs: 1, md: 2}} direction={{xs: 'row', md: 'column'}}>
                             <CommonImage classItem="xs-horizontal" src={topic.thumbnail} alt="list image"/>
                             <Stack spacing={1}>
@@ -20,6 +22,7 @@ export function MainTopicsList({topics}: { topics: Array<contentdto_TopicResp> }
                                 <TopicAuthor topic={topic} isDarkMode={false}/>
                             </Stack>
                         </Stack>
+                        </TopicWrapper>
                     </Grid>
                 );
             })}

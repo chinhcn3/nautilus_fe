@@ -8,7 +8,7 @@ export function RelatedTopics() {
     return (
         <SectionDetail className="doted">
             <h3>Chủ đề liên quan</h3>
-            <Stack direction="row" spacing={2}>
+            <Stack flexWrap="wrap" useFlexGap direction="row" spacing={2}>
                 <Hastag href=''>#phone</Hastag>
                 <Hastag href=''>#IOS</Hastag>
                 <Hastag href=''>#app</Hastag>
@@ -25,13 +25,22 @@ const SectionDetail = styled.div`
     font-family: 'Inter', sans-serif;
     padding-bottom: 40px;
     position: relative;
-
+    
+    @media screen and (max-width: 600px) {
+        margin-bottom: 32px;
+        padding-bottom: 32px;
+    }
 
     h3 {
         font-weight: 600;
         font-size: 20px;
         line-height: 150%;
         margin-bottom: 24px;
+
+        @media screen and (max-width: 600px) {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
     }
 
     a.title {

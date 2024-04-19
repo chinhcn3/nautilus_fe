@@ -2,7 +2,6 @@
 
 import {MainTopicsSection} from 'src/containers/home-page/sections/main-topics-section';
 import {contentdto_GetHomeContentResp} from '@/common/openapi';
-import {PageContent} from '@/containers/page-container';
 import {HomePageProvider} from '@/containers/home-page/home-provider';
 import {TopBanner} from '@/containers/home-page/components/top-banner';
 import {TopTopicsSection} from '@/containers/home-page/sections/top-topics-section';
@@ -12,11 +11,13 @@ import {MainTopicsRemainSection} from 'src/containers/home-page/sections/main-to
 import {LastReviewTopicsSection} from 'src/containers/home-page/sections/last-review-topics-section';
 import {TopVideoSection} from 'src/containers/home-page/sections/top-video-topics-section';
 import {VideoRemainSection} from '@/containers/home-page/sections/video-remain-section';
+import styled from '@emotion/styled';
+import {DealTopicsSection} from '@/containers/home-page/sections/deal-topics-section';
 
 export function HomeContainer(_props: {home: contentdto_GetHomeContentResp}) {
   return (
     <HomePageProvider home={_props.home.data || {}}>
-      <PageContent>
+      <HomeWrapper>
         <TopBanner />
         <MainTopicsSection />
         <TopTopicsSection />
@@ -26,7 +27,12 @@ export function HomeContainer(_props: {home: contentdto_GetHomeContentResp}) {
         <LastReviewTopicsSection />
         <TopVideoSection />
         <VideoRemainSection />
-      </PageContent>
+        <DealTopicsSection />
+      </HomeWrapper>
     </HomePageProvider>
   );
 }
+
+const HomeWrapper = styled.div`
+  margin: 0 -16px;
+`;

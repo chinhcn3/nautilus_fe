@@ -5,13 +5,7 @@ import CommentIcon from './../../../../../src/components/assets/ic-comment.svg';
 import {useTopicData} from '@/containers/home-page/hooks/use-topic-data';
 import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
-export function TopicAuthor({
-                                topic,
-                                isDarkMode
-                            }: {
-    topic: contentdto_TopicResp;
-    isDarkMode?: boolean;
-}) {
+export function TopicAuthor({topic, isDarkMode}: {topic: contentdto_TopicResp; isDarkMode?: boolean}) {
     const {getTopicUser} = useTopicData();
     const user = getTopicUser(topic);
     const color = {
@@ -36,7 +30,7 @@ const Wrapper = styled.div`
     align-items: center;
     font-family: 'Inter', sans-serif;
     margin-top: auto;
-    
+
     .news-card-comment {
         display: flex;
         align-items: center;
@@ -44,21 +38,22 @@ const Wrapper = styled.div`
         color: ${themeColor('black1')};
         gap: 8px;
     }
-    
+
     img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        
+
         @media screen and (max-width: 821px) {
             width: 24px;
             height: 24px;
         }
     }
     span {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 19px;
-        
+        font-weight: 600;
+
         @media screen and (max-width: 821px) {
             font-size: 12px;
             line-height: 15px;
@@ -73,7 +68,7 @@ const AuthorWrapper = styled.div`
     padding-right: 33px;
     position: relative;
     z-index: 1;
-    
+
     &:before {
         content: '';
         position: absolute;
@@ -87,7 +82,7 @@ const AuthorWrapper = styled.div`
 
     @media screen and (max-width: 821px) {
         padding-right: 17px;
-        
+
         &:before {
             right: 8px;
         }
@@ -97,7 +92,7 @@ const AuthorWrapper = styled.div`
 const NewsCardComment = styled.div`
     @media screen and (max-width: 821px) {
         svg {
-           transform: scale(0.6);
+            transform: scale(0.6);
         }
         span {
             font-size: 12px;

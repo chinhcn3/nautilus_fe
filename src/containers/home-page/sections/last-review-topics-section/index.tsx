@@ -9,6 +9,8 @@ import {TopicCategory} from '@/containers/home-page/components/topic/topic-categ
 import {TopicTitle} from '@/containers/home-page/components/topic/topic-title';
 import {TopicAuthor} from '@/containers/home-page/components/topic/topic-author';
 import styled from '@emotion/styled';
+import {themeColor} from "@/common/configs/theme";
+import {TopicWrapper} from '@/containers/home-page/components/topic/topic-wrapper';
 
 export function LastReviewTopicsSection() {
   const {home} = useHomePageContext();
@@ -31,7 +33,8 @@ export function LastReviewTopicsSection() {
           }}>
           {lastReviewTopics?.map((topic) => {
             return (
-              <SwiperSlide key={topic.id}>
+              <TopicWrapper topic={topic} key={topic.id}>
+              <SwiperSlide>
                 <Stack direction="column" spacing={2}>
                   <CommonImage src={topic?.thumbnail} alt="list image" />
                   <Stack spacing={{xs: 1, md: 4}}>
@@ -43,6 +46,7 @@ export function LastReviewTopicsSection() {
                   </Stack>
                 </Stack>
               </SwiperSlide>
+              </TopicWrapper>
             );
           })}
         </Swiper>
@@ -52,7 +56,7 @@ export function LastReviewTopicsSection() {
 }
 
 const ReviewLatest = styled.div`
-  padding: 40px 0 0;
-  background: #f5f5f5;
+  padding: 40px 0 50px;
+  background: ${themeColor('white2')};
   margin-top: 0;
 `;

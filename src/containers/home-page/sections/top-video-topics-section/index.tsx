@@ -5,6 +5,7 @@ import {TopVideoTopicsList} from '@/containers/home-page/sections/top-video-topi
 import {Container} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import styled from "@emotion/styled";
+import {themeColor} from "@/common/configs/theme";
 
 export function TopVideoSection() {
     const {home} = useHomePageContext();
@@ -13,7 +14,7 @@ export function TopVideoSection() {
     return (
         <HomeVideos>
             <Container maxWidth="xl" sx={{px: {xs: 1, md: 2}}}>
-                <SectionHeading classItem="grey" title="VIDEO NỔI BẬT"/>
+                <SectionHeading classItem="grey2" title="VIDEO NỔI BẬT"/>
                 <Grid container>
                     <BigVideoTopic topic={topVideos?.[0]}/>
                     <TopVideoTopicsList topics={topVideos}/>
@@ -24,7 +25,7 @@ export function TopVideoSection() {
 }
 
 const HomeVideos = styled.div`
-    padding: 40px 0 0;
-    background: #F5F5F5;
+    padding: 32px 0;
+    background: ${themeColor('grey2')};
     margin-top: 0;
 `;

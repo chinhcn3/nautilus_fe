@@ -8,7 +8,7 @@ export function RelatedArticles() {
     return (
         <SectionDetail className="doted">
             <h3>Bài viết liên quan</h3>
-            <Stack spacing={3}>
+            <Stack spacing={{xs: 2, lg:3}}>
                 <Link className="title" href=''>Thị trường card đồ họa PC tăng 32%, AMD tăng 17%, Nvidia tăng
                     4.7%</Link>
                 <Link className="title" href=''>Troll Facebook sập: Elon Musk đăng status, FreePik tặng mã
@@ -29,13 +29,22 @@ const SectionDetail = styled.div`
     font-family: 'Inter', sans-serif;
     padding-bottom: 40px;
     position: relative;
-
+    
+    @media screen and (max-width: 600px) {
+        margin-bottom: 32px;
+        padding-bottom: 32px;
+    }
 
     h3 {
         font-weight: 600;
         font-size: 20px;
         line-height: 150%;
         margin-bottom: 24px;
+        
+        @media screen and (max-width: 600px) {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
     }
 
     a.title {
@@ -43,6 +52,10 @@ const SectionDetail = styled.div`
         font-weight: 600;
         line-height: 24px;
         color: ${themeColor('primary')};
+        
+        @media screen and (max-width: 600px) {
+            font-size: 16px;
+        }
     }
 
     &.doted {

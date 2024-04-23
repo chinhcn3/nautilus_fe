@@ -20,7 +20,13 @@ const Search = styled.div`
         border-radius: 90px;
         border: 1px solid ${themeColor('border')};
         height: 40px;
-
+        
+        &>div {
+            @media (max-width: 900px) {
+                width: calc(100% - 24px);
+            }
+        }
+        
         input {
             line-height: 38px;
             height: 100%;
@@ -29,7 +35,15 @@ const Search = styled.div`
             font-size: 14px;
             font-weight: 500;
             width: 302px;
-
+            
+            @media (max-width: 900px) {
+                width: 100%;
+            }
+            
+            @media (max-width: 600px) {
+                font-size: 12px;
+            }
+            
             ::placeholder {
                 color: ${themeColor('subtitle')};
             }

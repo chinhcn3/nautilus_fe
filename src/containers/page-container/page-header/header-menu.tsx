@@ -46,6 +46,12 @@ const NavHeader = styled.div`
     align-items: center;
     border: none;
     gap: 32px;
+  
+    @media (max-width: 900px) {
+      gap: 0;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 `;
 
 const ListItem = styled(Menu)`
@@ -87,6 +93,12 @@ const LinkItem = styled(Link)`
     .active, &:hover {
         color: ${themeColor('primary')};
     }
+
+    @media (max-width: 900px) {
+      line-height: 56px;
+      width: 100%;
+      border-bottom: 1px solid ${themeColor('border')};
+    }
 `;
 
 const MenuItem = styled(BaseMenuItem)(
@@ -116,5 +128,11 @@ const MenuButton = styled(BaseMenuButton)`
         &.active {
             color: ${themeColor('primary')}; 
         }
+    }
+  
+    @media (max-width: 900px) {
+        line-height: 56px;
+        border-bottom: 1px solid ${themeColor('border')};
+        width: 100%;
     }
 `

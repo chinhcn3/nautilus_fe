@@ -4,7 +4,7 @@ import SearchIcon from './assets/ic-search.svg';
 import styled from '@emotion/styled';
 import {themeColor} from '@/common/configs/theme';
 import {TPath} from '@/common/path';
-import {Container, IconButton, InputBase, Paper, Stack} from "@mui/material";
+import {Collapse, Container, Grow, IconButton, InputBase, Paper, Stack, Zoom} from "@mui/material";
 import Link from "next/link";
 import {NotificationsIcon, CaretDownIcon, HamburgerMenu, Close} from "@/containers/page-container/page-header/icons";
 import {HeaderMenu} from '@/containers/page-container/page-header/header-menu';
@@ -14,6 +14,9 @@ import {createTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {SearchForm} from "@/containers/page-container/page-header/search-form";
 import {useState} from "react";
+import Fade from "@mui/material/Fade";
+import {TransitionGroup} from "react-transition-group";
+import {height} from "@mui/system";
 export function PageHeader() {
     const [isShowMenu, setIsShowMenu] = useState(false);
     const session = useSession();
@@ -36,41 +39,72 @@ export function PageHeader() {
         setIsShowMenu(!isShowMenu)
     }
     return (
-        <HeaderLayout>
-            <Container maxWidth={false} sx={{px: {xs: 1, md: 2}}}>
-                <Stack justifyContent="space-between" alignItems="center" direction="row" spacing={2}>
-                    <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 1}}>
-                        {matchDownMd &&
+        <>
+            {!isShowMenu &&
+                <HeaderLayout>
+                    <Container maxWidth={false} sx={{px: {xs: 1, md: 2}}}>
+                        <Stack justifyContent="space-between" alignItems="center" direction="row" spacing={2}>
+                            <Stack alignItems="center" direction="row" spacing={{md: 5, xs: 1}}>
+                                {matchDownMd &&
+                                    <IconButton onClick={handleHamburgerMenu} sx={{p: 1, backgroundColor: '#f0f0f0'}}>
+                                        <HamburgerMenu/>
+                                    </IconButton>
+                                }
+                                <HeaderLogo href="/"><Logo/></HeaderLogo>
+                                {matchUpLg && <HeaderMenu/>}
+                            </Stack>
+                            <Stack alignItems="center" direction="row" spacing={{md: 2, xs: 1}}>
+                                <WriteButton href={'/compose' satisfies TPath}>Viết và nhận quà</WriteButton>
+                                {matchUpMd &&
+                                    <SearchForm/>
+                                }
+                                {matchUpSm &&
+                                    <IconButton sx={{p: 1, backgroundColor: '#f0f0f0'}}>
+                                        <NotificationsIcon/>
+                                    </IconButton>
+                                }
+                                <div>
+                                    {session.status === 'authenticated' ? (
+                                        <ProfileButton user={session.data.user!}/>
+                                    ) : (
+                                        <LoginButton/>
+                                    )}
+                                </div>
+                            </Stack>
+                        </Stack>
+                    </Container>
+                </HeaderLayout>
+            }
+            {matchDownMd && isShowMenu &&
+                <MenuMobile>
+                    <Stack spacing={1}>
+                        <Stack sx={{'height': '64px'}} alignItems="center" direction="row" spacing={{md: 5, xs: 1}}>
                             <IconButton onClick={handleHamburgerMenu} sx={{p: 1, backgroundColor: '#f0f0f0'}}>
-                                {isShowMenu ?<Close/> : <HamburgerMenu/>}
+                                <Close/>
                             </IconButton>
-                        }
-                        <HeaderLogo href="/"><Logo/></HeaderLogo>
-                        {matchUpLg && <HeaderMenu/>}
-                    </Stack>
-                    <Stack alignItems="center" direction="row" spacing={{md: 2, xs: 1}}>
-                        <WriteButton href={'/compose' satisfies TPath}>Viết và nhận quà</WriteButton>
-                        {matchUpMd &&
+                            <HeaderLogo href="/"><Logo/></HeaderLogo>
+                        </Stack>
+                        <Stack spacing={3}>
                             <SearchForm/>
-                        }
-                        {matchUpSm &&
-                            <IconButton sx={{p: 1, backgroundColor: '#f0f0f0'}}>
-                                <NotificationsIcon/>
-                            </IconButton>
-                        }
-                        <div>
-                            {session.status === 'authenticated' ? (
-                                <ProfileButton user={session.data.user!}/>
-                            ) : (
-                                <LoginButton/>
-                            )}
-                        </div>
+                            <HeaderMenu/>
+                        </Stack>
                     </Stack>
-                </Stack>
-            </Container>
-        </HeaderLayout>
+                </MenuMobile>
+            }
+        </>
     );
 }
+
+const MenuMobile = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 8px;
+    width: 100%;
+    background-color: ${themeColor("white2")};
+    height: 100vh;
+    z-index: 99;
+`
 
 const HeaderLogo = styled(Link)`
     max-width: 100px;
